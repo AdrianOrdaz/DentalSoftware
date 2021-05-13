@@ -13,5 +13,4 @@ public class MenuPrincipal {
 		frame.setSize(100,50);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }
