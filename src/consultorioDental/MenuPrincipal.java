@@ -8,6 +8,7 @@ public class MenuPrincipal {
 		JFrame frame = new JFrame("Menu Principal");
 		JLabel jl = new JLabel("ok esta bien");
 		System.out.println("Funciona?");
+		System.out.print("HOLA FER");
 		frame.add(jl);
 		frame.setVisible(true);
 		frame.setSize(100,50);
