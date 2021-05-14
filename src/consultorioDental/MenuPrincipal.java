@@ -9,6 +9,7 @@ public class MenuPrincipal {
 		JLabel jl = new JLabel("ok esta bien");
 		System.out.println("Seguro?");
 		System.out.print("HOLA FER");
+		System.out.print("Hola a todos");
 		frame.add(jl);
 		frame.setVisible(true);
 		frame.setSize(100,50);
