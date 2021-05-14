@@ -13,6 +13,7 @@ public class MenuPrincipal {
 		System.out.print("Kevin");
 		System.out.print("merge");
 		System.out.println("Branchhhhh");
+		System.out.print("para borrar");
 		frame.add(jl);
 		frame.setVisible(true);
 		frame.setSize(100,50);
