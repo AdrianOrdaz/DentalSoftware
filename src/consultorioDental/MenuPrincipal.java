@@ -10,6 +10,7 @@ public class MenuPrincipal {
 		System.out.println("Seguro?");
 		System.out.print("HOLA FER");
 		System.out.print("Hola a todos");
+		System.out.print("Kevin");
 		frame.add(jl);
 		frame.setVisible(true);
 		frame.setSize(100,50);
