@@ -9,8 +9,7 @@ public class MenuPrincipal {
 		JLabel jl = new JLabel("ok esta bien");
 		System.out.println("Seguro?");
 		System.out.print("HOLA FER");
-		System.out.print("branch la a todos");
-		System.out.print("Kevin");
+		System.out.print("modificacion de la master branch");
 		frame.add(jl);
 		frame.setVisible(true);
 		frame.setSize(100,50);
