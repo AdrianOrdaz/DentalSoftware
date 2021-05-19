@@ -31,12 +31,10 @@ public class VistaReceta extends metodosDiseño {
 		lbTitulo.setFont(new Font("Open Sans",Font.CENTER_BASELINE, 24));
 		adjustComponents(c, 0, 0, 5, 1, 0.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbTitulo,c);
-		c.weightx = 0.0;
 		
 		JLabel lbDate = new JLabel("Fecha:");
 		adjustComponents(c, 2, 1, 3, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		con.add(lbDate,c);
-		c.weightx = 0.0;
 		
 		JTextField jtDate = new JTextField();
 		jtDate.setPreferredSize(new Dimension(100,25));
@@ -61,7 +59,6 @@ public class VistaReceta extends metodosDiseño {
 	    JLabel lbPaciente = new JLabel("Paciente:");
 		adjustComponents(c, 0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbPaciente,c);
-		c.weighty = 0.0;
 		
 		JTextField jtPaciente = new JTextField();
 		jtPaciente.setPreferredSize(new Dimension(259,25));
@@ -72,34 +69,29 @@ public class VistaReceta extends metodosDiseño {
 	    JLabel lbDiagnostico = new JLabel("Diagnostico:");
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbDiagnostico,c);
-		c.weighty = 0.0;
 		
 		JTextField jtDiagnostico = new JTextField();
 		jtDiagnostico.setPreferredSize(new Dimension(750,100));
 		adjustComponents(c, 1, 4, 3, 1, 0.0, 1.0, GridBagConstraints.WEST);
 	    con.add(jtDiagnostico,c);
-	    c.weightx = 0.0;
 	    
 	    JLabel lbMedicamento = new JLabel("Medicamentos:");
 		adjustComponents(c, 0, 5, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbMedicamento,c);
-		c.weighty = 0.0;
 		
 		JTextField jtMedicamento = new JTextField();
 		jtMedicamento.setPreferredSize(new Dimension(750,100));
 		adjustComponents(c, 1, 5, 3, 1, 0.0, 1.0, GridBagConstraints.WEST);
 	    con.add(jtMedicamento,c);
-	    c.weightx = 0.0;
 	    
 	    JButton btnGuardar = new JButton("Guardar");
 	    adjustButton(btnGuardar, c, con, 0, 6, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
-	    c.weighty = 0.0;
-	    c.weightx = 0.0;
 	    
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir, c, con, 1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
-	    buttonRegresar(c,con,2,6,1,1,0.0,1.0,GridBagConstraints.EAST);
+	    VistaPacientes vp = new VistaPacientes();
+	    buttonRegresar(vp.crearGUI(),fCR,c,con,2,6,1,1,0.0,1.0,GridBagConstraints.EAST);
 	    buttonHome(fCR, c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 	    
 		fCR.pack();

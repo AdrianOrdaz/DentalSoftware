@@ -15,7 +15,7 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 		VistaPacientes vp = new VistaPacientes();
 		vp.crearGUI();
 	}
-	protected void crearGUI()
+	protected JFrame crearGUI()
 	{
 		fPte = new JFrame("Consultorio Dental/Pacientes");
 		Container con = new Container();
@@ -68,6 +68,7 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 		fPte.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fPte.setVisible(true);
 		con.setBackground(Color.WHITE);
+		return fPte;
 	}
 	
 	public void home(ActionEvent e) {
@@ -83,7 +84,9 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 				fPte.setVisible(false);
 			break;
 			case "Crear Receta":
-				
+				VistaReceta vr = new VistaReceta();
+				vr.crearGUI();
+				fPte.setVisible(false);
 			break;
 		}
 		

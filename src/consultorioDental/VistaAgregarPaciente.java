@@ -165,8 +165,8 @@ public class VistaAgregarPaciente extends metodosDiseño{
 	    
 	    JButton btnGuardar = new JButton("Guardar");
 	    adjustButton(btnGuardar,c,con,0,11,1,1,1.0,1.0,GridBagConstraints.CENTER);
-	    
-	    buttonRegresar(c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
+	    VistaPacientes vp = new VistaPacientes();
+	    buttonRegresar(vp.crearGUI(),fAR,c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	    c.insets = new Insets(0,100,0,0);
 	    buttonHome(fAR,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
