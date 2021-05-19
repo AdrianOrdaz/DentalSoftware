@@ -39,8 +39,7 @@ public class VistaPacientes extends MenuUsuario{
 	    con.add(btnBuscar,c);
 	    
 	    String[] header = {"","ID","Nombre","Historial","Info adicional"};
-	    Object[][] data = null;
-	    DefaultTableModel dtm = new DefaultTableModel(data,header);
+	    DefaultTableModel dtm = new DefaultTableModel(null,header);
 	    JTable tbPacientes = new JTable(dtm);
 	    tbPacientes.setFillsViewportHeight(true);
 	    tbPacientes.setEnabled(false);

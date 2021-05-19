@@ -44,7 +44,7 @@ public class VistaReceta extends metodosDiseño {
 	    con.add(jtDate,c);
 	    
 	    JLabel imgLogo = new JLabel();
-		ImageIcon logo = new ImageIcon("src/img/logo.png");
+		ImageIcon logo = new ImageIcon("src/img/logomini.png");
 		imgLogo.setIcon(logo);
 		adjustComponents(c,4,1,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		con.add(imgLogo,c);
