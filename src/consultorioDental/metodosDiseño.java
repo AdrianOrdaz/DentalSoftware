@@ -1,6 +1,8 @@
 package consultorioDental;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -44,6 +46,13 @@ public class metodosDiseño extends JFrame{
 		btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuUsuario mu = new MenuUsuario();
+				mu.crearMenuUsuario();
+				setVisible(false);
+			}
+		});
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;

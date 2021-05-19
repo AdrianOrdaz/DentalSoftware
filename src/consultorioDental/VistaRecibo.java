@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaRecibo extends metodosDiseño implements ActionListener{
+public class VistaRecibo extends metodosDiseño{
 
 	JFrame fR;
 	public static void main(String[] args) {
@@ -148,19 +148,11 @@ public class VistaRecibo extends metodosDiseño implements ActionListener{
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir,c,con,1,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    buttonHome(c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
-		super.btnHome.addActionListener(this);
 	    
 		fR.pack();
 		fR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fR.setVisible(true);
 		con.setBackground(Color.WHITE);
-	}
-	
-	public void actionPerformed(ActionEvent e) 
-	{
-		MenuUsuario mu = new MenuUsuario();
-		mu.crearMenuUsuario();
-		fR.setVisible(false);
 	}
 }

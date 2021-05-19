@@ -56,6 +56,7 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 	    
 	    JButton btnCrearReceta = new JButton("Crear Receta");
 	    adjustButton(btnCrearReceta, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+	    btnCrearReceta.addActionListener(this);
 	    
 	    JButton btnEditar = new JButton("Editar");
 	    adjustButton(btnEditar, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -69,6 +70,10 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 		con.setBackground(Color.WHITE);
 	}
 	
+	public void home(ActionEvent e) {
+		
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
@@ -76,6 +81,9 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 				VistaAgregarPaciente vap = new VistaAgregarPaciente();
 				vap.crearGUI();
 				fPte.setVisible(false);
+			break;
+			case "Crear Receta":
+				
 			break;
 		}
 		

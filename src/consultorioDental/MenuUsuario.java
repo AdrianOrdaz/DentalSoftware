@@ -52,6 +52,7 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 		
 		JButton btnIr_Pacientes = new JButton("Pacientes");
 		adjustButton(btnIr_Pacientes, c, con, 3, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
+		btnIr_Pacientes.addActionListener(this);
 		
 		JButton btnIr_Dentistas = new JButton("Dentistas");
 		adjustButton(btnIr_Dentistas, c, con, 0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHEAST);
@@ -79,6 +80,11 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 			case "Crear Recibo":
 				VistaRecibo vr = new VistaRecibo();
 				vr.crearGUI();
+				fMenuU.setVisible(false);
+			break;
+			case "Pacientes":
+				VistaPacientes vp = new VistaPacientes();
+				vp.crearGUI();
 				fMenuU.setVisible(false);
 			break;
 			case "Salir":
