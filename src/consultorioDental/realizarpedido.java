@@ -22,8 +22,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class realizarpedido extends JFrame {
+public class realizarpedido extends metodosDiseño{
 
+	static realizarpedido frame;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -36,7 +37,7 @@ public class realizarpedido extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					realizarpedido frame = new realizarpedido();
+					frame = new realizarpedido();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -255,6 +256,7 @@ public class realizarpedido extends JFrame {
 		gbc_lblNewLabel_8.gridx = 1;
 		gbc_lblNewLabel_8.gridy = 8;
 		contentPane.add(lblNewLabel_8, gbc_lblNewLabel_8);
+		buttonHome(this,new GridBagConstraints(),contentPane, 3,8,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	}
 
 }

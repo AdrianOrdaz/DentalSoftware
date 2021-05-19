@@ -1,12 +1,17 @@
 package consultorioDental;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class metodosDiseño extends JFrame{
 	
-	protected static void adjustButton(JButton btn, GridBagConstraints c, Container con, 
+	JButton btnHome;
+	
+	protected void adjustButton(JButton btn, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		btn.setPreferredSize(new Dimension(120, 35)); 
@@ -23,7 +28,7 @@ public class metodosDiseño extends JFrame{
 	    c.anchor = GridBagConstraints.CENTER;
 	}
 	
-	protected static void adjustComponents(GridBagConstraints c, 
+	protected void adjustComponents(GridBagConstraints c, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		c.gridx = gx;
@@ -35,12 +40,19 @@ public class metodosDiseño extends JFrame{
 		c.anchor = gdb;
 	}
 	
-	protected static void buttonHome(GridBagConstraints c, Container con, 
+	protected void buttonHome(JFrame frame, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
+		btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuUsuario mu = new MenuUsuario();
+				mu.crearMenuUsuario();
+				frame.setVisible(false);
+			}
+		});
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;

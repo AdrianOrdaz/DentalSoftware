@@ -6,10 +6,11 @@ import java.awt.*;
 public class MenuUsuario extends metodosDiseño{
 	
 	public static void main(String[] args) {
-		crearMenuUsuario();
+		MenuUsuario mu = new MenuUsuario();
+		mu.crearMenuUsuario();
 	}
 	
-	private static void  crearMenuUsuario()
+	protected void  crearMenuUsuario()
 	{
 		JFrame fMenuU = new JFrame("Consultorio Dental");
 		Container con = new Container();

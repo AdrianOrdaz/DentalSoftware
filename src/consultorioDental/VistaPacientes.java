@@ -60,7 +60,7 @@ public class VistaPacientes extends MenuUsuario{
 	    JButton btnEditar = new JButton("Editar");
 	    adjustButton(btnEditar, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
-	    buttonHome(c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+	    buttonHome(fPte,c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 	    
 		fPte.pack();
 		fPte.setExtendedState(JFrame.MAXIMIZED_BOTH);
