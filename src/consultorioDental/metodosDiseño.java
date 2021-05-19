@@ -48,8 +48,8 @@ public class metodosDiseño extends JFrame{
 		btnHome.setBorder(new LineBorder(Color.white));
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuUsuario mu = new MenuUsuario();
-				mu.crearMenuUsuario();
+				/*MenuUsuario mu = new MenuUsuario();
+				mu.crearMenuUsuario();*/
 				frame.setVisible(false);
 			}
 		});
