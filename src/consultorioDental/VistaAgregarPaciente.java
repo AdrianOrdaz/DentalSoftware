@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -17,7 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaAgregarPaciente extends metodosDiseño{
+public class VistaAgregarPaciente extends metodosDiseño implements ActionListener{
 
 	public static void main(String[] args) {
 		VistaAgregarPaciente vap = new VistaAgregarPaciente();
@@ -167,11 +169,20 @@ public class VistaAgregarPaciente extends metodosDiseño{
 	    buttonRegresar(c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	    c.insets = new Insets(0,100,0,0);
 	    buttonHome(c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
+	    
 		
 		fAR.pack();
 		fAR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fAR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fAR.setVisible(true);
 		con.setBackground(Color.WHITE);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand())
+		{
+			//case  
+		}
+		
 	}
 }

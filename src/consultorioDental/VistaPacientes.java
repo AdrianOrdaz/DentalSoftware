@@ -1,20 +1,23 @@
 package consultorioDental;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 
-public class VistaPacientes extends MenuUsuario{
-
+public class VistaPacientes extends metodosDiseño implements ActionListener{
+	JFrame fPte;
 	public static void main(String[] args) {
 		VistaPacientes vp = new VistaPacientes();
 		vp.crearGUI();
 	}
 	protected void crearGUI()
 	{
-		JFrame fPte = new JFrame("Consultorio Dental/Pacientes");
+		fPte = new JFrame("Consultorio Dental/Pacientes");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fPte.getContentPane();
@@ -49,6 +52,7 @@ public class VistaPacientes extends MenuUsuario{
 	    
 	    JButton btnAgregar = new JButton("Agregar");
 	    adjustButton(btnAgregar, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
+	    btnAgregar.addActionListener(this);
 	    
 	    JButton btnCrearReceta = new JButton("Crear Receta");
 	    adjustButton(btnCrearReceta, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -63,7 +67,17 @@ public class VistaPacientes extends MenuUsuario{
 		fPte.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fPte.setVisible(true);
 		con.setBackground(Color.WHITE);
-		//MenuUsuario mu = new MenuUsuario();
-		//mu.setVisible(false);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand())
+		{
+			case "Agregar":
+				VistaAgregarPaciente vap = new VistaAgregarPaciente();
+				vap.crearGUI();
+				fPte.setVisible(false);
+			break;
+		}
+		
 	}
 }
