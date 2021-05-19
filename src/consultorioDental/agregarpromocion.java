@@ -21,7 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class agregarpromocion extends JFrame {
+public class agregarpromocion extends metodosDiseño{
 
 	private JPanel contentPane;
 	private JTextField textField_1;
@@ -42,7 +42,7 @@ public class agregarpromocion extends JFrame {
 			}
 		});
 	}
-	public agregarpromocion() {
+	protected agregarpromocion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);;
 		contentPane = new JPanel();
@@ -242,6 +242,10 @@ public class agregarpromocion extends JFrame {
 		gbc_btnNewButton_1.gridx = 4;
 		gbc_btnNewButton_1.gridy = 17;
 		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		buttonRegresar(new promociones(),this,new GridBagConstraints(),contentPane,1,17,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		buttonHome(this,new GridBagConstraints(),contentPane,0,17,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		
 	}
 
 }

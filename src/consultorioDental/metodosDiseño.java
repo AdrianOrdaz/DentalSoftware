@@ -9,8 +9,6 @@ import javax.swing.border.LineBorder;
 
 public class metodosDiseño extends JFrame{
 	
-	JButton btnHome;
-	
 	protected void adjustButton(JButton btn, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
@@ -43,7 +41,7 @@ public class metodosDiseño extends JFrame{
 	protected void buttonHome(JFrame frame, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
-		btnHome = new JButton(new ImageIcon("src/img/home.png"));
+		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
 		btnHome.addActionListener(new ActionListener() {
@@ -65,13 +63,20 @@ public class metodosDiseño extends JFrame{
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
 	}
-	protected static void buttonRegresar(GridBagConstraints c, Container con, 
+	protected static void buttonRegresar(JFrame frame1,JFrame frame2, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		JButton btnRegresar = new JButton(new ImageIcon("src/img/regresar.png"));
 		btnRegresar.setPreferredSize(new Dimension(35, 35));
 		btnRegresar.setBorder(new LineBorder(Color.white));
 		btnRegresar.setBackground(Color.white);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame1.setVisible(true);
+				frame2.setVisible(false);
+			}
+			
+		});
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;
