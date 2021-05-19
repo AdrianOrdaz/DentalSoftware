@@ -1,4 +1,4 @@
-package primerasvistas;
+package consultorioDental;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
