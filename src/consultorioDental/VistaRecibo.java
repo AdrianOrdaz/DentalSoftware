@@ -1,12 +1,15 @@
 package consultorioDental;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaRecibo extends metodosDiseño{
+public class VistaRecibo extends metodosDiseño implements ActionListener{
 
+	JFrame fR;
 	public static void main(String[] args) {
 		VistaRecibo vr = new VistaRecibo();
 		vr.crearGUI();
@@ -14,7 +17,7 @@ public class VistaRecibo extends metodosDiseño{
 
 	protected void crearGUI()
 	{
-		JFrame fR = new JFrame("Consultorio Dental/Recibo");
+		fR = new JFrame("Consultorio Dental/Recibo");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fR.getContentPane();
@@ -145,11 +148,19 @@ public class VistaRecibo extends metodosDiseño{
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir,c,con,1,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    buttonHome(c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
-		
+		super.btnHome.addActionListener(this);
+	    
 		fR.pack();
 		fR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fR.setVisible(true);
 		con.setBackground(Color.WHITE);
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		MenuUsuario mu = new MenuUsuario();
+		mu.crearMenuUsuario();
+		fR.setVisible(false);
 	}
 }

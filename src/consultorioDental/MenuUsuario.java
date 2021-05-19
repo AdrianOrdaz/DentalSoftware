@@ -2,16 +2,19 @@ package consultorioDental;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MenuUsuario extends metodosDiseño{
-	
+public class MenuUsuario extends metodosDiseño implements ActionListener{
+	JFrame fMenuU;
 	public static void main(String[] args) {
-		crearMenuUsuario();
+		MenuUsuario mu = new MenuUsuario();
+		mu.crearMenuUsuario();
 	}
 	
-	private static void  crearMenuUsuario()
-	{
-		JFrame fMenuU = new JFrame("Consultorio Dental");
+	protected void  crearMenuUsuario() 
+	{	
+		fMenuU = new JFrame("Consultorio Dental");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fMenuU.getContentPane();
@@ -28,6 +31,7 @@ public class MenuUsuario extends metodosDiseño{
 		btnSalirPrograma.setBackground(new Color(135,206,235));
 		btnSalirPrograma.setForeground(Color.WHITE);
 		adjustButton(btnSalirPrograma, c, con, 3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.ABOVE_BASELINE);
+		btnSalirPrograma.addActionListener(this);
 		
 		JLabel imgLogo = new JLabel();
 		ImageIcon logo = new ImageIcon("src/img/logo.png");
@@ -44,6 +48,7 @@ public class MenuUsuario extends metodosDiseño{
 		
 		JButton btnCrearRecibo = new JButton("Crear Recibo");
 		adjustButton(btnCrearRecibo, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		btnCrearRecibo.addActionListener(this);
 		
 		JButton btnIr_Pacientes = new JButton("Pacientes");
 		adjustButton(btnIr_Pacientes, c, con, 3, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
@@ -66,5 +71,19 @@ public class MenuUsuario extends metodosDiseño{
 		fMenuU.setVisible(true);
 		con.setBackground(Color.WHITE);
 	}
-	 
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		switch(e.getActionCommand())
+		{
+			case "Crear Recibo":
+				VistaRecibo vr = new VistaRecibo();
+				vr.crearGUI();
+				fMenuU.setVisible(false);
+			break;
+			case "Salir":
+				System.exit(0);
+			break;
+		}
+	}
 }
