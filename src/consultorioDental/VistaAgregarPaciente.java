@@ -19,7 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaAgregarPaciente extends metodosDiseño implements ActionListener{
+public class VistaAgregarPaciente extends metodosDiseño{
 
 	public static void main(String[] args) {
 		VistaAgregarPaciente vap = new VistaAgregarPaciente();
@@ -178,11 +178,4 @@ public class VistaAgregarPaciente extends metodosDiseño implements ActionListene
 		con.setBackground(Color.WHITE);
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		switch(e.getActionCommand())
-		{
-			//case  
-		}
-		
-	}
 }

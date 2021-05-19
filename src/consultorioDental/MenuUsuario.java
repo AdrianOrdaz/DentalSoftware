@@ -38,7 +38,6 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 		imgLogo.setIcon(logo);
 		adjustComponents(c,1,1,2,1,0.0,1.0,GridBagConstraints.CENTER);
 		con.add(imgLogo,c);
-		c.weightx = 0.0;
 		
 		JButton btnAgendarCita = new JButton("Agendar Cita");
 		adjustButton(btnAgendarCita, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
