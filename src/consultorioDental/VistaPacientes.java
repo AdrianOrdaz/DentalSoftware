@@ -26,13 +26,12 @@ public class VistaPacientes extends MenuUsuario{
 		lbTitulo.setFont(new Font("Open Sans",Font.CENTER_BASELINE, 24));
 		adjustComponents(c, 0, 0, 4, 1, 0.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbTitulo,c);
-		c.weightx = 0.0;
 		
 		JTextField jtBuscar = new JTextField();
 		jtBuscar.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtBuscar,c);
-	    c.weighty = 0.0;
+	    
 	    JButton btnBuscar = new JButton(new ImageIcon("src/img/lupa.png"));
 		btnBuscar.setPreferredSize(new Dimension(22, 23));
 		adjustComponents(c, 2, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
@@ -47,8 +46,6 @@ public class VistaPacientes extends MenuUsuario{
 	    jsp.setVisible(true);
 		adjustComponents(c, 0, 2, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 	    con.add(jsp,c);
-	    c.weightx = 0.0;
-	    c.weighty = 0.0;
 	    
 	    JButton btnAgregar = new JButton("Agregar");
 	    adjustButton(btnAgregar, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
