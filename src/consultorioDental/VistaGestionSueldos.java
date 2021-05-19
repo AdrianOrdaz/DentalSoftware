@@ -40,7 +40,7 @@ public class VistaGestionSueldos extends metodosDiseño{
 	    JButton btnGuardar = new JButton("Guardar");
 	    btnGuardar.setEnabled(false);
 	    adjustButton(btnGuardar,c,con,1,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
-	    buttonHome(c,con,3,3,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
+	    buttonHome(fGS,c,con,3,3,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 		
 		fGS.pack();
 		fGS.setExtendedState(JFrame.MAXIMIZED_BOTH);

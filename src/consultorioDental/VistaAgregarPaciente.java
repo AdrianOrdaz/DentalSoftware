@@ -168,7 +168,7 @@ public class VistaAgregarPaciente extends metodosDiseño implements ActionListene
 	    
 	    buttonRegresar(c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	    c.insets = new Insets(0,100,0,0);
-	    buttonHome(c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
+	    buttonHome(fAR,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
 		
 		fAR.pack();

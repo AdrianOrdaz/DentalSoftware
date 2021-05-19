@@ -40,7 +40,7 @@ public class metodosDiseño extends JFrame{
 		c.anchor = gdb;
 	}
 	
-	protected void buttonHome(GridBagConstraints c, Container con, 
+	protected void buttonHome(JFrame frame, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		btnHome = new JButton(new ImageIcon("src/img/home.png"));
@@ -50,7 +50,7 @@ public class metodosDiseño extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				MenuUsuario mu = new MenuUsuario();
 				mu.crearMenuUsuario();
-				setVisible(false);
+				frame.setVisible(false);
 			}
 		});
 		c.gridx = gx;

@@ -147,7 +147,7 @@ public class VistaRecibo extends metodosDiseño{
 	    
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir,c,con,1,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
-	    buttonHome(c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
+	    buttonHome(fR, c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
 		fR.pack();
 		fR.setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -100,7 +100,7 @@ public class VistaReceta extends metodosDiseño {
 	    adjustButton(btnImprimir, c, con, 1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
 	    buttonRegresar(c,con,2,6,1,1,0.0,1.0,GridBagConstraints.EAST);
-	    buttonHome(c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
+	    buttonHome(fCR, c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 	    
 		fCR.pack();
 		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
