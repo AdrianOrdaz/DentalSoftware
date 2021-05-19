@@ -18,10 +18,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class promociones extends JFrame {
+public class promociones extends metodosDiseño implements ActionListener{
 
 	private JPanel contentPane;
 	private JTable table;
@@ -78,13 +81,7 @@ public class promociones extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null},
-			},
+		table.setModel(new DefaultTableModel(null,
 			new String[] {
 				"No.", "Descripci\u00F3n ", "Costo", "D\u00EDa en que aplica", "Procentaje ahorrado", "Dinero ahorrado", "T\u00E9rminos y condiciones"
 			}
@@ -168,6 +165,21 @@ public class promociones extends JFrame {
 		gbc_btnNewButton_2.gridx = 5;
 		gbc_btnNewButton_2.gridy = 3;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
+		btnNewButton_2.addActionListener(this);
+		
+		buttonHome(this,new GridBagConstraints(),contentPane,1,3,1,1,0.0,0.0,GridBagConstraints.EAST);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand())
+		{
+			case "Agregar":
+				agregarpromocion ap = new agregarpromocion();
+				ap.setVisible(true);
+				this.setVisible(false);
+			break;
+		}
+		
 	}
 
 }

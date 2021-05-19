@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class agregarusuario extends JFrame {
+public class agregarusuario extends metodosDiseño {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -42,7 +42,7 @@ public class agregarusuario extends JFrame {
 			}
 		});
 	}
-	public agregarusuario() {
+	protected agregarusuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -66,14 +66,6 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 0;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
-		
-		JLabel lblNewLabel_10 = new JLabel("");
-		lblNewLabel_10.setIcon(new ImageIcon("C:\\Users\\Kevin\\OneDrive\\Escritorio\\PROYECTO POO\\logo.png"));
-		GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
-		gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_10.gridx = 7;
-		gbc_lblNewLabel_10.gridy = 0;
-		contentPane.add(lblNewLabel_10, gbc_lblNewLabel_10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Completa obligatoriamente los siguientes campos*");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 14));
@@ -100,7 +92,7 @@ public class agregarusuario extends JFrame {
 		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 2;
 		contentPane.add(textField, gbc_textField);
-		textField.setColumns(10);
+		textField.setColumns(5);
 		
 		JLabel lblNewLabel_3 = new JLabel("Nombre*:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -119,7 +111,7 @@ public class agregarusuario extends JFrame {
 		gbc_textField_1.gridx = 2;
 		gbc_textField_1.gridy = 3;
 		contentPane.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		textField_1.setColumns(5);
 		
 		JLabel lblNewLabel_4 = new JLabel("Horario*:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -127,7 +119,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.gridx = 1;
-		gbc_lblNewLabel_4.gridy = 5;
+		gbc_lblNewLabel_4.gridy = 4;
 		contentPane.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 		textField_2 = new JTextField();
@@ -136,9 +128,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.gridx = 2;
-		gbc_textField_2.gridy = 5;
+		gbc_textField_2.gridy = 4;
 		contentPane.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		textField_2.setColumns(5);
 		
 		JLabel lblNewLabel_5 = new JLabel("Correo Electr\u00F3nico*:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -146,7 +138,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 1;
-		gbc_lblNewLabel_5.gridy = 7;
+		gbc_lblNewLabel_5.gridy = 5;
 		contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		textField_3 = new JTextField();
@@ -155,9 +147,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_3.gridx = 2;
-		gbc_textField_3.gridy = 7;
+		gbc_textField_3.gridy = 5;
 		contentPane.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		textField_3.setColumns(5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Contrase\u00F1a*:");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -165,7 +157,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_6.gridx = 1;
-		gbc_lblNewLabel_6.gridy = 9;
+		gbc_lblNewLabel_6.gridy = 6;
 		contentPane.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
 		textField_4 = new JTextField();
@@ -174,9 +166,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_4.gridx = 2;
-		gbc_textField_4.gridy = 9;
+		gbc_textField_4.gridy = 6;
 		contentPane.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		textField_4.setColumns(5);
 		
 		JLabel lblNewLabel_7 = new JLabel("Sueldo quincenal*:");
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -184,7 +176,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_7.gridx = 1;
-		gbc_lblNewLabel_7.gridy = 11;
+		gbc_lblNewLabel_7.gridy = 7;
 		contentPane.add(lblNewLabel_7, gbc_lblNewLabel_7);
 		
 		textField_5 = new JTextField();
@@ -194,9 +186,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_5.gridx = 2;
-		gbc_textField_5.gridy = 11;
+		gbc_textField_5.gridy = 7;
 		contentPane.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		textField_5.setColumns(5);
 		
 		JLabel lblNewLabel_8 = new JLabel("Direcci\u00F3n*:");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -204,7 +196,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_8.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_8.gridx = 1;
-		gbc_lblNewLabel_8.gridy = 13;
+		gbc_lblNewLabel_8.gridy = 8;
 		contentPane.add(lblNewLabel_8, gbc_lblNewLabel_8);
 		
 		textField_6 = new JTextField();
@@ -213,9 +205,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_6.gridx = 2;
-		gbc_textField_6.gridy = 13;
+		gbc_textField_6.gridy = 8;
 		contentPane.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		textField_6.setColumns(5);
 		
 		JLabel lblNewLabel_9 = new JLabel("Tel\u00E9fono*:");
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -223,7 +215,7 @@ public class agregarusuario extends JFrame {
 		gbc_lblNewLabel_9.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_9.gridx = 1;
-		gbc_lblNewLabel_9.gridy = 15;
+		gbc_lblNewLabel_9.gridy = 9;
 		contentPane.add(lblNewLabel_9, gbc_lblNewLabel_9);
 		
 		textField_7 = new JTextField();
@@ -232,22 +224,9 @@ public class agregarusuario extends JFrame {
 		gbc_textField_7.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_7.gridx = 2;
-		gbc_textField_7.gridy = 15;
+		gbc_textField_7.gridy = 9;
 		contentPane.add(textField_7, gbc_textField_7);
-		textField_7.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Cancelar");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 4;
-		gbc_btnNewButton.gridy = 15;
-		contentPane.add(btnNewButton, gbc_btnNewButton);
+		textField_7.setColumns(5);
 		
 		JButton btnNewButton_1 = new JButton("Agregar");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
@@ -258,9 +237,12 @@ public class agregarusuario extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_1.gridx = 5;
-		gbc_btnNewButton_1.gridy = 15;
+		gbc_btnNewButton_1.gridx = 2;
+		gbc_btnNewButton_1.gridy = 10;
 		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		buttonHome(this,new GridBagConstraints(),contentPane,4,13,1,1,0.0,0.0,GridBagConstraints.WEST);
+		buttonRegresar(new gestionarusuario(),this,new GridBagConstraints(),contentPane,3,13,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
 
 }

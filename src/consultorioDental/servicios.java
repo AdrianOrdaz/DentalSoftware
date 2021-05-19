@@ -21,7 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class servicios extends JFrame {
+public class servicios extends metodosDiseño {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -78,13 +78,7 @@ public class servicios extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
+		table.setModel(new DefaultTableModel(null,
 			new String[] {
 				"No.", "Nombre", "Costo"
 			}
@@ -165,6 +159,8 @@ public class servicios extends JFrame {
 		gbc_btnNewButton_2.gridx = 5;
 		gbc_btnNewButton_2.gridy = 4;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
+		
+		buttonHome(this,new GridBagConstraints(),contentPane,1,4,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	}
 
 }

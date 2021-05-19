@@ -21,7 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class gestionarusuario extends JFrame {
+public class gestionarusuario extends metodosDiseño {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -38,7 +38,7 @@ public class gestionarusuario extends JFrame {
 		});
 	}
 
-	public gestionarusuario() {
+	protected gestionarusuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -79,13 +79,7 @@ public class gestionarusuario extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
+		table.setModel(new DefaultTableModel(null,
 			new String[] {
 				"No.", "Nombre", "Horario", "Hora de inicio", "Hora de cierre", "Correo electr\u00F3nico ", "Sueldo quincenal", "Direcci\u00F3n", "Tel\u00E9fono", "Contrase\u00F1a"
 			}
@@ -169,6 +163,8 @@ public class gestionarusuario extends JFrame {
 		gbc_btnNewButton_2.gridx = 4;
 		gbc_btnNewButton_2.gridy = 2;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
+		
+		buttonHome(this,new GridBagConstraints(),contentPane,1,2,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
 
 }

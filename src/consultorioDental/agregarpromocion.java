@@ -243,7 +243,7 @@ public class agregarpromocion extends metodosDiseño{
 		gbc_btnNewButton_1.gridy = 17;
 		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
 		
-		buttonRegresar(new promociones(),this,new GridBagConstraints(),contentPane,1,17,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		buttonRegresar(new promociones(),this,new GridBagConstraints(),contentPane,1,17,1,1,0.0,0.0,GridBagConstraints.WEST);
 		buttonHome(this,new GridBagConstraints(),contentPane,0,17,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 	}

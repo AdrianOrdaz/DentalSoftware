@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class agregarservicio extends JFrame {
+public class agregarservicio extends metodosDiseño {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -144,6 +144,9 @@ public class agregarservicio extends JFrame {
 		gbc_btnNewButton_1.gridx = 3;
 		gbc_btnNewButton_1.gridy = 7;
 		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		buttonHome(this,new GridBagConstraints(),contentPane,0,7,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		buttonRegresar(new servicios(),this,new GridBagConstraints(),contentPane,1,7,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
 
 }
