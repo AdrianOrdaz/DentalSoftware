@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class vistaAgendarCita extends metDiseño implements ActionListener 
+public class vistaAgendarCita extends metodosDiseño implements ActionListener 
 {
 	public static void main(String[]args)
 	{
@@ -38,7 +38,7 @@ public class vistaAgendarCita extends metDiseño implements ActionListener
 		adjustLabel(lbPaciente, c, con, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 	
 		JTextField jtPaciente = new JTextField(15);
-		adjustTextField(jtPaciente, c, con, 1, 1, 1, 1, 1.0, 1.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		adjustLargeTextField(jtPaciente, c, con, 1, 1, 1, 1, 1.0, 1.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
 		
 		
 		//Fecha
@@ -47,7 +47,10 @@ public class vistaAgendarCita extends metDiseño implements ActionListener
 		adjustLabel(lbFecha, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
 		JTextField jtFecha = new JTextField(15);
-		adjustTextField(jtFecha, c, con, 1, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		adjustLargeTextField(jtFecha, c, con, 1, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
+		GridBagConstraints gbc_jtFecha = new GridBagConstraints();
+		gbc_jtFecha.anchor = GridBagConstraints.CENTER;
+		
 		
 		//Hora
 		JLabel lbHora = new JLabel("  Hora: ");

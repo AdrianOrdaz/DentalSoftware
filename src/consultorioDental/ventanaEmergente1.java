@@ -1,5 +1,6 @@
 package consultorioDental;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ventanaEmergente1 extends metDiseño implements ActionListener 
+public class ventanaEmergente1 extends metodosDiseño implements ActionListener 
 {
 	public static void main(String[]args) 
 	{
@@ -29,13 +30,14 @@ public class ventanaEmergente1 extends metDiseño implements ActionListener
 		adjustLabel(lbAdvertencia, c, con, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.SOUTH);
 		
 		JButton btnReintentar  = new JButton("Reintentar");
-		adjustButton(btnReintentar, c, con, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,GridBagConstraints.NONE);
+		adjustButton(btnReintentar, c, con, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		fVE1.setSize(400,200); 
 		fVE1.setTitle("Consultorio Dental: Advertencia");
 		fVE1.setResizable(false);
 		fVE1.setVisible(true);
 		fVE1.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		fVE1.setBackground(Color.white);
 	}
 
 	@Override

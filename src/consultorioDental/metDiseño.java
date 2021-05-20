@@ -16,15 +16,7 @@ import javax.swing.table.TableModel;
 
 public class metDiseño extends JFrame
 {
-	/*metodosDiseño()
-	{
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		this.setTitle("Consultorio Dental");
-		this.setResizable(false);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-	}*/
+	
 	protected static void adjustButton(JButton btn , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
 	{
 		btn.setPreferredSize(new Dimension(120,35));
