@@ -14,13 +14,15 @@ import javax.swing.JTextField;
 
 public class vistaAgregarDentista extends metodosDiseño implements ActionListener{
 	
+	JButton btnAgregar;
+	JButton btnRegresar;
 	public static void main(String[]args)
 	{
 		vistaAgregarDentista vAD = new vistaAgregarDentista();
 		vAD.crearfAD();
 	}
 	
-	private void crearfAD()
+	void crearfAD()
 	{
 		JFrame fAD = new JFrame("Consultorio Dental/Agregar Dentista");
 		Container con = new Container();
@@ -99,7 +101,7 @@ public class vistaAgregarDentista extends metodosDiseño implements ActionListene
 		adjustTextField(jtDireccion, c, con, 4, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
 		
 		//Botones
-		JButton btnAgregar  = new JButton("Agregar");
+		btnAgregar  = new JButton("Agregar");
 		GridBagConstraints gbc_btnAgregar = new GridBagConstraints();
 		gbc_btnAgregar.gridx = 2;
 		gbc_btnAgregar.gridy = 6;
@@ -109,7 +111,7 @@ public class vistaAgregarDentista extends metodosDiseño implements ActionListene
 		gbc_btnAgregar.fill = GridBagConstraints.NONE;
 		fAD.getContentPane().add(btnAgregar, gbc_btnAgregar);
 		
-		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar = new JButton("Regresar");
 		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();
 		gbc_btnRegresar.gridx = 5;
 		gbc_btnRegresar.gridy = 6;
@@ -130,6 +132,9 @@ public class vistaAgregarDentista extends metodosDiseño implements ActionListene
 		jtEmail.setEditable(true);
 		jtDireccion.setEditable(true);
 		
+		btnAgregar.addActionListener(this);
+		btnRegresar.addActionListener(this);
+		
 		//buttonHome(c, con, 5, 7, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
 		fAD.pack();
 		fAD.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -141,8 +146,13 @@ public class vistaAgregarDentista extends metodosDiseño implements ActionListene
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getSource()==btnRegresar) 
+		{
+			vistaDentistas vD = new vistaDentistas();
+			vD.crearfD();
+			dispose();
+        }
 	}
 }

@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JScrollPane;
 import java.awt.Insets;
@@ -21,14 +23,18 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
 public class vistaDentistas extends metodosDiseño implements ActionListener{
-
+	
+	JButton btnAgregar;
+	JButton btnEliminar;
+	JButton btnModificar;
+	JButton btnGuardar;
 	public static void main(String[] args) 
 	{
 		vistaDentistas vD = new vistaDentistas();
 		vD.crearfD();
 	}
 
-	private void crearfD() 
+	void crearfD() 
 	{
 		
 		JFrame fD = new JFrame("Consultorio Dental/Dentistas");
@@ -71,16 +77,16 @@ public class vistaDentistas extends metodosDiseño implements ActionListener{
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane.setRowHeaderView(scrollBar);
 		
-		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar = new JButton("Agregar");
 		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		adjustButton(btnEliminar, c, con, 2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		adjustButton(btnGuardar, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
+		btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		GridBagConstraints gbc_btnHome = new GridBagConstraints();
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
@@ -89,16 +95,28 @@ public class vistaDentistas extends metodosDiseño implements ActionListener{
 		gbc_btnHome.weightx = 1.0;
 		fD.getContentPane().add(btnHome, gbc_btnHome);
 		
+		btnAgregar.addActionListener(this);
+		btnEliminar.addActionListener(this);
+		btnGuardar.addActionListener(this);
+		btnHome.addActionListener(this);
+
 		fD.pack();
 		fD.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fD.setVisible(true);
 		con.setBackground(Color.WHITE);
+		
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getSource()==btnAgregar) 
+		{
+			vistaAgregarDentista vAD = new vistaAgregarDentista();
+			vAD.crearfAD();
+			dispose();
+        }
 		
 	}
 
