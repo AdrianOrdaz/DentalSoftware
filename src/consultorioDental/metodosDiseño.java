@@ -158,6 +158,4 @@ public class metodosDiseño extends JFrame{
 		c.weightx = 0.0;
 		c.anchor = GridBagConstraints.CENTER;
 	}
-
 }
-
