@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class agregarusuario extends metodosDiseño {
+public class AgregarUsuario extends MetodosDiseño {
 
 	private JPanel contentPane;
 	private JTextField jtIdUsuario;
@@ -35,7 +35,7 @@ public class agregarusuario extends metodosDiseño {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					agregarusuario frame = new agregarusuario();
+					AgregarUsuario frame = new AgregarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class agregarusuario extends metodosDiseño {
 			}
 		});
 	}
-	protected agregarusuario() {
+	protected AgregarUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -238,7 +238,7 @@ public class agregarusuario extends metodosDiseño {
 		contentPane.add(btnAgregar, gbc_btnAgregar);
 		
 		buttonHome(this,false,new GridBagConstraints(),contentPane,4,13,1,1,0.0,0.0,GridBagConstraints.WEST);
-		buttonRegresar(new gestionarusuario(),this,new GridBagConstraints(),contentPane,3,13,1,1,0.0,0.0,GridBagConstraints.WEST);
+		buttonRegresar(new GestionarUsuario(),this,new GridBagConstraints(),contentPane,3,13,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
 
 }

@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-public class vistaDentistas extends metodosDiseño implements ActionListener{
+public class Dentistas extends MetodosDiseño implements ActionListener{
 	
 	JButton btnAgregar;
 	JButton btnEliminar;
@@ -30,7 +30,7 @@ public class vistaDentistas extends metodosDiseño implements ActionListener{
 	JButton btnGuardar;
 	public static void main(String[] args) 
 	{
-		vistaDentistas vD = new vistaDentistas();
+		Dentistas vD = new Dentistas();
 		vD.crearfD();
 	}
 
@@ -113,7 +113,7 @@ public class vistaDentistas extends metodosDiseño implements ActionListener{
 	{
 		if (e.getSource()==btnAgregar) 
 		{
-			vistaAgregarDentista vAD = new vistaAgregarDentista();
+			AgregarDentista vAD = new AgregarDentista();
 			vAD.crearfAD();
 			dispose();
         }

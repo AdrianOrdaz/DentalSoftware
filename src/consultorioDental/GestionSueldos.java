@@ -4,10 +4,10 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaGestionSueldos extends metodosDiseño{
+public class GestionSueldos extends MetodosDiseño{
 	JFrame fGS;
 	public static void main(String[] args) {
-		VistaGestionSueldos vgs = new VistaGestionSueldos();
+		GestionSueldos vgs = new GestionSueldos();
 		vgs.crearGUI();
 	}
 	protected JFrame crearGUI()

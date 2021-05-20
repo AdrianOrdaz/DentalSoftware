@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuUsuario extends metodosDiseño implements ActionListener{
+public class MenuUsuario extends MetodosDiseño implements ActionListener{
 	JFrame fMenuU;
 	public static void main(String[] args) {
 		MenuUsuario mu = new MenuUsuario();
@@ -41,9 +41,11 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 		
 		JButton btnAgendarCita = new JButton("Agendar Cita");
 		adjustButton(btnAgendarCita, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
+		btnAgendarCita.addActionListener(this);
 		
 		JButton btnIr_Agenda = new JButton("Agenda");
 		adjustButton(btnIr_Agenda, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		btnIr_Agenda.addActionListener(this);
 		
 		JButton btnCrearRecibo = new JButton("Crear Recibo");
 		adjustButton(btnCrearRecibo, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
@@ -55,15 +57,19 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 		
 		JButton btnIr_Dentistas = new JButton("Dentistas");
 		adjustButton(btnIr_Dentistas, c, con, 0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHEAST);
+		btnIr_Dentistas.addActionListener(this);
 		
 		JButton btnIr_Servicios = new JButton("Servicios");
 		adjustButton(btnIr_Servicios, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH);
+		btnIr_Servicios.addActionListener(this);
 		
 		JButton btnIr_Promociones = new JButton("Promociones");
 		adjustButton(btnIr_Promociones, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH);
+		btnIr_Promociones.addActionListener(this);
 		
 		JButton btnIr_Inventario = new JButton("Inventario");
 		adjustButton(btnIr_Inventario, c, con, 3, 3, 1, 1, 0.0, 0.0, GridBagConstraints.NORTHWEST);
+		btnIr_Inventario.addActionListener(this);
 		
 		fMenuU.pack();
 		fMenuU.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -76,16 +82,27 @@ public class MenuUsuario extends metodosDiseño implements ActionListener{
 	{
 		switch(e.getActionCommand())
 		{
+			case "Agendar Cita":
+				AgendarCita vac = new AgendarCita();
+				vac.crearAC();
+				fMenuU.setVisible(false);
+			break;
+			case "Agenda":
+				AgendaVista a = new AgendaVista();
+				a.crearfA();
+				fMenuU.setVisible(false);
+			break;
 			case "Crear Recibo":
-				VistaRecibo vr = new VistaRecibo();
-				vr.crearGUI();
+				Recibo r = new Recibo();
+				r.crearGUI();
 				fMenuU.setVisible(false);
 			break;
 			case "Pacientes":
-				VistaPacientes vp = new VistaPacientes();
-				vp.crearGUI();
+				Pacientes p = new Pacientes();
+				p.crearGUI();
 				fMenuU.setVisible(false);
 			break;
+			
 			case "Salir":
 				System.exit(0);
 			break;

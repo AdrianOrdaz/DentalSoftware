@@ -14,10 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class VistaReceta extends metodosDiseño {
+public class Receta extends MetodosDiseño {
 
 	public static void main(String[] args) {
-		VistaReceta vr = new VistaReceta();
+		Receta vr = new Receta();
 		vr.crearGUI();
 	}
 	protected void crearGUI()
@@ -92,7 +92,7 @@ public class VistaReceta extends metodosDiseño {
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir, c, con, 1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
-	    VistaPacientes vp = new VistaPacientes();
+	    Pacientes vp = new Pacientes();
 	    buttonRegresar(vp.crearGUI(),fCR,c,con,2,6,1,1,0.0,1.0,GridBagConstraints.EAST);
 	    buttonHome(fCR,true, c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 	    

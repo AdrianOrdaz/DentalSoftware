@@ -19,15 +19,15 @@ import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
 
-public class vistaAgenda extends metodosDiseño implements ActionListener {
+public class AgendaVista extends MetodosDiseño implements ActionListener {
 
 	public static void main(String[] args) 
 	{
-		vistaAgenda vA = new vistaAgenda();
-		vA.crearfA();
+		AgendaVista av = new AgendaVista();
+		av.crearfA();
 	}
 
-	private void crearfA() 
+	protected void crearfA() 
 	{
 		JFrame fAgenda = new JFrame("Consultorio Dental/Agenda");
 		Container con = new Container();
@@ -42,19 +42,20 @@ public class vistaAgenda extends metodosDiseño implements ActionListener {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		fAgenda.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lbAgenda = new JLabel("Dentistas");
+		JLabel lbAgenda = new JLabel("Agenda");
 		lbAgenda.setFont (lbAgenda.getFont ().deriveFont (41.0f));
 		adjustComponents(c, 1, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
 		con.add(lbAgenda,c);
 		
-		JComboBox cbFecha = new JComboBox();
+		/*JComboBox cbFecha = new JComboBox();
 		cbFecha.setToolTipText("Fecha: DD/MM/AAAA");
 		GridBagConstraints gbc_cbFecha = new GridBagConstraints();
-		gbc_cbFecha.insets = new Insets(0, 0, 5, 5);
-		gbc_cbFecha.fill = GridBagConstraints.HORIZONTAL;
-		gbc_cbFecha.gridx = 0;
-		gbc_cbFecha.gridy = 1;
-		fAgenda.getContentPane().add(cbFecha, gbc_cbFecha);
+		//gbc_cbFecha.insets = new Insets(0, 0, 5, 5);
+		//gbc_cbFecha.fill = GridBagConstraints.HORIZONTAL;
+		//gbc_cbFecha.gridx = 0;
+		//gbc_cbFecha.gridy = 1;
+		adjustComponents(gbc_cbFecha,0,1,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		fAgenda.getContentPane().add(cbFecha, gbc_cbFecha);*/
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

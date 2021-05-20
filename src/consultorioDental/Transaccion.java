@@ -29,7 +29,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-public class Transaccion extends metodosDiseño //extends metodosDiseño
+public class Transaccion extends MetodosDiseño //extends metodosDiseño
 {
 
 	private JTextField jtIdCompra;

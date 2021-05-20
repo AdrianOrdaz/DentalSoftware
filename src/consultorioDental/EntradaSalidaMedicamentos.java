@@ -32,7 +32,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class EntradaSalidaMedicamentos extends metodosDiseño {
+public class EntradaSalidaMedicamentos extends MetodosDiseño {
 
 	private JTable tbProductos;
 

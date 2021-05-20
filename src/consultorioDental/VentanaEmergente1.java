@@ -11,11 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ventanaEmergente1 extends metodosDiseño implements ActionListener 
+public class VentanaEmergente1 extends MetodosDiseño implements ActionListener 
 {
 	public static void main(String[]args) 
 	{
-		ventanaEmergente1 vE1 = new ventanaEmergente1();
+		VentanaEmergente1 vE1 = new VentanaEmergente1();
 		vE1.crearVE1();
 	}
 	

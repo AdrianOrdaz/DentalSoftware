@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class agregarpromocion extends metodosDiseño implements ActionListener{
+public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField jtIdPromocion;
@@ -39,7 +39,7 @@ public class agregarpromocion extends metodosDiseño implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					agregarpromocion frame = new agregarpromocion();
+					AgregarPromocion frame = new AgregarPromocion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class agregarpromocion extends metodosDiseño implements ActionListener{
 			}
 		});
 	}
-	protected agregarpromocion() {
+	protected AgregarPromocion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);;
 		contentPane = new JPanel();
@@ -233,7 +233,7 @@ public class agregarpromocion extends metodosDiseño implements ActionListener{
 		contentPane.add(btnCancelar, gbc_btnCancelar);
 		btnCancelar.addActionListener(this);
 		
-		buttonRegresar(new promociones(),this,new GridBagConstraints(),contentPane,1,17,1,1,0.0,0.0,GridBagConstraints.WEST);
+		buttonRegresar(new Promociones(),this,new GridBagConstraints(),contentPane,1,17,1,1,0.0,0.0,GridBagConstraints.WEST);
 		buttonHome(this,true,new GridBagConstraints(),contentPane,0,17,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 	}
@@ -241,7 +241,7 @@ public class agregarpromocion extends metodosDiseño implements ActionListener{
 		switch(e.getActionCommand())
 		{
 			case "Cancelar":
-				promociones pro = new promociones();
+				Promociones pro = new Promociones();
 				pro.setVisible(true);
 				this.setVisible(false);
 			break;

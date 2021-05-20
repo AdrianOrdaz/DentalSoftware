@@ -27,7 +27,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class CorteDeCaja extends metodosDiseño {
+public class CorteDeCaja extends MetodosDiseño {
 
 	private JTextField jtDineroApertura;
 	private JTextField jtDineroCierre;

@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class agregarservicio extends metodosDiseño implements ActionListener {
+public class AgregarServicio extends MetodosDiseño implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField jtIdServicio;
@@ -30,7 +30,7 @@ public class agregarservicio extends metodosDiseño implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					agregarservicio frame = new agregarservicio();
+					AgregarServicio frame = new AgregarServicio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class agregarservicio extends metodosDiseño implements ActionListener {
 			}
 		});
 	}
-	public agregarservicio() {
+	public AgregarServicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -145,13 +145,13 @@ public class agregarservicio extends metodosDiseño implements ActionListener {
 		contentPane.add(btnAgregar, gbc_btnAgregar);
 		
 		buttonHome(this,true,new GridBagConstraints(),contentPane,0,7,1,1,0.0,0.0,GridBagConstraints.CENTER);
-		buttonRegresar(new servicios(),this,new GridBagConstraints(),contentPane,1,7,1,1,0.0,0.0,GridBagConstraints.WEST);
+		buttonRegresar(new Servicios(),this,new GridBagConstraints(),contentPane,1,7,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
 			case "Cancelar":
-				servicios ser = new servicios();
+				Servicios ser = new Servicios();
 				ser.setVisible(true);
 				this.setVisible(false);
 			break;

@@ -15,12 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class vistaInicioSesion extends metodosDiseño implements ActionListener
+public class InicioSesion extends MetodosDiseño implements ActionListener
 {
 
 	public static void main(String[]args) 
 	{
-		vistaInicioSesion vIS = new vistaInicioSesion();
+		InicioSesion vIS = new InicioSesion();
 		vIS.crearIS();
 	}
 	

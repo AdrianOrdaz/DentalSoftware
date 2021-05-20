@@ -8,11 +8,11 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaRecibo extends metodosDiseño implements ActionListener{
+public class Recibo extends MetodosDiseño implements ActionListener{
 
 	JFrame fR;
 	public static void main(String[] args) {
-		VistaRecibo vr = new VistaRecibo();
+		Recibo vr = new Recibo();
 		vr.crearGUI();
 	}
 

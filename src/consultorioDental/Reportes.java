@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Insets;
 
-public class Reportes extends metodosDiseño {
+public class Reportes extends MetodosDiseño {
 
 
 		private JPanel contentPane;

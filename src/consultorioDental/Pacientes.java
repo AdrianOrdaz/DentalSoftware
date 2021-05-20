@@ -9,10 +9,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 
-public class VistaPacientes extends metodosDiseño implements ActionListener{
+public class Pacientes extends MetodosDiseño implements ActionListener{
 	JFrame fPte;
 	public static void main(String[] args) {
-		VistaPacientes vp = new VistaPacientes();
+		Pacientes vp = new Pacientes();
 		vp.crearGUI();
 	}
 	protected JFrame crearGUI()
@@ -76,12 +76,12 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 		switch(e.getActionCommand())
 		{
 			case "Agregar":
-				VistaAgregarPaciente vap = new VistaAgregarPaciente();
+				AgregarPaciente vap = new AgregarPaciente();
 				vap.crearGUI();
 				fPte.setVisible(false);
 			break;
 			case "Crear Receta":
-				VistaReceta vr = new VistaReceta();
+				Receta vr = new Receta();
 				vr.crearGUI();
 				fPte.setVisible(false);
 			break;

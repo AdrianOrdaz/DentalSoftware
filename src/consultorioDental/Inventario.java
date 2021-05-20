@@ -21,11 +21,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollBar;
 
-public class vistaInventario extends metodosDiseño implements ActionListener{
+public class Inventario extends MetodosDiseño implements ActionListener{
 
 	public static void main(String[] args) 
 	{
-		vistaInventario vInv = new vistaInventario();
+		Inventario vInv = new Inventario();
 		vInv.crearInv();
 	}
 

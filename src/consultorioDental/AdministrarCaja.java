@@ -18,7 +18,7 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AdministrarCaja extends metodosDiseño {
+public class AdministrarCaja extends MetodosDiseño {
 
 	public static void main(String[] args) {
 		AdministrarCaja fg = new AdministrarCaja(); //nombre del archivo

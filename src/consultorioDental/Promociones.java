@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class promociones extends metodosDiseño implements ActionListener{
+public class Promociones extends MetodosDiseño implements ActionListener{
 
 	private JPanel contentPane;
 	private JTable tbPromociones;
@@ -33,7 +33,7 @@ public class promociones extends metodosDiseño implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					promociones frame = new promociones();
+					Promociones frame = new Promociones();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class promociones extends metodosDiseño implements ActionListener{
 			}
 		});
 	}
-	public promociones() {
+	public Promociones() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -137,7 +137,7 @@ public class promociones extends metodosDiseño implements ActionListener{
 		switch(e.getActionCommand())
 		{
 			case "Agregar":
-				agregarpromocion ap = new agregarpromocion();
+				AgregarPromocion ap = new AgregarPromocion();
 				ap.setVisible(true);
 				this.setVisible(false);
 			break;

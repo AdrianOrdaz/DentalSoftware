@@ -19,10 +19,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaAgregarPaciente extends metodosDiseño{
+public class AgregarPaciente extends MetodosDiseño{
 	JFrame fAR;
 	public static void main(String[] args) {
-		VistaAgregarPaciente vap = new VistaAgregarPaciente();
+		AgregarPaciente vap = new AgregarPaciente();
 		vap.crearGUI();
 	}
 
@@ -169,7 +169,7 @@ public class VistaAgregarPaciente extends metodosDiseño{
 	    
 	    JButton btnGuardar = new JButton("Guardar");
 	    adjustButton(btnGuardar,c,con,0,11,1,1,1.0,1.0,GridBagConstraints.CENTER);
-	    VistaPacientes vp = new VistaPacientes();
+	    Pacientes vp = new Pacientes();
 	    buttonRegresar(vp.crearGUI(),fAR,c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	    c.insets = new Insets(0,100,0,0);
 	    buttonHome(fAR,true,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);

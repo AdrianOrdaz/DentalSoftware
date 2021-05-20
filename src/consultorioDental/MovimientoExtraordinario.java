@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class MovimientoExtraordinario extends metodosDiseño {
+public class MovimientoExtraordinario extends MetodosDiseño {
 
 	private JTextField jtMonto;
 	private JTable tbLista;

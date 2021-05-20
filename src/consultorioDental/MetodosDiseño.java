@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-public class metodosDiseño extends JFrame{
+public class MetodosDiseño extends JFrame{
 	
 	JButton btnHome;
 	JButton btnRegresar;
@@ -51,12 +51,12 @@ public class metodosDiseño extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(U)
 				{
-					//MenuUsuario mu = new MenuUsuario();
-					//mu.crearMenuUsuario();
+					MenuUsuario mu = new MenuUsuario();
+					mu.crearMenuUsuario();
 					frame.setVisible(false);
 				}else {
-					//MenuAdmin ma = new MenuAdmin();
-					//ma.crearMenuAdmin();;
+					MenuAdmin ma = new MenuAdmin();
+					ma.crearMenuAdmin();;
 					frame.setVisible(false);
 				}
 			}

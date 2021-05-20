@@ -12,13 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class vistaAgregarDentista extends metodosDiseño implements ActionListener{
+public class AgregarDentista extends MetodosDiseño implements ActionListener{
 	
 	JButton btnAgregar;
 	JButton btnRegresar;
 	public static void main(String[]args)
 	{
-		vistaAgregarDentista vAD = new vistaAgregarDentista();
+		AgregarDentista vAD = new AgregarDentista();
 		vAD.crearfAD();
 	}
 	
@@ -150,7 +150,7 @@ public class vistaAgregarDentista extends metodosDiseño implements ActionListene
 	{
 		if (e.getSource()==btnRegresar) 
 		{
-			vistaDentistas vD = new vistaDentistas();
+			Dentistas vD = new Dentistas();
 			vD.crearfD();
 			dispose();
         }

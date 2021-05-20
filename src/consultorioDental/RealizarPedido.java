@@ -23,9 +23,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class realizarpedido extends metodosDiseño{
+public class RealizarPedido extends MetodosDiseño{
 
-	static realizarpedido frame;
+	static RealizarPedido frame;
 	private JPanel contentPane;
 	private JTextField jtProveedor;
 	private JTextField jtDate;
@@ -38,7 +38,7 @@ public class realizarpedido extends metodosDiseño{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new realizarpedido();
+					frame = new RealizarPedido();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class realizarpedido extends metodosDiseño{
 			}
 		});
 	}
-	public realizarpedido() {
+	public RealizarPedido() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();

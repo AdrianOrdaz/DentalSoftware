@@ -27,7 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class servicios extends metodosDiseño implements ActionListener {
+public class Servicios extends MetodosDiseño implements ActionListener {
 
 	private JPanel contentPane;
 	private JTable tbServicios;
@@ -35,7 +35,7 @@ public class servicios extends metodosDiseño implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					servicios frame = new servicios();
+					Servicios frame = new Servicios();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class servicios extends metodosDiseño implements ActionListener {
 			}
 		});
 	}
-	public servicios() {
+	public Servicios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -136,7 +136,7 @@ public class servicios extends metodosDiseño implements ActionListener {
 		switch(e.getActionCommand())
 		{
 			case "Agregar":
-				agregarservicio as = new agregarservicio();
+				AgregarServicio as = new AgregarServicio();
 				as.setVisible(true);
 				this.setVisible(false);
 			break;

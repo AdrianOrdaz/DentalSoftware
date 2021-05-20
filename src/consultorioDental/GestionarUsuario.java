@@ -26,7 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
-public class gestionarusuario extends metodosDiseño implements ActionListener {
+public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 
 	private JPanel contentPane;
 	private JTable tbGestionarUsuario;
@@ -34,7 +34,7 @@ public class gestionarusuario extends metodosDiseño implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gestionarusuario frame = new gestionarusuario();
+					GestionarUsuario frame = new GestionarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class gestionarusuario extends metodosDiseño implements ActionListener {
 		});
 	}
 
-	protected gestionarusuario() {
+	protected GestionarUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -103,7 +103,7 @@ public class gestionarusuario extends metodosDiseño implements ActionListener {
 		switch(e.getActionCommand())
 		{
 			case "Agregar":
-				agregarusuario au = new agregarusuario();
+				AgregarUsuario au = new AgregarUsuario();
 				au.setVisible(true);
 				this.setVisible(false);
 			break;

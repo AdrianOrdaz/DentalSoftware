@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuAdmin extends metodosDiseño implements ActionListener{
+public class MenuAdmin extends MetodosDiseño implements ActionListener{
 	JFrame fMenuA;
 	public static void main(String[] args) {
 		MenuAdmin ma = new MenuAdmin();
@@ -70,7 +70,7 @@ public class MenuAdmin extends metodosDiseño implements ActionListener{
 		switch(e.getActionCommand())
 		{
 			case "Gestionar sueldos":
-				VistaGestionSueldos vgs = new VistaGestionSueldos();
+				GestionSueldos vgs = new GestionSueldos();
 				vgs.crearGUI();
 				fMenuA.setVisible(false);
 			break;

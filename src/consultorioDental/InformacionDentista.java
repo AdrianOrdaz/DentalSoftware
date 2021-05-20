@@ -12,11 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class vistaInformacionDentista extends metodosDiseño implements ActionListener 
+public class InformacionDentista extends MetodosDiseño implements ActionListener 
 {
 	public static void main(String[]args)
 	{
-		vistaInformacionDentista vID = new vistaInformacionDentista();
+		InformacionDentista vID = new InformacionDentista();
 		vID.crearfID();
 	}
 	
