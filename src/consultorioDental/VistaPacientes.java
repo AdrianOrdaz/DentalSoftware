@@ -54,14 +54,16 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 	    adjustButton(btnAgregar, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
 	    btnAgregar.addActionListener(this);
 	    
-	    JButton btnCrearReceta = new JButton("Crear Receta");
+	    JButton btnCrearReceta = new JButton("Crear Receta"); 
+	    btnCrearReceta.setEnabled(false);
 	    adjustButton(btnCrearReceta, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    btnCrearReceta.addActionListener(this);
 	    
 	    JButton btnEditar = new JButton("Editar");
+	    btnEditar.setEnabled(false);
 	    adjustButton(btnEditar, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
-	    buttonHome(fPte, c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+	    buttonHome(fPte,true, c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 	    
 		fPte.pack();
 		fPte.setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -2,9 +2,11 @@ package consultorioDental;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MenuAdmin extends metodosDiseño{
-	
+public class MenuAdmin extends metodosDiseño implements ActionListener{
+	JFrame fMenuA;
 	public static void main(String[] args) {
 		MenuAdmin ma = new MenuAdmin();
 		ma.crearMenuAdmin();
@@ -12,7 +14,7 @@ public class MenuAdmin extends metodosDiseño{
 	
 	protected void crearMenuAdmin()
 	{
-		JFrame fMenuA = new JFrame("Consultorio Dental");
+		fMenuA = new JFrame("Consultorio Dental");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fMenuA.getContentPane();
@@ -29,6 +31,7 @@ public class MenuAdmin extends metodosDiseño{
 		btnSalirPrograma.setBackground(Color.GRAY);
 		btnSalirPrograma.setForeground(Color.WHITE);
 		adjustButton(btnSalirPrograma, c, con, 2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.ABOVE_BASELINE);
+		btnSalirPrograma.addActionListener(this);
 		
 		JLabel imgLogo = new JLabel();
 		ImageIcon logo = new ImageIcon("src/img/logo2.jpg");
@@ -48,9 +51,11 @@ public class MenuAdmin extends metodosDiseño{
 		
 		JButton btnGestionarUsuarios = new JButton("Gestionar usuarios");
 		adjustButton(btnGestionarUsuarios, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
+		btnGestionarUsuarios.addActionListener(this);
 		
 		JButton btnGestionarSueldos = new JButton("Gestionar sueldos");
 		adjustButton(btnGestionarSueldos, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.NORTH);
+		btnGestionarSueldos.addActionListener(this);
 		
 		JButton btnControl_Inventario = new JButton("Controlar inventario");
 		adjustButton(btnControl_Inventario, c, con, 2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
@@ -60,6 +65,19 @@ public class MenuAdmin extends metodosDiseño{
 		fMenuA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fMenuA.setVisible(true);
 		con.setBackground(Color.WHITE);
+	}
+	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand())
+		{
+			case "Gestionar sueldos":
+				VistaGestionSueldos vgs = new VistaGestionSueldos();
+				vgs.crearGUI();
+				fMenuA.setVisible(false);
+			break;
+			case "Salir":
+				System.exit(0);
+			break;
+		}
 	}
 	 
 }

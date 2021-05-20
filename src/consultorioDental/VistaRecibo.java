@@ -3,11 +3,12 @@ package consultorioDental;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class VistaRecibo extends metodosDiseño{
+public class VistaRecibo extends metodosDiseño implements ActionListener{
 
 	JFrame fR;
 	public static void main(String[] args) {
@@ -43,10 +44,11 @@ public class VistaRecibo extends metodosDiseño{
 		adjustComponents(c,3, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbDate,c);
 		
-		JTextField jtDate = new JTextField();
+		JTextField jtDate = new JTextField(""+new Date());
 		c.insets = new Insets(0,0,0,0);
 		jtDate.setEnabled(false);
-		jtDate.setPreferredSize(new Dimension(100,25));
+		jtDate.setPreferredSize(new Dimension(185,25));
+		
 		adjustComponents(c, 4, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtDate,c);
 	    
@@ -73,10 +75,6 @@ public class VistaRecibo extends metodosDiseño{
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbPromocion,c);
 		
-		JCheckBox cbAplicar = new JCheckBox();
-		adjustComponents(c, 1, 4, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
-	    con.add(cbAplicar,c);
-		
 		JTextField jtPromocion = new JTextField();
 		jtPromocion.setPreferredSize(new Dimension(200,25));
 		c.insets = new Insets(0,55,0,0);
@@ -84,8 +82,13 @@ public class VistaRecibo extends metodosDiseño{
 		adjustComponents(c, 1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtPromocion,c);
 	    c.insets = new Insets(0,0,0,0);
+		
+	    JCheckBox cbAplicar = new JCheckBox();
+		adjustComponents(c, 1, 4, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
+	    con.add(cbAplicar,c);
+	    activeTF(cbAplicar,null,jtPromocion);
 	    
-	    String[] header = {"ID Medicamento","Nombre","Cantidad","Precio","Subtotal"};
+	    String[] header = {"","ID Medicamento","Nombre","Cantidad","Precio","Subtotal"};
 	    DefaultTableModel dtm = new DefaultTableModel(null,header);
 	    JTable tbMedicamentos = new JTable(dtm);
 	    tbMedicamentos.setPreferredScrollableViewportSize(new Dimension(700,0));
@@ -96,7 +99,7 @@ public class VistaRecibo extends metodosDiseño{
 		adjustComponents(c, 0, 5, 6, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 	    con.add(jsp,c);
 	    
-	    String[] header2 = {"ID Servicio","Nombre","Precio"};
+	    String[] header2 = {"","ID Servicio","Nombre","Precio"};
 	    DefaultTableModel dtm2 = new DefaultTableModel(null,header2);
 	    JTable tbServicios = new JTable(dtm2);
 	    tbServicios.setPreferredScrollableViewportSize(new Dimension(700,0));
@@ -147,12 +150,18 @@ public class VistaRecibo extends metodosDiseño{
 	    
 	    JButton btnImprimir = new JButton("Imprimir");
 	    adjustButton(btnImprimir,c,con,1,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
-	    buttonHome(fR, c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
+	    buttonHome(fR,true, c,con,5,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
 		fR.pack();
 		fR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fR.setVisible(true);
 		con.setBackground(Color.WHITE);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

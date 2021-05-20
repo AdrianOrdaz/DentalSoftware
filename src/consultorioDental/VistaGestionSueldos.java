@@ -1,19 +1,18 @@
 package consultorioDental;
 
 import java.awt.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaGestionSueldos extends metodosDiseño{
-
+	JFrame fGS;
 	public static void main(String[] args) {
 		VistaGestionSueldos vgs = new VistaGestionSueldos();
 		vgs.crearGUI();
 	}
-	protected void crearGUI()
+	protected JFrame crearGUI()
 	{
-		JFrame fGS = new JFrame("Consultorio Dental/Gestionar Sueldos");
+		fGS = new JFrame("Consultorio Dental/Gestionar Sueldos");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fGS.getContentPane();
@@ -40,12 +39,13 @@ public class VistaGestionSueldos extends metodosDiseño{
 	    JButton btnGuardar = new JButton("Guardar");
 	    btnGuardar.setEnabled(false);
 	    adjustButton(btnGuardar,c,con,1,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
-	    buttonHome(fGS,c,con,3,3,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
+	    buttonHome(fGS,false,c,con,3,3,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 		
 		fGS.pack();
 		fGS.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fGS.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fGS.setVisible(true);
 		con.setBackground(Color.WHITE);
+		return fGS;
 	}
 }

@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,11 +34,12 @@ public class VistaReceta extends metodosDiseño {
 		con.add(lbTitulo,c);
 		
 		JLabel lbDate = new JLabel("Fecha:");
-		adjustComponents(c, 2, 1, 3, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 2, 1, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 		con.add(lbDate,c);
 		
-		JTextField jtDate = new JTextField();
-		jtDate.setPreferredSize(new Dimension(100,25));
+		JTextField jtDate = new JTextField(""+new Date());
+		jtDate.setPreferredSize(new Dimension(185,25));
+		jtDate.setEnabled(false);
 		adjustComponents(c, 3, 1, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(jtDate,c);
 	    
@@ -92,7 +94,7 @@ public class VistaReceta extends metodosDiseño {
 	    
 	    VistaPacientes vp = new VistaPacientes();
 	    buttonRegresar(vp.crearGUI(),fCR,c,con,2,6,1,1,0.0,1.0,GridBagConstraints.EAST);
-	    buttonHome(fCR, c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
+	    buttonHome(fCR,true, c,con,4,6,1,1,0.0,1.0,GridBagConstraints.ABOVE_BASELINE_LEADING);
 	    
 		fCR.pack();
 		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
