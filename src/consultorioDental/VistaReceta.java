@@ -100,6 +100,7 @@ public class VistaReceta extends metodosDiseño {
 		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fCR.setVisible(true);
+		vp.fPte.setVisible(false);
 		con.setBackground(Color.WHITE);
 	}
 }

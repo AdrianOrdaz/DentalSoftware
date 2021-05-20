@@ -20,15 +20,15 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class VistaAgregarPaciente extends metodosDiseño{
-
+	JFrame fAR;
 	public static void main(String[] args) {
 		VistaAgregarPaciente vap = new VistaAgregarPaciente();
 		vap.crearGUI();
 	}
 
-	protected void crearGUI()
+	protected JFrame crearGUI()
 	{
-		JFrame fAR = new JFrame("Consultorio Dental/Paciente/Agregar Paciente");
+		fAR = new JFrame("Consultorio Dental/Paciente/Agregar Paciente");
 		Container con = new Container();
 		GridBagConstraints c = new GridBagConstraints();
 		con = fAR.getContentPane();
@@ -174,12 +174,13 @@ public class VistaAgregarPaciente extends metodosDiseño{
 	    c.insets = new Insets(0,100,0,0);
 	    buttonHome(fAR,true,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
-		
 		fAR.pack();
 		fAR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fAR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fAR.setVisible(true);
+		vp.fPte.setVisible(false);
 		con.setBackground(Color.WHITE);
+		return fAR;
 	}
 
 }

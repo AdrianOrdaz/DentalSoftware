@@ -72,11 +72,6 @@ public class VistaPacientes extends metodosDiseño implements ActionListener{
 		con.setBackground(Color.WHITE);
 		return fPte;
 	}
-	
-	public void home(ActionEvent e) {
-		
-	}
-	
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
