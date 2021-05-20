@@ -51,12 +51,12 @@ public class metodosDiseño extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(U)
 				{
-					MenuUsuario mu = new MenuUsuario();
-					mu.crearMenuUsuario();
+					//MenuUsuario mu = new MenuUsuario();
+					//mu.crearMenuUsuario();
 					frame.setVisible(false);
 				}else {
-					MenuAdmin ma = new MenuAdmin();
-					ma.crearMenuAdmin();;
+					//MenuAdmin ma = new MenuAdmin();
+					//ma.crearMenuAdmin();;
 					frame.setVisible(false);
 				}
 			}
@@ -112,5 +112,50 @@ public class metodosDiseño extends JFrame{
 				}
 			}
 	    });
+	}
+	protected void activeBttn(JCheckBox cbx,JButton jB) 
+	{
+		cbx.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cbx.isSelected()) {
+					jB.setEnabled(true);
+				}else {
+					jB.setEnabled(false);
+				}
+				}
+		});
+	}
+	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
+	{
+		jt.setPreferredSize(new Dimension(120,35));
+		c.gridx = gx;
+		c.gridy = gy;
+		c.gridwidth = gw;
+		c.gridheight = gh;
+		c.weighty = wy;
+		c.weightx = wx;
+		c.anchor = gdb;
+		c.fill = fll;
+		con.add(jt,c);
+		c.weighty = 0.0;
+		c.weightx = 0.0;
+		c.anchor = GridBagConstraints.CENTER;
+		
+	}
+	
+	protected void adjustPasswordField (JPasswordField jpf , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
+	{
+		jpf.setPreferredSize(new Dimension(120,35));
+		c.gridx = gx;
+		c.gridy = gy;
+		c.gridwidth = gw;
+		c.gridheight = gh;
+		c.weighty = wy;
+		c.weightx = wx;
+		c.anchor = gdb;
+		con.add(jpf,c);
+		c.weighty = 0.0;
+		c.weightx = 0.0;
+		c.anchor = GridBagConstraints.CENTER;
 	}
 }
