@@ -125,4 +125,37 @@ public class metodosDiseño extends JFrame{
 				}
 		});
 	}
+	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
+	{
+		jt.setPreferredSize(new Dimension(120,35));
+		c.gridx = gx;
+		c.gridy = gy;
+		c.gridwidth = gw;
+		c.gridheight = gh;
+		c.weighty = wy;
+		c.weightx = wx;
+		c.anchor = gdb;
+		c.fill = fll;
+		con.add(jt,c);
+		c.weighty = 0.0;
+		c.weightx = 0.0;
+		c.anchor = GridBagConstraints.CENTER;
+		
+	}
+	
+	protected void adjustPasswordField (JPasswordField jpf , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
+	{
+		jpf.setPreferredSize(new Dimension(120,35));
+		c.gridx = gx;
+		c.gridy = gy;
+		c.gridwidth = gw;
+		c.gridheight = gh;
+		c.weighty = wy;
+		c.weightx = wx;
+		c.anchor = gdb;
+		con.add(jpf,c);
+		c.weighty = 0.0;
+		c.weightx = 0.0;
+		c.anchor = GridBagConstraints.CENTER;
+	}
 }
