@@ -121,8 +121,7 @@ public class gestionarusuario extends metodosDiseño implements ActionListener {
 		gbc_btnEliminar.gridx = 2;
 		gbc_btnEliminar.gridy = 2;
 		contentPane.add(btnEliminar, gbc_btnEliminar);
-		int fila = tbGestionarUsuario.getSelectedRow();
-		this.activarboton(fila, btnEliminar);
+		
 
 		
 		JButton btnEditar = new JButton("Editar");
@@ -153,16 +152,5 @@ public class gestionarusuario extends metodosDiseño implements ActionListener {
 			break;
 		}
 		
-	}
-	
-	protected void activarboton(int fila,JButton btnNewButton)
-	{
-		
-			fila = tbGestionarUsuario.getSelectedRow();
-			if(fila>=0) {
-			 btnNewButton.setEnabled(true);
-			}else {
-			btnNewButton.setEnabled(false);
-			}
 	}
 }
