@@ -15,19 +15,21 @@ public class ventanaEmergente1 extends metodosDiseño implements ActionListener
 {
 	public static void main(String[]args) 
 	{
-		crearVE1();
+		ventanaEmergente1 vE1 = new ventanaEmergente1();
+		vE1.crearVE1();
 	}
 	
-	private static void crearVE1()
+	private void crearVE1()
 	{
-		ventanaEmergente1 fVE1 = new ventanaEmergente1();
+		JFrame fVE1 = new JFrame("Consultorio Dental/Advertencia");
 		Container con = new Container();
 		con = fVE1.getContentPane();
 		GridBagConstraints c = new GridBagConstraints();
 		con.setLayout(new GridBagLayout());
 		
 		JLabel lbAdvertencia = new JLabel("El usuario y/o contraseña es incorrecto");
-		adjustLabel(lbAdvertencia, c, con, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.SOUTH);
+		adjustComponents(c, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.SOUTH);
+		con.add(lbAdvertencia,c);
 		
 		JButton btnReintentar  = new JButton("Reintentar");
 		adjustButton(btnReintentar, c, con, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);

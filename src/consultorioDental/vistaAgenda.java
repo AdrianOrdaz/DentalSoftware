@@ -1,8 +1,7 @@
 package consultorioDental;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.Container;
 
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
@@ -17,46 +16,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
 
-public class vistaAgenda {
+public class vistaAgenda extends metodosDiseño implements ActionListener {
 
-	private JFrame fAgenda;
-	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					vistaAgenda window = new vistaAgenda();
-					window.fAgenda.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(String[] args) 
+	{
+		vistaAgenda vA = new vistaAgenda();
+		vA.crearfA();
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public vistaAgenda() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		fAgenda = new JFrame();
-		fAgenda.setTitle("Consultorio Dental: Agenda");
-		fAgenda.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		fAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private void crearfA() 
+	{
+		JFrame fAgenda = new JFrame("Consultorio Dental/Agenda");
+		Container con = new Container();
+		con = fAgenda.getContentPane();
+		GridBagConstraints c = new GridBagConstraints();
+		con.setLayout(new GridBagLayout());
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{232, 228, 214, 190, 0};
 		gridBagLayout.rowHeights = new int[]{72, 0, 0, 0, 0, 0, 0};
@@ -64,14 +42,10 @@ public class vistaAgenda {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		fAgenda.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lbAgenda = new JLabel("Agenda");
-		lbAgenda.setFont (lbAgenda.getFont ().deriveFont (40.0f));
-		GridBagConstraints gbc_lbAgenda = new GridBagConstraints();
-		gbc_lbAgenda.gridwidth = 1;
-		gbc_lbAgenda.insets = new Insets(0, 0, 5, 5);
-		gbc_lbAgenda.gridx = 1;
-		gbc_lbAgenda.gridy = 0;
-		fAgenda.getContentPane().add(lbAgenda, gbc_lbAgenda);
+		JLabel lbAgenda = new JLabel("Dentistas");
+		lbAgenda.setFont (lbAgenda.getFont ().deriveFont (41.0f));
+		adjustComponents(c, 1, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
+		con.add(lbAgenda,c);
 		
 		JComboBox cbFecha = new JComboBox();
 		cbFecha.setToolTipText("Fecha: DD/MM/AAAA");
@@ -91,7 +65,7 @@ public class vistaAgenda {
 		gbc_scrollPane.gridy = 2;
 		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		JTable table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -116,27 +90,23 @@ public class vistaAgenda {
 		fAgenda.getContentPane().add(btnModificar, gbc_btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
-		gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEliminar.gridx = 2;
-		gbc_btnEliminar.gridy = 3;
-		fAgenda.getContentPane().add(btnEliminar, gbc_btnEliminar);
+		adjustButton(btnEliminar, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
-		gbc_btnGuardar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGuardar.gridx = 1;
-		gbc_btnGuardar.gridy = 4;
-		fAgenda.getContentPane().add(btnGuardar, gbc_btnGuardar);
+		adjustButton(btnGuardar, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		GridBagConstraints gbc_btnHome = new GridBagConstraints();
-		btnHome.setPreferredSize(new Dimension(35, 35));
-		btnHome.setBorder(new LineBorder(Color.white));
-		gbc_btnHome.gridx = 3;
-		gbc_btnHome.gridy = 5;
-		gbc_btnHome.weightx = 1.0;
-		fAgenda.getContentPane().add(btnHome, gbc_btnHome);
+		
+		fAgenda.pack();
+		fAgenda.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		fAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fAgenda.setVisible(true);
+		con.setBackground(Color.WHITE);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

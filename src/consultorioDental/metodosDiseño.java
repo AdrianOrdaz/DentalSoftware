@@ -12,22 +12,6 @@ public class metodosDiseño extends JFrame{
 	JButton btnHome;
 	JButton btnRegresar;
 	
-	//Agregado de mientras 
-	protected static void adjustLabel (JLabel lb , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
-	{
-		c.gridx = gx;
-		c.gridy = gy;
-		c.gridwidth = gw;
-		c.gridheight = gh;
-		c.weighty = wy;
-		c.weightx = wx;
-		c.anchor = gdb;
-		con.add(lb,c);
-		c.weighty = 0.0;
-		c.weightx = 0.0;
-		c.anchor = GridBagConstraints.CENTER;
-	}
-	
 	protected void adjustButton(JButton btn, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
@@ -43,6 +27,7 @@ public class metodosDiseño extends JFrame{
 	    c.weighty = 0.0;
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
+
 	}
 	
 	protected void adjustComponents(GridBagConstraints c, 
@@ -57,7 +42,7 @@ public class metodosDiseño extends JFrame{
 		c.anchor = gdb;
 	}
 	
-	protected void buttonHome(JFrame frame, GridBagConstraints c, Container con, 
+	protected void buttonHome(JFrame frame,boolean U, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		btnHome = new JButton(new ImageIcon("src/img/home.png"));
@@ -65,9 +50,16 @@ public class metodosDiseño extends JFrame{
 		btnHome.setBorder(new LineBorder(Color.white));
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuUsuario mu = new MenuUsuario();
-				mu.crearMenuUsuario();
-				frame.setVisible(false);
+				if(U)
+				{
+					//MenuUsuario mu = new MenuUsuario();
+					//mu.crearMenuUsuario();
+					frame.setVisible(false);
+				}else {
+					//MenuAdmin ma = new MenuAdmin();
+					//ma.crearMenuAdmin();;
+					frame.setVisible(false);
+				}
 			}
 		});
 		c.gridx = gx;
@@ -94,7 +86,6 @@ public class metodosDiseño extends JFrame{
 				frame1.setVisible(true);
 				frame2.setVisible(false);
 			}
-			
 		});
 		c.gridx = gx;
 		c.gridy = gy;
@@ -108,10 +99,24 @@ public class metodosDiseño extends JFrame{
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
 	}
+	protected void activeTF(JCheckBox cb,JCheckBox cb1, JTextField jt) 
+	{
+		cb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cb.isSelected()) {
+					jt.setEnabled(true);
+				}else {
+					jt.setEnabled(false);
+				}
+				if(cb1.isSelected()) {
+					jt.setEnabled(false);
+				}
+			}
+	    });
+	}
 	
-	
-	//Agregados por giovanni
-	protected static void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
+	//Agregado por giovanni
+	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
 	{
 		jt.setPreferredSize(new Dimension(120,35));
 		c.gridx = gx;
@@ -129,7 +134,7 @@ public class metodosDiseño extends JFrame{
 		
 	}
 	
-	protected static void adjustPasswordField (JPasswordField jpf , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
+	protected void adjustPasswordField (JPasswordField jpf , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		jpf.setPreferredSize(new Dimension(120,35));
 		c.gridx = gx;

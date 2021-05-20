@@ -10,24 +10,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ventanaEmergente2 extends metDiseño implements ActionListener 
+public class ventanaEmergente2 extends metodosDiseño implements ActionListener 
 {
 	public static void main(String[]args) 
 	{
-		crearVE2();
+		ventanaEmergente2 vE2 = new ventanaEmergente2();
+		vE2.crearVE2();
 	}
 	
-	private static void crearVE2()
+	private void crearVE2()
 	{
-		ventanaEmergente1 fVE2 = new ventanaEmergente1();
+		JFrame fVE2 = new JFrame("Consultorio Dental/Advertencia");
 		Container con = new Container();
 		con = fVE2.getContentPane();
 		GridBagConstraints c = new GridBagConstraints();
 		con.setLayout(new GridBagLayout());
 		
-		JLabel lbAdvertencia = new JLabel("Haz llegado al limite de intentos, la aplicacion se cerrara.");
-		adjustLabel(lbAdvertencia, c, con, 0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
-		
+		JLabel lbAdvertencia = new JLabel("Haz alcanzado el limite de intentos, la ventana se cerrara.");
+		adjustComponents(c, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
+		con.add(lbAdvertencia,c);
 		
 		fVE2.setSize(400,200); 
 		fVE2.setTitle("Consultorio Dental: Advertencia");
