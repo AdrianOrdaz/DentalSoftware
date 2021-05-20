@@ -2,6 +2,7 @@ package consultorioDental;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -26,9 +27,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class CorteDeCaja extends JFrame {
+public class CorteDeCaja extends metodosDiseño {
 
-	private JPanel contentPane;
 	private JTextField jtDineroApertura;
 	private JTextField jtDineroCierre;
 	private JTextField jtSumaTotal;
@@ -37,39 +37,29 @@ public class CorteDeCaja extends JFrame {
 	private JTextField jtUsuario;
 	private JTable tbLista;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CorteDeCaja frame = new CorteDeCaja();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		CorteDeCaja fg = new CorteDeCaja(); //nombre del archivo
+		fg.CrearGui();
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public CorteDeCaja() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0,screen.width,screen.height - 30);
-		setExtendedState(MAXIMIZED_BOTH);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	private void  CrearGui() {
+		JFrame fCR = new JFrame("Administrar Caja");
+		Container con = this.getContentPane();
+		con = fCR.getContentPane();
+		con.setLayout(new GridBagLayout());
+		
+		fCR.pack();
+		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fCR.setVisible(true);
+		con.setBackground(Color.WHITE);
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{201, 224, 59, 176, 139, 339, 233, 0};
 		gbl_contentPane.rowHeights = new int[]{87, 52, 31, 73, 29, 31, 40, 29, 31, 40, 29, 36, 37, 29, 36, 40, 37, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		con.setLayout(gbl_contentPane);
 		
 		JLabel lbTitulo = new JLabel("Corte de caja");
 		lbTitulo.setFont(new Font("Tahoma", Font.PLAIN, 43));
@@ -79,7 +69,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbTitulo.gridwidth = 3;
 		gbc_lbTitulo.gridx = 1;
 		gbc_lbTitulo.gridy = 1;
-		contentPane.add(lbTitulo, gbc_lbTitulo);
+		con.add(lbTitulo, gbc_lbTitulo);
 		
 		JLabel lbUsuario = new JLabel("Usuario");
 		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -88,7 +78,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_lbUsuario.gridx = 5;
 		gbc_lbUsuario.gridy = 2;
-		contentPane.add(lbUsuario, gbc_lbUsuario);
+		con.add(lbUsuario, gbc_lbUsuario);
 		
 		jtUsuario = new JTextField();
 		jtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -99,7 +89,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtUsuario.insets = new Insets(0, 0, 5, 0);
 		gbc_jtUsuario.gridx = 6;
 		gbc_jtUsuario.gridy = 2;
-		contentPane.add(jtUsuario, gbc_jtUsuario);
+		con.add(jtUsuario, gbc_jtUsuario);
 		
 		JLabel lbDineroApertura = new JLabel("Cantidad de efectivo a la hora de apertura");
 		lbDineroApertura.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -109,7 +99,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbDineroApertura.gridwidth = 3;
 		gbc_lbDineroApertura.gridx = 1;
 		gbc_lbDineroApertura.gridy = 4;
-		contentPane.add(lbDineroApertura, gbc_lbDineroApertura);
+		con.add(lbDineroApertura, gbc_lbDineroApertura);
 		
 		JLabel lbMovExtraRegistrados = new JLabel("Movimientos extraordinarios registrados");
 		lbMovExtraRegistrados.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -118,7 +108,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbMovExtraRegistrados.insets = new Insets(0, 0, 5, 5);
 		gbc_lbMovExtraRegistrados.gridx = 5;
 		gbc_lbMovExtraRegistrados.gridy = 4;
-		contentPane.add(lbMovExtraRegistrados, gbc_lbMovExtraRegistrados);
+		con.add(lbMovExtraRegistrados, gbc_lbMovExtraRegistrados);
 		
 		jtDineroApertura = new JTextField();
 		jtDineroApertura.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -129,7 +119,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtDineroApertura.insets = new Insets(0, 0, 5, 5);
 		gbc_jtDineroApertura.gridx = 1;
 		gbc_jtDineroApertura.gridy = 5;
-		contentPane.add(jtDineroApertura, gbc_jtDineroApertura);
+		con.add(jtDineroApertura, gbc_jtDineroApertura);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -138,7 +128,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_scrollPane.gridheight = 7;
 		gbc_scrollPane.gridx = 5;
 		gbc_scrollPane.gridy = 5;
-		contentPane.add(scrollPane, gbc_scrollPane);
+		con.add(scrollPane, gbc_scrollPane);
 		
 		tbLista = new JTable();
 		tbLista.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -169,7 +159,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbDineroCierre.gridwidth = 3;
 		gbc_lbDineroCierre.gridx = 1;
 		gbc_lbDineroCierre.gridy = 7;
-		contentPane.add(lbDineroCierre, gbc_lbDineroCierre);
+		con.add(lbDineroCierre, gbc_lbDineroCierre);
 		
 		jtDineroCierre = new JTextField();
 		jtDineroCierre.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -180,7 +170,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtDineroCierre.insets = new Insets(0, 0, 5, 5);
 		gbc_jtDineroCierre.gridx = 1;
 		gbc_jtDineroCierre.gridy = 8;
-		contentPane.add(jtDineroCierre, gbc_jtDineroCierre);
+		con.add(jtDineroCierre, gbc_jtDineroCierre);
 		
 		JLabel lbSumaTotal = new JLabel("Suma total de la caja");
 		lbSumaTotal.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -189,7 +179,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbSumaTotal.insets = new Insets(0, 0, 5, 5);
 		gbc_lbSumaTotal.gridx = 1;
 		gbc_lbSumaTotal.gridy = 10;
-		contentPane.add(lbSumaTotal, gbc_lbSumaTotal);
+		con.add(lbSumaTotal, gbc_lbSumaTotal);
 		
 		jtSumaTotal = new JTextField();
 		jtSumaTotal.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -200,7 +190,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtSumaTotal.insets = new Insets(0, 0, 5, 5);
 		gbc_jtSumaTotal.gridx = 1;
 		gbc_jtSumaTotal.gridy = 11;
-		contentPane.add(jtSumaTotal, gbc_jtSumaTotal);
+		con.add(jtSumaTotal, gbc_jtSumaTotal);
 		
 		JLabel lbHoraApertura = new JLabel("Hora de apertura");
 		lbHoraApertura.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -209,7 +199,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbHoraApertura.insets = new Insets(0, 0, 5, 5);
 		gbc_lbHoraApertura.gridx = 1;
 		gbc_lbHoraApertura.gridy = 13;
-		contentPane.add(lbHoraApertura, gbc_lbHoraApertura);
+		con.add(lbHoraApertura, gbc_lbHoraApertura);
 		
 		JLabel lbHorraCierre = new JLabel("Hora de cierre");
 		lbHorraCierre.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -218,7 +208,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_lbHorraCierre.insets = new Insets(0, 0, 5, 5);
 		gbc_lbHorraCierre.gridx = 3;
 		gbc_lbHorraCierre.gridy = 13;
-		contentPane.add(lbHorraCierre, gbc_lbHorraCierre);
+		con.add(lbHorraCierre, gbc_lbHorraCierre);
 		
 		jtHoraApertura = new JTextField();
 		jtHoraApertura.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -228,7 +218,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtHoraApertura.insets = new Insets(0, 0, 5, 5);
 		gbc_jtHoraApertura.gridx = 1;
 		gbc_jtHoraApertura.gridy = 14;
-		contentPane.add(jtHoraApertura, gbc_jtHoraApertura);
+		con.add(jtHoraApertura, gbc_jtHoraApertura);
 		
 		jtHorraCierre = new JTextField();
 		jtHorraCierre.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -239,7 +229,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_jtHorraCierre.insets = new Insets(0, 0, 5, 5);
 		gbc_jtHorraCierre.gridx = 3;
 		gbc_jtHorraCierre.gridy = 14;
-		contentPane.add(jtHorraCierre, gbc_jtHorraCierre);
+		con.add(jtHorraCierre, gbc_jtHorraCierre);
 		
 		JButton btnAñadirMovExtraordinario = new JButton("A\u00F1adir movimiento extraordinario");
 		btnAñadirMovExtraordinario.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -248,7 +238,7 @@ public class CorteDeCaja extends JFrame {
 		gbc_btnAñadirMovExtraordinario.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAñadirMovExtraordinario.gridx = 5;
 		gbc_btnAñadirMovExtraordinario.gridy = 14;
-		contentPane.add(btnAñadirMovExtraordinario, gbc_btnAñadirMovExtraordinario);
+		con.add(btnAñadirMovExtraordinario, gbc_btnAñadirMovExtraordinario);
 		
 		JButton btnIniciarTurno = new JButton("Iniciar turno");
 		btnIniciarTurno.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -257,17 +247,18 @@ public class CorteDeCaja extends JFrame {
 		gbc_btnIniciarTurno.insets = new Insets(0, 0, 0, 5);
 		gbc_btnIniciarTurno.gridx = 1;
 		gbc_btnIniciarTurno.gridy = 16;
-		contentPane.add(btnIniciarTurno, gbc_btnIniciarTurno);
+		con.add(btnIniciarTurno, gbc_btnIniciarTurno);
 		
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		btnHome.setPreferredSize(new Dimension(35, 35));
-		btnHome.setBorder(new LineBorder(Color.white));
-		GridBagConstraints gbc_btnHome = new GridBagConstraints();
-		gbc_btnHome.anchor = GridBagConstraints.NORTH;
-		gbc_btnHome.insets = new Insets(0, 0, 0, 5);
-		gbc_btnHome.gridx = 3;
-		gbc_btnHome.gridy = 16;
-		contentPane.add(btnHome, gbc_btnHome);
+		//JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
+		//btnHome.setPreferredSize(new Dimension(35, 35));
+	//	btnHome.setBorder(new LineBorder(Color.white));
+	//	GridBagConstraints gbc_btnHome = new GridBagConstraints();
+	//	gbc_btnHome.anchor = GridBagConstraints.NORTH;
+	//	gbc_btnHome.insets = new Insets(0, 0, 0, 5);
+	//	gbc_btnHome.gridx = 3;
+	//	gbc_btnHome.gridy = 16;
+	//	contentPane.add(btnHome, gbc_btnHome);
+		//buttonHome(new GridBagConstraints(),contentPane,3,16,1,1,0.0,0.0,GridBagConstraints.NORTH);
 		
 		JButton btnTerminarturno = new JButton("Terminar turno");
 		btnTerminarturno.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -275,6 +266,9 @@ public class CorteDeCaja extends JFrame {
 		gbc_btnTerminarturno.insets = new Insets(0, 0, 0, 5);
 		gbc_btnTerminarturno.gridx = 5;
 		gbc_btnTerminarturno.gridy = 16;
-		contentPane.add(btnTerminarturno, gbc_btnTerminarturno);
+		con.add(btnTerminarturno, gbc_btnTerminarturno);
+		
+		fCR.revalidate();
+		fCR.repaint();
 	}
 }

@@ -1,12 +1,18 @@
 package consultorioDental;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class metodosDiseño extends JFrame{
 	
-	protected static void adjustButton(JButton btn, GridBagConstraints c, Container con, 
+	JButton btnHome;
+	JButton btnRegresar;
+	
+	protected void adjustButton(JButton btn, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		btn.setPreferredSize(new Dimension(120, 35)); 
@@ -23,7 +29,7 @@ public class metodosDiseño extends JFrame{
 	    c.anchor = GridBagConstraints.CENTER;
 	}
 	
-	protected static void adjustComponents(GridBagConstraints c, 
+	protected void adjustComponents(GridBagConstraints c, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
 		c.gridx = gx;
@@ -35,12 +41,26 @@ public class metodosDiseño extends JFrame{
 		c.anchor = gdb;
 	}
 	
-	protected static void buttonHome(GridBagConstraints c, Container con, 
+	protected void buttonHome(JFrame frame,boolean U, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
+		btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(U)
+				{
+					//MenuUsuario mu = new MenuUsuario();
+					//mu.crearMenuUsuario();
+					frame.setVisible(false);
+				}else {
+					//MenuAdmin ma = new MenuAdmin();
+					//ma.crearMenuAdmin();;
+					frame.setVisible(false);
+				}
+			}
+		});
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;
@@ -53,13 +73,19 @@ public class metodosDiseño extends JFrame{
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
 	}
-	protected static void buttonRegresar(GridBagConstraints c, Container con, 
+	protected void buttonRegresar(JFrame frame1,JFrame frame2,GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
-		JButton btnRegresar = new JButton(new ImageIcon("src/img/regresar.png"));
+		btnRegresar = new JButton(new ImageIcon("src/img/regresar.png"));
 		btnRegresar.setPreferredSize(new Dimension(35, 35));
 		btnRegresar.setBorder(new LineBorder(Color.white));
 		btnRegresar.setBackground(Color.white);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame1.setVisible(true);
+				frame2.setVisible(false);
+			}
+		});
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;
@@ -71,5 +97,20 @@ public class metodosDiseño extends JFrame{
 	    c.weighty = 0.0;
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
+	}
+	protected void activeTF(JCheckBox cb,JCheckBox cb1, JTextField jt) 
+	{
+		cb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cb.isSelected()) {
+					jt.setEnabled(true);
+				}else {
+					jt.setEnabled(false);
+				}
+				if(cb1.isSelected()) {
+					jt.setEnabled(false);
+				}
+			}
+	    });
 	}
 }

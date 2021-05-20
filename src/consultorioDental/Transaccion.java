@@ -1,14 +1,14 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -19,21 +19,19 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JTextField;
-import java.awt.Component;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.Container;
+
 import javax.swing.ImageIcon;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-public class Transaccion extends JFrame //extends metodosDiseño
+public class Transaccion extends metodosDiseño //extends metodosDiseño
 {
 
-	private JPanel contentPane;
 	private JTextField jtIdCompra;
 	private JTextField jtIdUsuario;
 	private JTextField jtldCita;
@@ -41,50 +39,38 @@ public class Transaccion extends JFrame //extends metodosDiseño
 	private JTextField jtTotal;
 	private JTable tbProductos;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Transaccion frame = new Transaccion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Transaccion fg = new Transaccion(); //nombre del archivo
+		fg.CrearTransaccionGUI();
+
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public Transaccion() {
+	private void CrearTransaccionGUI(){
+		//Llama a la creacion del gui
+		JFrame fCR = new JFrame("Transaccion");
+		Container con = this.getContentPane();
+		con = fCR.getContentPane();
+		con.setLayout(new GridBagLayout());
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0,screen.width,screen.height - 30);
-		setExtendedState(MAXIMIZED_BOTH);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		fCR.pack();
+		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fCR.setVisible(true);
+		con.setBackground(Color.WHITE);
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{187, 168, 53, 203, 79, 85, 149, 372, 0};
 		gbl_contentPane.rowHeights = new int[]{58, 52, 84, 29, 45, 29, 36, 309, 34, 37, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		con.setLayout(gbl_contentPane);
 		
 		JLabel lbTitulo = new JLabel("Transaccion");
 		lbTitulo.setFont(new Font("Tahoma", Font.PLAIN, 43));
 		GridBagConstraints gbc_lbTitulo = new GridBagConstraints();
-		gbc_lbTitulo.anchor = GridBagConstraints.NORTHWEST;
+		adjustComponents(gbc_lbTitulo,1,1,2,0,0.0,0.0,GridBagConstraints.NORTHWEST);
 		gbc_lbTitulo.insets = new Insets(0, 0, 5, 5);
-		gbc_lbTitulo.gridwidth = 2;
-		gbc_lbTitulo.gridx = 1;
-		gbc_lbTitulo.gridy = 1;
-		contentPane.add(lbTitulo, gbc_lbTitulo);
+		con.add(lbTitulo, gbc_lbTitulo);
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
 		LocalDateTime now = LocalDateTime.now();  //imprime fecha
@@ -94,7 +80,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbFecha.insets = new Insets(0, 0, 5, 0);
 		gbc_lbFecha.gridx = 7;
 		gbc_lbFecha.gridy = 1;
-		contentPane.add(lbFecha, gbc_lbFecha);
+		con.add(lbFecha, gbc_lbFecha);
 		
 		JLabel lbIdCompra = new JLabel("Id de la compra");
 		lbIdCompra.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -103,7 +89,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbIdCompra.insets = new Insets(0, 0, 5, 5);
 		gbc_lbIdCompra.gridx = 1;
 		gbc_lbIdCompra.gridy = 3;
-		contentPane.add(lbIdCompra, gbc_lbIdCompra);
+		con.add(lbIdCompra, gbc_lbIdCompra);
 		
 		jtIdCompra = new JTextField();
 		jtIdCompra.setMaximumSize(new Dimension(50, 50));
@@ -115,7 +101,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_jtIdCompra.gridwidth = 2;
 		gbc_jtIdCompra.gridx = 2;
 		gbc_jtIdCompra.gridy = 3;
-		contentPane.add(jtIdCompra, gbc_jtIdCompra);
+		con.add(jtIdCompra, gbc_jtIdCompra);
 		
 		JLabel lbIdUsuario = new JLabel("Id del usuario");
 		lbIdUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -124,7 +110,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbIdUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_lbIdUsuario.gridx = 6;
 		gbc_lbIdUsuario.gridy = 3;
-		contentPane.add(lbIdUsuario, gbc_lbIdUsuario);
+		con.add(lbIdUsuario, gbc_lbIdUsuario);
 		
 		jtIdUsuario = new JTextField();
 		jtIdUsuario.setMaximumSize(new Dimension(50, 50));
@@ -135,7 +121,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_jtIdUsuario.insets = new Insets(0, 0, 5, 0);
 		gbc_jtIdUsuario.gridx = 7;
 		gbc_jtIdUsuario.gridy = 3;
-		contentPane.add(jtIdUsuario, gbc_jtIdUsuario);
+		con.add(jtIdUsuario, gbc_jtIdUsuario);
 		
 		JLabel lbIdCita = new JLabel("Id de la cita");
 		lbIdCita.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -144,7 +130,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbIdCita.insets = new Insets(0, 0, 5, 5);
 		gbc_lbIdCita.gridx = 1;
 		gbc_lbIdCita.gridy = 5;
-		contentPane.add(lbIdCita, gbc_lbIdCita);
+		con.add(lbIdCita, gbc_lbIdCita);
 		
 		jtldCita = new JTextField();
 		jtldCita.setColumns(10);
@@ -154,7 +140,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_jtldCita.gridwidth = 2;
 		gbc_jtldCita.gridx = 2;
 		gbc_jtldCita.gridy = 5;
-		contentPane.add(jtldCita, gbc_jtldCita);
+		con.add(jtldCita, gbc_jtldCita);
 		
 		JLabel lbPromocion = new JLabel("Promocion");
 		lbPromocion.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -163,7 +149,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbPromocion.insets = new Insets(0, 0, 5, 5);
 		gbc_lbPromocion.gridx = 6;
 		gbc_lbPromocion.gridy = 5;
-		contentPane.add(lbPromocion, gbc_lbPromocion);
+		con.add(lbPromocion, gbc_lbPromocion);
 		
 		jtPromocion = new JTextField();
 		jtPromocion.setColumns(10);
@@ -172,7 +158,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_jtPromocion.insets = new Insets(0, 0, 5, 0);
 		gbc_jtPromocion.gridx = 7;
 		gbc_jtPromocion.gridy = 5;
-		contentPane.add(jtPromocion, gbc_jtPromocion);
+		con.add(jtPromocion, gbc_jtPromocion);
 		
 		JScrollPane spProductos = new JScrollPane();
 		GridBagConstraints gbc_spProductos = new GridBagConstraints();
@@ -181,7 +167,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_spProductos.gridwidth = 7;
 		gbc_spProductos.gridx = 1;
 		gbc_spProductos.gridy = 7;
-		contentPane.add(spProductos, gbc_spProductos);
+		con.add(spProductos, gbc_spProductos);
 		
 		tbProductos = new JTable();
 		tbProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -221,7 +207,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_btnComprobar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnComprobar.gridx = 1;
 		gbc_btnComprobar.gridy = 9;
-		contentPane.add(btnComprobar, gbc_btnComprobar);
+		con.add(btnComprobar, gbc_btnComprobar);
 		
 		JButton btnGenerar = new JButton("Generar");
 		btnGenerar.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -230,18 +216,31 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_btnGenerar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnGenerar.gridx = 3;
 		gbc_btnGenerar.gridy = 9;
-		contentPane.add(btnGenerar, gbc_btnGenerar);
+		con.add(btnGenerar, gbc_btnGenerar);
+		
+		//cuando es usuario es true
+		//cuando es admin es false
 		
 		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
 		btnHome.setPreferredSize(new Dimension(35, 35));
 		btnHome.setBorder(new LineBorder(Color.white));
 		GridBagConstraints gbc_btnHome = new GridBagConstraints();
+		buttonHome(fCR, false, gbc_btnHome, con, 4, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		gbc_btnHome.insets = new Insets(0, 0, 0, 5);
 		gbc_btnHome.gridx = 4;
 		gbc_btnHome.gridy = 9;
-		contentPane.add(btnHome, gbc_btnHome);
+		con.add(btnHome, gbc_btnHome);
 		
 		JButton btnRegresar = new JButton(new ImageIcon("src/img/regresar.png"));
+		btnRegresar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AdministrarCaja admin = new AdministrarCaja();
+				//fg.setVisible(false);
+				admin.setVisible(true);
+				
+			}
+		});
 		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();//--
 		btnRegresar.setPreferredSize(new Dimension(35, 35));//--
 		btnRegresar.setBorder(new LineBorder(Color.white));//--
@@ -249,7 +248,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_btnRegresar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnRegresar.gridx = 5;
 		gbc_btnRegresar.gridy = 9;
-		contentPane.add(btnRegresar, gbc_btnRegresar);
+		con.add(btnRegresar, gbc_btnRegresar);
 		
 		JLabel lbTotal = new JLabel("Total ");
 		lbTotal.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -258,7 +257,7 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_lbTotal.insets = new Insets(0, 0, 0, 5);
 		gbc_lbTotal.gridx = 6;
 		gbc_lbTotal.gridy = 9;
-		contentPane.add(lbTotal, gbc_lbTotal);
+		con.add(lbTotal, gbc_lbTotal);
 		
 		jtTotal = new JTextField();
 		jtTotal.setColumns(10);
@@ -266,7 +265,21 @@ public class Transaccion extends JFrame //extends metodosDiseño
 		gbc_jtTotal.fill = GridBagConstraints.BOTH;
 		gbc_jtTotal.gridx = 7;
 		gbc_jtTotal.gridy = 9;
-		contentPane.add(jtTotal, gbc_jtTotal);
+		con.add(jtTotal, gbc_jtTotal);
+		
+		
+		fCR.revalidate();
+		fCR.repaint();
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		switch(e.getActionCommand()) //el switch hace llamar a la funcion concatenar
+		{
+			case "src/img/regresar.png":
+				//System.out.println("hola");
+				break;
+		}
 	}
 
 }

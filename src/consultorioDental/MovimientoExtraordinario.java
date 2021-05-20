@@ -1,65 +1,50 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Container;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class MovimientoExtraordinario extends JFrame {
+public class MovimientoExtraordinario extends metodosDiseño {
 
-	private JPanel contentPane;
 	private JTextField jtMonto;
 	private JTable tbLista;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MovimientoExtraordinario frame = new MovimientoExtraordinario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		MovimientoExtraordinario fg = new MovimientoExtraordinario(); //nombre del archivo
+		fg.CrearGui();
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public MovimientoExtraordinario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1001, 622);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	private void  CrearGui() {
+		JFrame fCR = new JFrame("Administrar Caja");
+		//setBounds(100, 100, 1001, 622);
+		Container con = this.getContentPane();
+		con = fCR.getContentPane();
+		con.setLayout(new GridBagLayout());
+		
+		fCR.pack();
+		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fCR.setVisible(true);
+		con.setBackground(Color.WHITE);
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{180, 244, 72, 166, 160, 160, 0};
 		gbl_contentPane.rowHeights = new int[]{62, 55, 50, 29, 31, 47, 29, 136, 54, 37, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		con.setLayout(gbl_contentPane);
 		
 		JLabel lbTitulo = new JLabel("Movimiento extraordinario");
 		lbTitulo.setFont(new Font("Tahoma", Font.PLAIN, 45));
@@ -69,7 +54,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_lbTitulo.gridwidth = 4;
 		gbc_lbTitulo.gridx = 1;
 		gbc_lbTitulo.gridy = 1;
-		contentPane.add(lbTitulo, gbc_lbTitulo);
+		con.add(lbTitulo, gbc_lbTitulo);
 		
 		JLabel lbMonto = new JLabel("Monto a mover");
 		lbMonto.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -78,7 +63,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_lbMonto.insets = new Insets(0, 0, 5, 5);
 		gbc_lbMonto.gridx = 1;
 		gbc_lbMonto.gridy = 3;
-		contentPane.add(lbMonto, gbc_lbMonto);
+		con.add(lbMonto, gbc_lbMonto);
 		
 		JLabel lbLista = new JLabel("Lista");
 		lbLista.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -89,7 +74,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_lbLista.insets = new Insets(0, 0, 5, 5);
 		gbc_lbLista.gridx = 3;
 		gbc_lbLista.gridy = 3;
-		contentPane.add(lbLista, gbc_lbLista);
+		con.add(lbLista, gbc_lbLista);
 		
 		jtMonto = new JTextField();
 		jtMonto.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -100,7 +85,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_jtMonto.insets = new Insets(0, 0, 5, 5);
 		gbc_jtMonto.gridx = 1;
 		gbc_jtMonto.gridy = 4;
-		contentPane.add(jtMonto, gbc_jtMonto);
+		con.add(jtMonto, gbc_jtMonto);
 		
 		JScrollPane spLista = new JScrollPane();
 		GridBagConstraints gbc_spLista = new GridBagConstraints();
@@ -110,7 +95,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_spLista.gridheight = 4;
 		gbc_spLista.gridx = 3;
 		gbc_spLista.gridy = 4;
-		contentPane.add(spLista, gbc_spLista);
+		con.add(spLista, gbc_spLista);
 		
 		tbLista = new JTable();
 		tbLista.setModel(new DefaultTableModel(
@@ -141,7 +126,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_lbMotivo.insets = new Insets(0, 0, 5, 5);
 		gbc_lbMotivo.gridx = 1;
 		gbc_lbMotivo.gridy = 6;
-		contentPane.add(lbMotivo, gbc_lbMotivo);
+		con.add(lbMotivo, gbc_lbMotivo);
 		
 		JScrollPane spMotivo = new JScrollPane();
 		
@@ -153,7 +138,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_spMotivo.insets = new Insets(0, 0, 5, 5);
 		gbc_spMotivo.gridx = 1;
 		gbc_spMotivo.gridy = 7;
-		contentPane.add(spMotivo, gbc_spMotivo);
+		con.add(spMotivo, gbc_spMotivo);
 		
 		JButton btnAnadirMov = new JButton("A\u00F1adir Movimiento");
 		btnAnadirMov.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -162,7 +147,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_btnAnadirMov.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAnadirMov.gridx = 1;
 		gbc_btnAnadirMov.gridy = 9;
-		contentPane.add(btnAnadirMov, gbc_btnAnadirMov);
+		con.add(btnAnadirMov, gbc_btnAnadirMov);
 		
 		JButton btnOK = new JButton("OK");
 		btnOK.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -170,7 +155,7 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_btnOK.insets = new Insets(0, 0, 0, 5);
 		gbc_btnOK.gridx = 3;
 		gbc_btnOK.gridy = 9;
-		contentPane.add(btnOK, gbc_btnOK);
+		con.add(btnOK, gbc_btnOK);
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -178,6 +163,9 @@ public class MovimientoExtraordinario extends JFrame {
 		gbc_btnEliminar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnEliminar.gridx = 4;
 		gbc_btnEliminar.gridy = 9;
-		contentPane.add(btnEliminar, gbc_btnEliminar);
+		con.add(btnEliminar, gbc_btnEliminar);
+		
+		fCR.revalidate();
+		fCR.repaint();
 	}
 }
