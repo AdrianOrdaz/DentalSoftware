@@ -27,7 +27,6 @@ public class metodosDiseño extends JFrame{
 	    c.weighty = 0.0;
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
-
 	}
 	
 	protected void adjustComponents(GridBagConstraints c, 
@@ -114,8 +113,18 @@ public class metodosDiseño extends JFrame{
 			}
 	    });
 	}
-	
-	//Agregado por giovanni
+	protected void activeBttn(JCheckBox cbx,JButton jB) 
+	{
+		cbx.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cbx.isSelected()) {
+					jB.setEnabled(true);
+				}else {
+					jB.setEnabled(false);
+				}
+				}
+		});
+	}
 	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
 	{
 		jt.setPreferredSize(new Dimension(120,35));
