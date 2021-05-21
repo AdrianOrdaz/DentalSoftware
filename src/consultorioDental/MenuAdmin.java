@@ -50,6 +50,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		
 		JButton btnRealizarCompra = new JButton("Realizar compras");
 		adjustButton(btnRealizarCompra, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
+		btnRealizarCompra.addActionListener(this);
 		
 		JButton btnGestionarUsuarios = new JButton("Gestionar usuarios");
 		adjustButton(btnGestionarUsuarios, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
@@ -61,6 +62,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		
 		JButton btnControl_Inventario = new JButton("Controlar inventario");
 		adjustButton(btnControl_Inventario, c, con, 2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
+		btnControl_Inventario.addActionListener(this);
 		
 		fMenuA.pack();
 		fMenuA.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -81,7 +83,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 				gr.setVisible(true);
 				fMenuA.setVisible(false);
 			break;
-			case "Realizar compras": //en proceso
+			case "Realizar compras":
 				RealizarPedido rp = new RealizarPedido();
 				rp.setVisible(true);
 				fMenuA.setVisible(false);
@@ -89,6 +91,11 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 			case "Gestionar sueldos":
 				GestionSueldos vgs = new GestionSueldos();
 				vgs.crearGUI();
+				fMenuA.setVisible(false);
+			break;
+			case "Controlar inventario":
+				EntradaSalidaMedicamentos esm = new EntradaSalidaMedicamentos();
+				esm.CrearGui();
 				fMenuA.setVisible(false);
 			break;
 			case "Salir":
