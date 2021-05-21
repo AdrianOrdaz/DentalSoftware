@@ -30,38 +30,38 @@ public class InformacionDentista extends MetodosDiseño implements ActionListener
 		
 		//(X,Y,ancho,alto,anchoy,anchox)
 		JLabel lbInformacionDentista = new JLabel("Informacion del Dentista");
-		lbInformacionDentista.setFont (lbInformacionDentista.getFont ().deriveFont (41.0f));
-		adjustComponents(c, 1, 0, 3, 1, 1.0, 1.0, GridBagConstraints.EAST);
+		lbInformacionDentista.setFont (lbInformacionDentista.getFont ().deriveFont (40.0f));
+		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.CENTER);
 		con.add(lbInformacionDentista,c);
 		//ID
 		JLabel lbID = new JLabel("ID: ");
 		lbID.setFont (lbID.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbID,c);
 	
 		JLabel lbNombre = new JLabel("Nombre: ");
 		lbNombre.setFont (lbNombre.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbNombre,c);
 		
 		JLabel lbEstudios = new JLabel("Estudios: ");
 		lbEstudios.setFont (lbEstudios.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbEstudios,c);
 		
-		JLabel lbNumTel = new JLabel("NumTel: ");
+		JLabel lbNumTel = new JLabel("Telefono: ");
 		lbNumTel.setFont (lbNumTel.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbNumTel,c);
 		
 		JLabel lbHorario = new JLabel("Horario: ");
 		lbHorario.setFont (lbHorario.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 3, 1, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
+		adjustComponents(c, 3, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		con.add(lbHorario,c);
 		
 		JLabel lbSueldo = new JLabel("Sueldo: ");
 		lbSueldo.setFont (lbSueldo.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 3, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 3, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		con.add(lbSueldo,c);
 		
 		JLabel lbEmail = new JLabel("Email: ");
@@ -71,55 +71,40 @@ public class InformacionDentista extends MetodosDiseño implements ActionListener
 		
 		JLabel lbDireccion = new JLabel("Direccion: ");
 		lbDireccion.setFont (lbDireccion.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 3, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 3, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		con.add(lbDireccion,c);
 		
 		JTextField jtID = new JTextField(15);
-		adjustTextField(jtID, c, con, 1, 1, 1, 1, 1.0, 1.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtID, c, con, 1, 1, 1, 1, 0.0, 1.0,GridBagConstraints.CENTER);
 				
 		JTextField jtNombre = new JTextField(15);
-		adjustTextField(jtNombre, c, con, 1, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtNombre, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		JTextField jtEstudios = new JTextField(15);
-		adjustTextField(jtEstudios, c, con, 1, 3, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtEstudios, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 
 		JTextField jtNumTel = new JTextField(15);
-		adjustTextField(jtNumTel, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtNumTel, c, con, 1, 4, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 
 		JTextField jtHorario = new JTextField(15);
-		adjustTextField(jtHorario, c, con, 4, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtHorario, c, con, 4, 1, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
 		JTextField jtSueldo = new JTextField(15);
-		adjustTextField(jtSueldo, c, con, 4, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtSueldo, c, con, 4, 2, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
 		JTextField jtEmail = new JTextField(15);
-		adjustTextField(jtEmail, c, con, 4, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtEmail, c, con, 4, 3, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
 		JTextField jtDireccion = new JTextField(15);
-		adjustTextField(jtDireccion, c, con, 4, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtDireccion, c, con, 4, 4, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 		
 		//Botones
-		JButton btnModificar  = new JButton("Modificar");
-		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
-		gbc_btnModificar.gridx = 2;
-		gbc_btnModificar.gridy = 6;
-		gbc_btnModificar.gridwidth = 1;
-		gbc_btnModificar.gridheight = 1;
-		gbc_btnModificar.weighty = 1.0;
-		gbc_btnModificar.fill = GridBagConstraints.NONE;
-		fID.getContentPane().add(btnModificar, gbc_btnModificar);
+		JButton btnEditar = new JButton("Editar");
+		adjustButton(btnEditar,c,con,0,5,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		
-		JButton btnRegresar = new JButton("Regresar");
-		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();
-		gbc_btnRegresar.gridx = 5;
-		gbc_btnRegresar.gridy = 6;
-		gbc_btnRegresar.gridwidth = 1;
-		gbc_btnRegresar.gridheight = 1;
-		gbc_btnRegresar.weighty = 1.0;
-		gbc_btnRegresar.weightx = 1.0;
-		gbc_btnRegresar.fill = GridBagConstraints.NONE;
-		fID.getContentPane().add(btnRegresar, gbc_btnRegresar);
-				
+		Dentistas den = new Dentistas();
+		buttonRegresar(den.crearfD(),fID,c,con,3,5,1,1,0.0,1.0,GridBagConstraints.EAST);		
+		buttonHome(fID,true,c, con, 4, 5, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		jtID.setEditable(false);
 		jtNombre.setEditable(false);
@@ -130,11 +115,11 @@ public class InformacionDentista extends MetodosDiseño implements ActionListener
 		jtEmail.setEditable(false);
 		jtDireccion.setEditable(false);
 		
-		//buttonHome(c, con, 5, 7, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
 		fID.pack();
 		fID.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fID.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fID.setVisible(true);
+		den.fD.setVisible(false);
 		con.setBackground(Color.WHITE);
 
 	}

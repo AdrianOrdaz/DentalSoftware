@@ -125,9 +125,10 @@ public class MetodosDiseño extends JFrame{
 				}
 		});
 	}
-	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb, int fll)
+	protected void adjustTextField (JTextField jt , GridBagConstraints c, Container con, 
+			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
 	{
-		jt.setPreferredSize(new Dimension(120,35));
+		jt.setPreferredSize(new Dimension(200,25));
 		c.gridx = gx;
 		c.gridy = gy;
 		c.gridwidth = gw;
@@ -135,12 +136,10 @@ public class MetodosDiseño extends JFrame{
 		c.weighty = wy;
 		c.weightx = wx;
 		c.anchor = gdb;
-		c.fill = fll;
 		con.add(jt,c);
 		c.weighty = 0.0;
 		c.weightx = 0.0;
 		c.anchor = GridBagConstraints.CENTER;
-		
 	}
 	
 	protected void adjustPasswordField (JPasswordField jpf , GridBagConstraints c, Container con, int gx, int gy, int gw, int gh, double wy, double wx, int gdb)

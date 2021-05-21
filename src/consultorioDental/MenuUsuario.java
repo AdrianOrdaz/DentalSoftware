@@ -102,7 +102,21 @@ public class MenuUsuario extends MetodosDiseño implements ActionListener{
 				p.crearGUI();
 				fMenuU.setVisible(false);
 			break;
-			
+			case "Dentistas":
+				Dentistas den = new Dentistas();
+				den.crearfD();
+				fMenuU.setVisible(false);
+			break;
+			case "Servicios":
+				Servicios ser = new Servicios();
+				ser.setVisible(true);
+				fMenuU.setVisible(false);
+			break;
+			case "Promociones":
+				Promociones prom = new Promociones();
+				prom.setVisible(true);
+				fMenuU.setVisible(false);
+			break;
 			case "Salir":
 				System.exit(0);
 			break;

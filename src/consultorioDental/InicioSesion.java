@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -52,7 +53,7 @@ public class InicioSesion extends MetodosDiseño implements ActionListener
 		con.add(lbUsuario,c);
 		
 		JTextField jtUsuario = new JTextField(15);
-		adjustTextField(jtUsuario, c, con, 1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE);
+		adjustTextField(jtUsuario, c, con, 1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		jtUsuario.setPreferredSize(new Dimension(120,35));
 		
 		JLabel lbPassword = new JLabel("      Contraseña: ");
@@ -71,6 +72,11 @@ public class InicioSesion extends MetodosDiseño implements ActionListener
 		fIS.setResizable(false);
 		fIS.setVisible(true);
 		fIS.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		fIS.setLocationRelativeTo(null);
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+	     int height = pantalla.height;
+	     int width = pantalla.width;
+	     setSize(width/2, height/2);
 	}
 
 	@Override

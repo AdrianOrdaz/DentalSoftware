@@ -3,6 +3,7 @@ package consultorioDental;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
@@ -24,51 +25,41 @@ import javax.swing.border.LineBorder;
 
 public class Dentistas extends MetodosDiseño implements ActionListener{
 	
+	JFrame fD;
 	JButton btnAgregar;
 	JButton btnEliminar;
 	JButton btnModificar;
 	JButton btnGuardar;
 	public static void main(String[] args) 
 	{
-		Dentistas vD = new Dentistas();
-		vD.crearfD();
+		Dentistas den = new Dentistas();
+		den.crearfD();
 	}
 
-	void crearfD() 
+	protected JFrame crearfD() 
 	{
-		
-		JFrame fD = new JFrame("Consultorio Dental/Dentistas");
+		fD = new JFrame("Consultorio Dental/Dentistas");
 		Container con = new Container();
 		con = fD.getContentPane();
 		GridBagConstraints c = new GridBagConstraints();
 		con.setLayout(new GridBagLayout());
 
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{312, 323, 319, 51};
-		gridBagLayout.rowHeights = new int[]{72, 298, 57, 55, 49, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		fD.getContentPane().setLayout(gridBagLayout);
-		
 		JLabel lbDentistas = new JLabel("Dentistas");
-		lbDentistas.setFont (lbDentistas.getFont ().deriveFont (41.0f));
-		adjustComponents(c, 1, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER);
+		lbDentistas.setFont (new Font("Open Sans",Font.CENTER_BASELINE,40));
+		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbDentistas,c);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.gridwidth = 4;
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 1;
-		fD.getContentPane().add(scrollPane, gbc_scrollPane);
+		c.fill = GridBagConstraints.BOTH;
+		adjustComponents(c,0,1,5,1,1.0,1.0,GridBagConstraints.CENTER);
+		fD.getContentPane().add(scrollPane, c);
+		c.fill = 0;
 		
 		JTable table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
-			new String[] {
+			new String[] {"",
 				"ID", "Nombre", "Info. Adicional"
 			}
 		));
@@ -78,22 +69,17 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		scrollPane.setRowHeaderView(scrollBar);
 		
 		btnAgregar = new JButton("Agregar");
-		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		c.insets = new Insets(0,100,0,0);
+		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.WEST);
 		
 		btnEliminar = new JButton("Eliminar");
-		adjustButton(btnEliminar, c, con, 2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustButton(btnEliminar, c, con, 0, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		btnGuardar = new JButton("Guardar");
-		adjustButton(btnGuardar, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustButton(btnGuardar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 		
-		btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		GridBagConstraints gbc_btnHome = new GridBagConstraints();
-		btnHome.setPreferredSize(new Dimension(35, 35));
-		btnHome.setBorder(new LineBorder(Color.white));
-		gbc_btnHome.gridx = 2;
-		gbc_btnHome.gridy = 4;
-		gbc_btnHome.weightx = 1.0;
-		fD.getContentPane().add(btnHome, gbc_btnHome);
+		c.insets = new Insets(0,0,0,0);
+		buttonHome(fD,true,c,con,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		btnAgregar.addActionListener(this);
 		btnEliminar.addActionListener(this);
@@ -105,6 +91,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		fD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fD.setVisible(true);
 		con.setBackground(Color.WHITE);
+		return fD;
 		
 	}
 
@@ -115,7 +102,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		{
 			AgregarDentista vAD = new AgregarDentista();
 			vAD.crearfAD();
-			dispose();
+			fD.setVisible(false);
         }
 		
 	}

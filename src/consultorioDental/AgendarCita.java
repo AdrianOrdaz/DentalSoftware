@@ -55,16 +55,16 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 		con.add(lbDentista,c);
 		
 		JTextField jtPaciente = new JTextField(15);
-		adjustTextField(jtPaciente, c, con, 1, 1, 3, 1, 1.0, 0.0,GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtPaciente, c, con, 1, 1, 3, 1, 1.0, 0.0,GridBagConstraints.CENTER);
 		
 		JTextField jtFecha = new JTextField(15);
-		adjustTextField(jtFecha, c, con, 1, 2, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtFecha, c, con, 1, 2, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		JTextField jtHora = new JTextField(15);
-		adjustTextField(jtHora, c, con, 1, 3, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtHora, c, con, 1, 3, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		JTextField jtDentista = new JTextField(15);
-		adjustTextField(jtDentista, c, con, 1, 4, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
+		adjustTextField(jtDentista, c, con, 1, 4, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		JButton btnAgendarCita = new JButton("Agendar Cita");
 		GridBagConstraints gbc_btnAgendarCita = new GridBagConstraints();

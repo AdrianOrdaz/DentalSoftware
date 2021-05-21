@@ -1,36 +1,16 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Font;
-import java.awt.Insets;
-import javax.swing.ImageIcon;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Servicios extends MetodosDiseño implements ActionListener {
 
-	private JPanel contentPane;
-	private JTable tbServicios;
+	JPanel contentPane;
+	JTable tbServicios;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,39 +23,25 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 			}
 		});
 	}
-	public Servicios() {
+	protected Servicios() 
+	{
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0,0,screen.width,screen.height - 30);
-		this.setExtendedState(MAXIMIZED_BOTH);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{71, 55, 697, 79, 77, 70, 220, 139, 80, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 100, 480, 71, 70, 71, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		contentPane.setLayout(new GridBagLayout());
 		
 		JLabel lbServicios = new JLabel("Servicios");
-		lbServicios.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		lbServicios.setFont(new Font("Open Sans", Font.PLAIN, 40));
 		GridBagConstraints gbc_lbServicios = new GridBagConstraints();
-		gbc_lbServicios.insets = new Insets(0, 0, 5, 5);
-		gbc_lbServicios.gridx = 2;
-		gbc_lbServicios.gridy = 1;
+		adjustComponents(gbc_lbServicios,0,0,4,1,0.0,1.0,GridBagConstraints.NORTH);
 		contentPane.add(lbServicios, gbc_lbServicios);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 2;
-		gbc_scrollPane.gridy = 2;
+		adjustComponents(gbc_scrollPane,0,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(scrollPane, gbc_scrollPane);
-		
 		tbServicios = new JTable();
 		tbServicios.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -83,7 +49,7 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 				{null, null, null, null},
 			},
 			new String[] {
-				"Activado/Desacivado", "No.", "Nombre", "Costo"
+				"", "No.", "Nombre", "Costo"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
@@ -96,41 +62,18 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		tbServicios.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		scrollPane.setViewportView(tbServicios);
 		
-		JLabel lbRegresar = new JLabel("");
-		lbRegresar.setIcon(new ImageIcon("C:\\Users\\Kevin\\git\\PROYECTO-DE-POO\\src\\img\\regresar.png"));
-		GridBagConstraints gbc_lbRegresar = new GridBagConstraints();
-		gbc_lbRegresar.anchor = GridBagConstraints.SOUTH;
-		gbc_lbRegresar.insets = new Insets(0, 0, 5, 5);
-		gbc_lbRegresar.gridx = 0;
-		gbc_lbRegresar.gridy = 4;
-		contentPane.add(lbRegresar, gbc_lbRegresar);
-		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
-		gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEliminar.gridx = 3;
-		gbc_btnEliminar.gridy = 4;
-		contentPane.add(btnEliminar, gbc_btnEliminar);
+		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,2,2,1,1,1.0,1.0,GridBagConstraints.WEST);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
-		gbc_btnEditar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEditar.gridx = 4;
-		gbc_btnEditar.gridy = 4;
-		contentPane.add(btnEditar, gbc_btnEditar);
+		adjustButton(btnEditar,new GridBagConstraints(),contentPane,1,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_btnAgregar = new GridBagConstraints();
-		gbc_btnAgregar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAgregar.gridx = 5;
-		gbc_btnAgregar.gridy = 4;
-		contentPane.add(btnAgregar, gbc_btnAgregar);
+		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,0,2,1,1,0.0,1.0,GridBagConstraints.EAST);
 		btnAgregar.addActionListener(this);
 		
-		buttonHome(this,true,new GridBagConstraints(),contentPane,1,4,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		buttonHome(this,true,new GridBagConstraints(),contentPane,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		//return ;
 	}
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
@@ -142,20 +85,5 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 			break;
 		}
 		
-	}
-	protected void activeTF(JCheckBox cb,JCheckBox cb1, JTextField jt) 
-	{
-		cb.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(cb.isSelected()) {
-					jt.setEnabled(true);
-				}else {
-					jt.setEnabled(false);
-				}
-				if(cb1.isSelected()) {
-					jt.setEnabled(false);
-				}
-			}
-	    });
 	}
 }
