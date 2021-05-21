@@ -16,18 +16,17 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Reportes extends MetodosDiseño {
-
-
-		private JPanel contentPane;
 
 		public static void main(String[] args) {
 			Reportes fg = new Reportes(); //nombre del archivo
 			fg.CrearGui();
 		}
 
-		private void  CrearGui() {
+		protected void  CrearGui() {
 			JFrame fCR = new JFrame("Administrar Caja");
 			Container con = this.getContentPane();
 			con = fCR.getContentPane();
@@ -41,7 +40,7 @@ public class Reportes extends MetodosDiseño {
 			
 		
 			GridBagLayout gbl_contentPane = new GridBagLayout();
-			gbl_contentPane.columnWidths = new int[]{102, 0, 22, 0, 0, 265, 59, 0, 0};
+			gbl_contentPane.columnWidths = new int[]{102, 0, 22, 330, 330, 330, 59, 0, 0};
 			gbl_contentPane.rowHeights = new int[]{96, 0, 240, 0, 121, 0, 58, 0, 0};
 			gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -59,56 +58,71 @@ public class Reportes extends MetodosDiseño {
 			btnReporteVentas.setFont(new Font("Tahoma", Font.PLAIN, 29));
 			GridBagConstraints gbc_btnReporteVentas = new GridBagConstraints();
 			gbc_btnReporteVentas.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnReporteVentas.insets = new Insets(0, 0, 5, 5);
-			gbc_btnReporteVentas.gridx = 3;
-			gbc_btnReporteVentas.gridy = 3;
-			con.add(btnReporteVentas, gbc_btnReporteVentas);
+			adjustButton(btnReporteVentas, gbc_btnReporteVentas, con, 3, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+			btnReporteVentas.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					//Recibo rb = new Recibo();
+					//rb.crearGUI();				Generar reportes
+					//fCR.setVisible(false);
+				}
+			});
 			
 			JButton btnTransaccion = new JButton("Transaccion");
 			btnTransaccion.setFont(new Font("Tahoma", Font.PLAIN, 29));
 			GridBagConstraints gbc_btnTransaccion = new GridBagConstraints();
 			gbc_btnTransaccion.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnTransaccion.insets = new Insets(0, 0, 5, 5);
-			gbc_btnTransaccion.gridx = 5;
-			gbc_btnTransaccion.gridy = 3;
-			con.add(btnTransaccion, gbc_btnTransaccion);
+			adjustButton(btnTransaccion, gbc_btnTransaccion, con, 5, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+			btnTransaccion.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					//Recibo rb = new Recibo();
+					//rb.crearGUI();				Generar reportes
+					//fCR.setVisible(false);
+				}
+			});
 			
 			JButton btnReportePacientes = new JButton("Reporte de pacientes");
 			//JButton btnReportePacientes = new JButton("<html>Reporte de<br>pacientes</html");
-			btnReportePacientes.setFont(new Font("Tahoma", Font.PLAIN, 29));//boton tenga dos renglones
+			btnReportePacientes.setFont(new Font("Tahoma", Font.PLAIN, 29));
 			GridBagConstraints gbc_btnReportePacientes = new GridBagConstraints();
-			gbc_btnReportePacientes.ipady = 8;
+			gbc_btnReportePacientes.fill = GridBagConstraints.HORIZONTAL;
+			adjustButton(btnReportePacientes, gbc_btnReportePacientes, con, 4, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+			btnReportePacientes.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					//Recibo rb = new Recibo();
+					//rb.crearGUI();				Generar reportes
+					//fCR.setVisible(false);
+				}
+			});
 			
-			gbc_btnReportePacientes.insets = new Insets(0, 0, 5, 5);
-			gbc_btnReportePacientes.gridx = 4;
-			gbc_btnReportePacientes.gridy = 4;
-			con.add(btnReportePacientes, gbc_btnReportePacientes);
 			
 			JButton btnReporteAsistencia = new JButton("Reporte de asistencia");
 			btnReporteAsistencia.setFont(new Font("Tahoma", Font.PLAIN, 29));
 			GridBagConstraints gbc_btnReporteAsistencia = new GridBagConstraints();
 			gbc_btnReporteAsistencia.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnReporteAsistencia.insets = new Insets(0, 0, 5, 5);
-			gbc_btnReporteAsistencia.gridx = 3;
-			gbc_btnReporteAsistencia.gridy = 5;
-			con.add(btnReporteAsistencia, gbc_btnReporteAsistencia);
+			adjustButton(btnReporteAsistencia, gbc_btnReporteAsistencia, con, 3, 5, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+			btnReporteAsistencia.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					//Recibo rb = new Recibo();
+					//rb.crearGUI();				Generar reportes
+					//fCR.setVisible(false);
+				}
+			});
 			
-			JButton btnMovExtra = new JButton("Reporte de eficiencia");
+			JButton btnMovExtra = new JButton("Reporte de asistencia");
 			btnMovExtra.setFont(new Font("Tahoma", Font.PLAIN, 29));
 			GridBagConstraints gbc_btnMovExtra = new GridBagConstraints();
-			gbc_btnMovExtra.insets = new Insets(0, 0, 5, 5);
 			gbc_btnMovExtra.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnMovExtra.gridx = 5;
-			gbc_btnMovExtra.gridy = 5;
-			con.add(btnMovExtra, gbc_btnMovExtra);
+			adjustButton(btnMovExtra, gbc_btnMovExtra, con, 5, 5, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+			btnMovExtra.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					//Recibo rb = new Recibo();
+					//rb.crearGUI();				Generar reportes
+					//fCR.setVisible(false);
+				}
+			});
 			
-			JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-			btnHome.setPreferredSize(new Dimension(35, 35));
-			btnHome.setBorder(new LineBorder(Color.white));
-			GridBagConstraints gbc_btnHome = new GridBagConstraints();
-			gbc_btnHome.gridx = 7;
-			gbc_btnHome.gridy = 7;
-			con.add(btnHome, gbc_btnHome);
+			
+			buttonHome(fCR,false,new GridBagConstraints(),con,7,7,1,1,0.0,0.0,GridBagConstraints.CENTER);
 			
 			fCR.revalidate();
 			fCR.repaint();

@@ -42,12 +42,15 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		JButton btnAdminCaja = new JButton("Administrar caja");
 		c.ipadx = 30;
 		adjustButton(btnAdminCaja, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
+		btnAdminCaja.addActionListener(this);
 		
 		JButton btnGenerarReporte = new JButton("Generar reporte");
 		adjustButton(btnGenerarReporte, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		btnGenerarReporte.addActionListener(this);
 		
 		JButton btnRealizarCompra = new JButton("Realizar compras");
 		adjustButton(btnRealizarCompra, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
+		btnRealizarCompra.addActionListener(this);
 		
 		JButton btnGestionarUsuarios = new JButton("Gestionar usuarios");
 		adjustButton(btnGestionarUsuarios, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
@@ -59,6 +62,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		
 		JButton btnControl_Inventario = new JButton("Controlar inventario");
 		adjustButton(btnControl_Inventario, c, con, 2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
+		btnControl_Inventario.addActionListener(this);
 		
 		fMenuA.pack();
 		fMenuA.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -69,15 +73,51 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
+			case "Administrar caja":
+				AdministrarCaja ad = new AdministrarCaja();
+				ad.CrearGui();
+				fMenuA.setVisible(false);
+			break;
+			
+	//		case "Generar reporte":				Asi es con los que fueron hechos con
+	//			Reportes gr = new Reportes();	windows builder
+	//			gr.setVisible(true);
+	//			fMenuA.setVisible(false);
+	//		break;
+			
+			case "Generar reporte": //en proceso
+				Reportes gr = new Reportes();
+				gr.CrearGui();
+				fMenuA.setVisible(false);
+			break;
+			
+			case "Realizar compras": //en proceso
+				RealizarPedido rc = new RealizarPedido();
+				rc.setVisible(true);
+				fMenuA.setVisible(false);
+			break;
+		
+			case "Gestionar usuarios":
+				GestionarUsuario gu = new GestionarUsuario();
+				gu.setVisible(true);
+				fMenuA.setVisible(false);
+			break;
+			
 			case "Gestionar sueldos":
 				GestionSueldos vgs = new GestionSueldos();
 				vgs.crearGUI();
 				fMenuA.setVisible(false);
 			break;
+			
+			case "Controlar inventario":
+				Inventario inv = new Inventario();
+				inv.crearInv();
+				fMenuA.setVisible(false);
+			break;
+			
 			case "Salir":
 				System.exit(0);
 			break;
 		}
 	}
-	 
 }

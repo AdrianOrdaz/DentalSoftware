@@ -30,7 +30,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 	}
 
 
-	protected JFrame crearInv() 
+	JFrame crearInv() 
 	{
 		fInv = new JFrame("Consultorio Dental/Inventario");
 		Container con = new Container();

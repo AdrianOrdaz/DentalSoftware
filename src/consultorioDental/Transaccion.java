@@ -45,7 +45,7 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 
 	}
 
-	private void CrearTransaccionGUI(){
+	void CrearTransaccionGUI(){
 		//Llama a la creacion del gui
 		JFrame fCR = new JFrame("Transaccion");
 		Container con = this.getContentPane();
@@ -231,24 +231,8 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 		gbc_btnHome.gridy = 9;
 		con.add(btnHome, gbc_btnHome);
 		
-		JButton btnRegresar = new JButton(new ImageIcon("src/img/regresar.png"));
-		btnRegresar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				AdministrarCaja admin = new AdministrarCaja();
-				//fg.setVisible(false);
-				admin.setVisible(true);
-				
-			}
-		});
-		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();//--
-		btnRegresar.setPreferredSize(new Dimension(35, 35));//--
-		btnRegresar.setBorder(new LineBorder(Color.white));//--
-		btnRegresar.setBackground(Color.white);//codigo de metodos diseno
-		gbc_btnRegresar.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRegresar.gridx = 5;
-		gbc_btnRegresar.gridy = 9;
-		con.add(btnRegresar, gbc_btnRegresar);
+		AdministrarCaja ad = new AdministrarCaja();
+		buttonRegresar(this,fCR,new GridBagConstraints(),con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbTotal = new JLabel("Total ");
 		lbTotal.setFont(new Font("Tahoma", Font.PLAIN, 24));

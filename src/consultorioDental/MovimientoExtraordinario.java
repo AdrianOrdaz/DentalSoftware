@@ -26,7 +26,7 @@ public class MovimientoExtraordinario extends MetodosDiseño {
 		fg.CrearGui();
 	}
 
-	private void  CrearGui() {
+	void  CrearGui() {
 		JFrame fCR = new JFrame("Administrar Caja");
 		//setBounds(100, 100, 1001, 622);
 		Container con = this.getContentPane();
@@ -40,7 +40,7 @@ public class MovimientoExtraordinario extends MetodosDiseño {
 		con.setBackground(Color.WHITE);
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{180, 244, 72, 166, 160, 160, 0};
+		gbl_contentPane.columnWidths = new int[]{380, 244, 72, 166, 160, 160, 0};
 		gbl_contentPane.rowHeights = new int[]{62, 55, 50, 29, 31, 47, 29, 136, 54, 37, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -164,6 +164,9 @@ public class MovimientoExtraordinario extends MetodosDiseño {
 		gbc_btnEliminar.gridx = 4;
 		gbc_btnEliminar.gridy = 9;
 		con.add(btnEliminar, gbc_btnEliminar);
+		
+		AdministrarCaja ad = new AdministrarCaja();
+		buttonRegresar(this,fCR,new GridBagConstraints(),con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		fCR.revalidate();
 		fCR.repaint();

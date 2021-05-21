@@ -6,6 +6,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -42,7 +44,7 @@ public class CorteDeCaja extends MetodosDiseño {
 		fg.CrearGui();
 	}
 
-	private void  CrearGui() {
+	void CrearGui() {
 		JFrame fCR = new JFrame("Administrar Caja");
 		Container con = this.getContentPane();
 		con = fCR.getContentPane();
@@ -239,6 +241,13 @@ public class CorteDeCaja extends MetodosDiseño {
 		gbc_btnAñadirMovExtraordinario.gridx = 5;
 		gbc_btnAñadirMovExtraordinario.gridy = 14;
 		con.add(btnAñadirMovExtraordinario, gbc_btnAñadirMovExtraordinario);
+		btnAñadirMovExtraordinario.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				MovimientoExtraordinario movextra = new MovimientoExtraordinario();
+				movextra.CrearGui();
+				fCR.setVisible(false);
+			}
+		});
 		
 		JButton btnIniciarTurno = new JButton("Iniciar turno");
 		btnIniciarTurno.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -249,16 +258,7 @@ public class CorteDeCaja extends MetodosDiseño {
 		gbc_btnIniciarTurno.gridy = 16;
 		con.add(btnIniciarTurno, gbc_btnIniciarTurno);
 		
-		//JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		//btnHome.setPreferredSize(new Dimension(35, 35));
-	//	btnHome.setBorder(new LineBorder(Color.white));
-	//	GridBagConstraints gbc_btnHome = new GridBagConstraints();
-	//	gbc_btnHome.anchor = GridBagConstraints.NORTH;
-	//	gbc_btnHome.insets = new Insets(0, 0, 0, 5);
-	//	gbc_btnHome.gridx = 3;
-	//	gbc_btnHome.gridy = 16;
-	//	contentPane.add(btnHome, gbc_btnHome);
-		//buttonHome(new GridBagConstraints(),contentPane,3,16,1,1,0.0,0.0,GridBagConstraints.NORTH);
+		buttonHome(fCR,false,new GridBagConstraints(),con, 3,16,1,1,0.0,0.0,GridBagConstraints.NORTH);
 		
 		JButton btnTerminarturno = new JButton("Terminar turno");
 		btnTerminarturno.setFont(new Font("Tahoma", Font.PLAIN, 24));
