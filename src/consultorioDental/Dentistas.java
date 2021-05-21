@@ -28,7 +28,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 	JFrame fD;
 	JButton btnAgregar;
 	JButton btnEliminar;
-	JButton btnModificar;
+	JButton btnEditar;
 	JButton btnGuardar;
 	public static void main(String[] args) 
 	{
@@ -73,17 +73,19 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.WEST);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 0, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
-		btnGuardar = new JButton("Guardar");
-		adjustButton(btnGuardar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
+		btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
+		adjustButton(btnEditar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 		
 		c.insets = new Insets(0,0,0,0);
 		buttonHome(fD,true,c,con,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		btnAgregar.addActionListener(this);
 		btnEliminar.addActionListener(this);
-		btnGuardar.addActionListener(this);
+		btnEditar.addActionListener(this);
 		btnHome.addActionListener(this);
 
 		fD.pack();

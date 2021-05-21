@@ -92,9 +92,11 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		scrollPane.setRowHeaderView(scrollBar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
 		adjustButton(btnEditar, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		buttonHome(fInv,true,new GridBagConstraints(),con,3,4,1,1,1.0,1.0,GridBagConstraints.EAST);

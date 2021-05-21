@@ -70,9 +70,11 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		scrollPane.setRowHeaderView(scrollBar);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
 		adjustButton(btnEditar,c,con,0,3,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 		
 		/*JButton btnGuardar = new JButton("Guardar");

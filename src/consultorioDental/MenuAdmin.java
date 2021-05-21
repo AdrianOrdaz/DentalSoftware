@@ -42,9 +42,11 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		JButton btnAdminCaja = new JButton("Administrar caja");
 		c.ipadx = 30;
 		adjustButton(btnAdminCaja, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
+		btnAdminCaja.addActionListener(this);
 		
 		JButton btnGenerarReporte = new JButton("Generar reporte");
 		adjustButton(btnGenerarReporte, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		btnGenerarReporte.addActionListener(this);
 		
 		JButton btnRealizarCompra = new JButton("Realizar compras");
 		adjustButton(btnRealizarCompra, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
@@ -69,6 +71,21 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
+			case "Administrar caja":
+				AdministrarCaja ad = new AdministrarCaja();
+				ad.CrearGui();
+				fMenuA.setVisible(false);
+			break;
+			case "Gestionar usuarios":
+				GestionarUsuario gr = new GestionarUsuario();
+				gr.setVisible(true);
+				fMenuA.setVisible(false);
+			break;
+			case "Realizar compras": //en proceso
+				RealizarPedido rp = new RealizarPedido();
+				rp.setVisible(true);
+				fMenuA.setVisible(false);
+			break;
 			case "Gestionar sueldos":
 				GestionSueldos vgs = new GestionSueldos();
 				vgs.crearGUI();

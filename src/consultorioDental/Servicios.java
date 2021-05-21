@@ -25,6 +25,7 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 	}
 	protected Servicios() 
 	{
+		setTitle("Consultorio Dental/Servicios");
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -40,6 +41,7 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		adjustComponents(gbc_scrollPane,0,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(scrollPane, gbc_scrollPane);
 		tbServicios = new JTable();
@@ -63,9 +65,11 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		scrollPane.setViewportView(tbServicios);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,2,2,1,1,1.0,1.0,GridBagConstraints.WEST);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
 		adjustButton(btnEditar,new GridBagConstraints(),contentPane,1,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnAgregar = new JButton("Agregar");
@@ -73,7 +77,6 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		btnAgregar.addActionListener(this);
 		
 		buttonHome(this,true,new GridBagConstraints(),contentPane,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
-		//return ;
 	}
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())

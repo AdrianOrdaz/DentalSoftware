@@ -42,6 +42,7 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		});
 	}
 	protected Promociones() {
+		setTitle("Consultorio Dental/Promociones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();
@@ -79,10 +80,12 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		scrollPane.setViewportView(tbPromociones);
 	
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
 		adjustButton(btnEliminar,gbc_btnEliminar,contentPane,3,3,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
 		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
 		adjustButton(btnEditar,gbc_btnEditar,contentPane,2,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
