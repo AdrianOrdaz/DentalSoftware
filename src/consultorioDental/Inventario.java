@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollBar;
 
 public class Inventario extends MetodosDiseño implements ActionListener{
-
+	JFrame fInv;
 	public static void main(String[] args) 
 	{
 		Inventario vInv = new Inventario();
@@ -30,9 +30,9 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 	}
 
 
-	private void crearInv() 
+	protected JFrame crearInv() 
 	{
-		JFrame fInv = new JFrame("Consultorio Dental/Inventario");
+		fInv = new JFrame("Consultorio Dental/Inventario");
 		Container con = new Container();
 		con = fInv.getContentPane();
 		GridBagConstraints c = new GridBagConstraints();
@@ -46,34 +46,28 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		fInv.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lbInventario = new JLabel("Inventario");
-		lbInventario.setFont (lbInventario.getFont ().deriveFont (41.0f));
-		adjustComponents(c, 2, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
+		lbInventario.setFont (lbInventario.getFont ().deriveFont (40.0f));
+		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbInventario,c);
 		
 		JLabel lbId_producto = new JLabel("ID Producto: ");
 		lbId_producto.setFont (lbId_producto.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 1, 2, 1, 0.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbId_producto,c);
 		
-		JButton btnBuscarId = new JButton("Buscar");
-		btnBuscarId.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		JButton btnBuscarId = new JButton(new ImageIcon("src/img/lupa.png"));
+		btnBuscarId.setPreferredSize(new Dimension(35,35));
+		adjustComponents(c,3,1,1,1,0.0,1.0,GridBagConstraints.WEST);
+		con.add(btnBuscarId,c);
+		btnBuscarId.addActionListener(this);
 		
 		JTextField textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		textField.setPreferredSize(new Dimension(120,35));
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 1;
+		adjustComponents(gbc_textField,2,1,1,1,0.0,1.0,GridBagConstraints.WEST);
 		fInv.getContentPane().add(textField, gbc_textField);
 		textField.setColumns(10);
-		GridBagConstraints gbc_btnBuscarId = new GridBagConstraints();
-		gbc_btnBuscarId.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBuscarId.gridx = 3;
-		gbc_btnBuscarId.gridy = 1;
-		fInv.getContentPane().add(btnBuscarId, gbc_btnBuscarId);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -89,7 +83,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Nombre", "Descripcion", "Cant.", "Compra", "Venta"
+				"","ID", "Nombre", "Descripcion", "Cant.", "Compra", "Venta"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -97,32 +91,20 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane.setRowHeaderView(scrollBar);
 		
-		JButton btnAgregar = new JButton("Agregar");
-		adjustButton(btnAgregar, c, con, 0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
-		
 		JButton btnEliminar = new JButton("Eliminar");
-		adjustButton(btnEliminar, c, con, 4, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		adjustButton(btnEliminar, c, con, 0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
 		
-		JButton btnModificar = new JButton("Modificar");
-		adjustButton(btnModificar, c, con, 2, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
+		JButton btnEditar = new JButton("Editar");
+		adjustButton(btnEditar, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		adjustButton(btnGuardar, c, con, 2, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
-				
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		GridBagConstraints gbc_btnHome = new GridBagConstraints();
-		btnHome.setPreferredSize(new Dimension(35, 35));
-		btnHome.setBorder(new LineBorder(Color.white));
-		gbc_btnHome.gridx = 4;
-		gbc_btnHome.gridy = 7;
-		gbc_btnHome.weighty = 1.0;
-		fInv.getContentPane().add(btnHome, gbc_btnHome);
+		buttonHome(fInv,true,new GridBagConstraints(),con,3,4,1,1,1.0,1.0,GridBagConstraints.EAST);
 		
 		fInv.pack();
 		fInv.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fInv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fInv.setVisible(true);
 		con.setBackground(Color.WHITE);
+		return fInv;
 	}
 
 	@Override

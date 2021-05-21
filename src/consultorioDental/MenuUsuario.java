@@ -117,6 +117,11 @@ public class MenuUsuario extends MetodosDiseño implements ActionListener{
 				prom.setVisible(true);
 				fMenuU.setVisible(false);
 			break;
+			case "Inventario":
+				Inventario inv = new Inventario();
+				inv.crearInv();
+				fMenuU.setVisible(false);
+			break;
 			case "Salir":
 				System.exit(0);
 			break;
