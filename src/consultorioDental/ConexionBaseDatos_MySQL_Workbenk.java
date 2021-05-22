@@ -15,7 +15,7 @@ public class ConexionBaseDatos_MySQL_Workbenk {
 			Class.forName(CONTROLADOR);
 			//El metodo getConnection nos retorna un objeto Connection y es como la conexion entre 
 			//nosotros y la base de datos
-			conexion = DriverManager.getConnection("URL","USUARIO","CLAVE");
+			conexion = DriverManager.getConnection(URL,USUARIO,CLAVE);
 			System.out.println("Conexion ok");
 			
 		} catch (ClassNotFoundException e) {
@@ -34,7 +34,8 @@ public class ConexionBaseDatos_MySQL_Workbenk {
 	
 		public static void main(String[]args)
 		{
-			System.out.println("hola");
+			ConexionBaseDatos_MySQL_Workbenk xd = new ConexionBaseDatos_MySQL_Workbenk(); 
+			xd.conectar();
 		}
 
 	}
