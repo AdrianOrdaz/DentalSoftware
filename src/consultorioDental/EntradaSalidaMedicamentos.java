@@ -38,21 +38,13 @@ public class EntradaSalidaMedicamentos extends MetodosDiseño {
 		con = fCR.getContentPane();
 		con.setLayout(new GridBagLayout());
 		
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{257, 297, 119, 206, 95, 77, 194, 0};
-		gbl_contentPane.rowHeights = new int[]{40, 56, 56, 50, 440, 49, 37, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		con.setLayout(gbl_contentPane);
-		
 		JLabel lbTitulo1 = new JLabel("Entrada / Salida de");
-		lbTitulo1.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		lbTitulo1.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		GridBagConstraints gbc_lbTitulo1 = new GridBagConstraints();
 		gbc_lbTitulo1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lbTitulo1.insets = new Insets(0, 0, 5, 5);
 		gbc_lbTitulo1.gridwidth = 2;
-		gbc_lbTitulo1.gridx = 1;
-		gbc_lbTitulo1.gridy = 1;
+		gbc_lbTitulo1.gridx = 0;
+		gbc_lbTitulo1.gridy = 0;
 		con.add(lbTitulo1, gbc_lbTitulo1);
 		
 		JLabel lnPeriodo = new JLabel("Periodo de tiempo");
@@ -64,13 +56,13 @@ public class EntradaSalidaMedicamentos extends MetodosDiseño {
 		gbc_lnPeriodo.gridy = 1;
 		con.add(lnPeriodo, gbc_lnPeriodo);
 		
-		JLabel lbTitulo2 = new JLabel("Medicamentos");
-		lbTitulo2.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		JLabel lbTitulo2 = new JLabel("medicamentos");
+		lbTitulo2.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		GridBagConstraints gbc_lbTitulo2 = new GridBagConstraints();
 		gbc_lbTitulo2.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lbTitulo2.insets = new Insets(0, 0, 5, 5);
 		gbc_lbTitulo2.gridx = 1;
-		gbc_lbTitulo2.gridy = 2;
+		gbc_lbTitulo2.gridy = 1;
 		con.add(lbTitulo2, gbc_lbTitulo2);
 		
 		JComboBox jcbPeriodo = new JComboBox();
@@ -90,7 +82,7 @@ public class EntradaSalidaMedicamentos extends MetodosDiseño {
 		gbc_spProductos.insets = new Insets(0, 0, 5, 0);
 		gbc_spProductos.gridwidth = 6;
 		gbc_spProductos.gridx = 1;
-		gbc_spProductos.gridy = 4;
+		gbc_spProductos.gridy = 3;
 		con.add(spProductos, gbc_spProductos);
 		
 		tbProductos = new JTable();
@@ -108,22 +100,12 @@ public class EntradaSalidaMedicamentos extends MetodosDiseño {
 		spProductos.setViewportView(tbProductos);
 		
 		JButton btnImprimir = new JButton("Imprimir");
-		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_btnImprimir = new GridBagConstraints();
-		gbc_btnImprimir.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnImprimir.insets = new Insets(0, 0, 0, 5);
-		gbc_btnImprimir.gridx = 1;
-		gbc_btnImprimir.gridy = 6;
-		con.add(btnImprimir, gbc_btnImprimir);
+		adjustButton(btnImprimir,new GridBagConstraints(),con,1,4,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
-		gbc_btnGuardar.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnGuardar.insets = new Insets(0, 0, 0, 5);
-		gbc_btnGuardar.gridx = 2;
-		gbc_btnGuardar.gridy = 6;
-		con.add(btnGuardar, gbc_btnGuardar);
+		adjustButton(btnGuardar,new GridBagConstraints(),con,2,4,1,1,0.0,0.0,GridBagConstraints.WEST);
+		
+		buttonHome(fCR,false,new GridBagConstraints(),con,4,4,1,1,0.0,1.0,GridBagConstraints.EAST);
 		
 		fCR.pack();
 		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);

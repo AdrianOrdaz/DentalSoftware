@@ -43,6 +43,7 @@ public class RealizarPedido extends MetodosDiseño{
 		});
 	}
 	protected RealizarPedido() {
+		setTitle("Realizar pedido");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

@@ -1,6 +1,5 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -15,10 +14,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JTextField;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class AgregarUsuario extends MetodosDiseño {
 
@@ -44,44 +40,35 @@ public class AgregarUsuario extends MetodosDiseño {
 		});
 	}
 	protected AgregarUsuario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setExtendedState(MAXIMIZED_BOTH);
+		setTitle("Gestionar Usuario/Agregar Usuario");
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0,0,screen.width,screen.height - 30);
-		this.setExtendedState(MAXIMIZED_BOTH);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{23, 254, 211, 150, 146, 160, 138, 154, 62, 0};
-		gbl_contentPane.rowHeights = new int[]{138, 46, 61, 47, 30, 53, 32, 52, 32, 52, 29, 52, 29, 51, 30, 51, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel lbAgregarUsuario = new JLabel("Agregar Usuario");
-		lbAgregarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 34));
+		lbAgregarUsuario.setFont(new Font("Open Sans", Font.PLAIN, 40));
 		GridBagConstraints gbc_lbAgregarUsuario = new GridBagConstraints();
-		gbc_lbAgregarUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_lbAgregarUsuario.anchor = GridBagConstraints.ABOVE_BASELINE_TRAILING;
+		gbc_lbAgregarUsuario.anchor = GridBagConstraints.NORTH;
 		gbc_lbAgregarUsuario.gridx = 2;
 		gbc_lbAgregarUsuario.gridy = 0;
+		gbc_lbAgregarUsuario.weighty = 1.0;
 		contentPane.add(lbAgregarUsuario, gbc_lbAgregarUsuario);
 		
 		JLabel lbCompleteCampos = new JLabel("Completa obligatoriamente los siguientes campos*");
 		lbCompleteCampos.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		GridBagConstraints gbc_lbCompleteCampos = new GridBagConstraints();
-		gbc_lbCompleteCampos.insets = new Insets(0, 0, 5, 5);
 		gbc_lbCompleteCampos.gridx = 2;
 		gbc_lbCompleteCampos.gridy = 1;
+		gbc_lbCompleteCampos.weighty = 1.0;
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
 		
 		JLabel lbIdUsuario = new JLabel("Id del usuario*:");
 		lbIdUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbIdUsuario = new GridBagConstraints();
+		gbc_lbIdUsuario.weighty = 1.0;
 		gbc_lbIdUsuario.anchor = GridBagConstraints.EAST;
-		gbc_lbIdUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_lbIdUsuario.gridx = 1;
 		gbc_lbIdUsuario.gridy = 2;
 		contentPane.add(lbIdUsuario, gbc_lbIdUsuario);
@@ -89,7 +76,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtIdUsuario = new JTextField();
 		jtIdUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtIdUsuario = new GridBagConstraints();
-		gbc_jtIdUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_jtIdUsuario.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtIdUsuario.gridx = 2;
 		gbc_jtIdUsuario.gridy = 2;
@@ -100,7 +86,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbNombre = new GridBagConstraints();
 		gbc_lbNombre.anchor = GridBagConstraints.EAST;
-		gbc_lbNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_lbNombre.weighty = 1.0;
 		gbc_lbNombre.gridx = 1;
 		gbc_lbNombre.gridy = 3;
 		contentPane.add(lbNombre, gbc_lbNombre);
@@ -108,7 +94,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtNombre = new JTextField();
 		jtNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtNombre = new GridBagConstraints();
-		gbc_jtNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_jtNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtNombre.gridx = 2;
 		gbc_jtNombre.gridy = 3;
@@ -119,7 +104,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbHorario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbHorario = new GridBagConstraints();
 		gbc_lbHorario.anchor = GridBagConstraints.EAST;
-		gbc_lbHorario.insets = new Insets(0, 0, 5, 5);
+		gbc_lbHorario.weighty = 1.0;
 		gbc_lbHorario.gridx = 1;
 		gbc_lbHorario.gridy = 4;
 		contentPane.add(lbHorario, gbc_lbHorario);
@@ -127,7 +112,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtHorario = new JTextField();
 		jtHorario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtHorario = new GridBagConstraints();
-		gbc_jtHorario.insets = new Insets(0, 0, 5, 5);
+		gbc_jtHorario.weighty = 1.0;
 		gbc_jtHorario.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtHorario.gridx = 2;
 		gbc_jtHorario.gridy = 4;
@@ -138,7 +123,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbCorreo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbCorreo = new GridBagConstraints();
 		gbc_lbCorreo.anchor = GridBagConstraints.EAST;
-		gbc_lbCorreo.insets = new Insets(0, 0, 5, 5);
+		gbc_lbCorreo.weighty = 1.0;
 		gbc_lbCorreo.gridx = 1;
 		gbc_lbCorreo.gridy = 5;
 		contentPane.add(lbCorreo, gbc_lbCorreo);
@@ -146,7 +131,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtCorreo = new JTextField();
 		jtCorreo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtCorreo = new GridBagConstraints();
-		gbc_jtCorreo.insets = new Insets(0, 0, 5, 5);
 		gbc_jtCorreo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtCorreo.gridx = 2;
 		gbc_jtCorreo.gridy = 5;
@@ -157,7 +141,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbContraseña.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbContraseña = new GridBagConstraints();
 		gbc_lbContraseña.anchor = GridBagConstraints.EAST;
-		gbc_lbContraseña.insets = new Insets(0, 0, 5, 5);
+		gbc_lbContraseña.weighty = 1.0;
 		gbc_lbContraseña.gridx = 1;
 		gbc_lbContraseña.gridy = 6;
 		contentPane.add(lbContraseña, gbc_lbContraseña);
@@ -165,7 +149,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtContraseña = new JTextField();
 		jtContraseña.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtContraseña = new GridBagConstraints();
-		gbc_jtContraseña.insets = new Insets(0, 0, 5, 5);
 		gbc_jtContraseña.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtContraseña.gridx = 2;
 		gbc_jtContraseña.gridy = 6;
@@ -176,7 +159,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbSueldoquincenal.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbSueldoquincenal = new GridBagConstraints();
 		gbc_lbSueldoquincenal.anchor = GridBagConstraints.EAST;
-		gbc_lbSueldoquincenal.insets = new Insets(0, 0, 5, 5);
+		gbc_lbSueldoquincenal.weighty = 1.0;
 		gbc_lbSueldoquincenal.gridx = 1;
 		gbc_lbSueldoquincenal.gridy = 7;
 		contentPane.add(lbSueldoquincenal, gbc_lbSueldoquincenal);
@@ -184,7 +167,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtSueldoquincenal = new JTextField();
 		jtSueldoquincenal.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtSueldoquincenal = new GridBagConstraints();
-		gbc_jtSueldoquincenal.insets = new Insets(0, 0, 5, 5);
 		gbc_jtSueldoquincenal.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtSueldoquincenal.gridx = 2;
 		gbc_jtSueldoquincenal.gridy = 7;
@@ -195,7 +177,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbDireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbDireccion = new GridBagConstraints();
 		gbc_lbDireccion.anchor = GridBagConstraints.EAST;
-		gbc_lbDireccion.insets = new Insets(0, 0, 5, 5);
+		gbc_lbDireccion.weighty = 1.0;
 		gbc_lbDireccion.gridx = 1;
 		gbc_lbDireccion.gridy = 8;
 		contentPane.add(lbDireccion, gbc_lbDireccion);
@@ -203,7 +185,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtDireccion = new JTextField();
 		jtDireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtDireccion = new GridBagConstraints();
-		gbc_jtDireccion.insets = new Insets(0, 0, 5, 5);
 		gbc_jtDireccion.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtDireccion.gridx = 2;
 		gbc_jtDireccion.gridy = 8;
@@ -214,7 +195,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		lbTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbTelefono = new GridBagConstraints();
 		gbc_lbTelefono.anchor = GridBagConstraints.EAST;
-		gbc_lbTelefono.insets = new Insets(0, 0, 5, 5);
+		gbc_lbTelefono.weighty = 1.0;
 		gbc_lbTelefono.gridx = 1;
 		gbc_lbTelefono.gridy = 9;
 		contentPane.add(lbTelefono, gbc_lbTelefono);
@@ -222,7 +203,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtTelefono = new JTextField();
 		jtTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_jtTelefono = new GridBagConstraints();
-		gbc_jtTelefono.insets = new Insets(0, 0, 5, 5);
 		gbc_jtTelefono.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtTelefono.gridx = 2;
 		gbc_jtTelefono.gridy = 9;
@@ -230,15 +210,15 @@ public class AgregarUsuario extends MetodosDiseño {
 		jtTelefono.setColumns(5);
 		
 		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_btnAgregar = new GridBagConstraints();
 		gbc_btnAgregar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAgregar.gridx = 2;
-		gbc_btnAgregar.gridy = 10;
-		contentPane.add(btnAgregar, gbc_btnAgregar);
+		adjustButton(btnAgregar,gbc_btnAgregar,contentPane,2,10,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
-		buttonHome(this,false,new GridBagConstraints(),contentPane,4,13,1,1,0.0,0.0,GridBagConstraints.WEST);
-		buttonRegresar(new GestionarUsuario(),this,new GridBagConstraints(),contentPane,3,13,1,1,0.0,0.0,GridBagConstraints.WEST);
+		buttonHome(this,false,new GridBagConstraints(),contentPane,2,11,1,1,1.0,0.0,GridBagConstraints.EAST);
+		buttonRegresar(new GestionarUsuario(),this,new GridBagConstraints(),contentPane,1,11,1,1,0.0,0.0,GridBagConstraints.EAST);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setExtendedState(MAXIMIZED_BOTH);
 	}
 
 }

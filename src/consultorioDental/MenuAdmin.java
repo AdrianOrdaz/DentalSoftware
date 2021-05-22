@@ -98,6 +98,11 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 				esm.CrearGui();
 				fMenuA.setVisible(false);
 			break;
+			case "Generar reporte":
+				Reportes rep = new Reportes();
+				rep.CrearGui();
+				fMenuA.setVisible(false);
+			break;
 			case "Salir":
 				System.exit(0);
 			break;

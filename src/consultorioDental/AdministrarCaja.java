@@ -22,7 +22,7 @@ public class AdministrarCaja extends MetodosDiseño implements ActionListener {
 		JLabel lbTitulo = new JLabel("Administrar caja");
 		lbTitulo.setFont(new Font("Open Sans", Font.PLAIN, 40));
 		GridBagConstraints gbc_lbTitulo = new GridBagConstraints();
-		adjustComponents(gbc_lbTitulo,0,0,4,1,1.0,1.0,GridBagConstraints.NORTH);
+		adjustComponents(gbc_lbTitulo,0,0,3,1,1.0,1.0,GridBagConstraints.NORTH);
 		con.add(lbTitulo, gbc_lbTitulo);
 		
 		GridBagConstraints c = new GridBagConstraints();
@@ -35,10 +35,7 @@ public class AdministrarCaja extends MetodosDiseño implements ActionListener {
 		JButton btnCorteCaja = new JButton("Corte de caja");
 		btnCorteCaja.setFont(new Font("Arial",Font.PLAIN,30));
 		adjustButton(btnCorteCaja,c,con,2,2,1,1,1.0,1.0,GridBagConstraints.CENTER);
-		
-		JButton btnMovExtra = new JButton("<html>Movimiento<br>extraordinario</html>");
-		btnMovExtra.setFont(new Font("Arial",Font.PLAIN,30));
-		adjustButton(btnMovExtra,c,con,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		btnCorteCaja.addActionListener(this);
 		
 		c.fill = GridBagConstraints.NONE;
 		buttonHome(fCR,false,c,con,1,3,4,1,1.0,1.0,GridBagConstraints.CENTER);
@@ -57,6 +54,11 @@ public class AdministrarCaja extends MetodosDiseño implements ActionListener {
 			case "Transaccion":
 				Transaccion tran = new Transaccion();
 				tran.crearTransaccionGUI();
+				fCR.setVisible(false);
+			break;
+			case "Corte de caja":
+				CorteDeCaja cdc = new CorteDeCaja();
+				cdc.CrearGui();
 				fCR.setVisible(false);
 			break;
 		}

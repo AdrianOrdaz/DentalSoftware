@@ -46,7 +46,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		
 		JTextField jtDate = new JTextField(""+new Date());
 		c.insets = new Insets(0,0,0,0);
-		jtDate.setEnabled(false);
+		jtDate.setEditable(false);
 		jtDate.setPreferredSize(new Dimension(185,25));
 		
 		adjustComponents(c, 4, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
@@ -86,7 +86,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 	    JCheckBox cbAplicar = new JCheckBox();
 		adjustComponents(c, 1, 4, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar,c);
-	    activeTF(cbAplicar,null,jtPromocion);
+	    activeTF(cbAplicar,jtPromocion);
 	    
 	    String[] header = {"","ID Medicamento","Nombre","Cantidad","Precio","Subtotal"};
 	    DefaultTableModel dtm = new DefaultTableModel(null,header);
