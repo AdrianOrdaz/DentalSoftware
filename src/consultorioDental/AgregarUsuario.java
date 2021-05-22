@@ -240,5 +240,15 @@ public class AgregarUsuario extends MetodosDiseño {
 		buttonHome(this,false,new GridBagConstraints(),contentPane,4,13,1,1,0.0,0.0,GridBagConstraints.WEST);
 		buttonRegresar(new GestionarUsuario(),this,new GridBagConstraints(),contentPane,3,13,1,1,0.0,0.0,GridBagConstraints.WEST);
 	}
+	
+	
+	
+	private void obtencionDeDatos()
+	{
+		//String nombre
+	}
 
 }
+
+
+
