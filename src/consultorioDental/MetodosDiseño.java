@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-public class MetodosDiseño extends JFrame{
+public class MetodosDiseño extends MetodosConexionBD{
 	
 	JButton btnHome;
 	JButton btnRegresar;

@@ -27,7 +27,7 @@ public class ConectionTest {
 //			String upsql = "insert into usuarios"
 //						+"(id_usu, nom_usu, contr_usu, hor_usu, mail_usu, sldo_usu, dir_usu, tel_usu)"
 //						+"values('4','Carlos','456','LMV 6am - 12pm','carlos@gmail.com','5000.23','calle 1','8144568795')";
-//			uploadStm.execute(sql); //Esto ejecuta el codigo sql en la base de datos
+//			uploadStm.execute(upsql); //Esto ejecuta el codigo sql en la base de datos
 			//...........................................................
 			
 			
@@ -106,7 +106,4 @@ public class ConectionTest {
 //https://www.youtube.com/watch?v=Q4T7jg0Lv4E&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=3
 //https://www.youtube.com/watch?v=vwNmYVipzeA&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=4
 //https://www.youtube.com/watch?v=_KuFESrNgsQ&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=5
-//https://www.youtube.com/watch?v=JWTpaxkNLW8 lave foranea
-
-
-
+//https://www.youtube.com/watch?v=JWTpaxkNLW8 llave foranea
