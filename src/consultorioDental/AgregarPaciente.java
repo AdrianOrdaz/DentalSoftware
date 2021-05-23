@@ -114,7 +114,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		jtEnfermedad.setEnabled(false);
 		adjustComponents(c, 2, 7, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtEnfermedad,c);
-	    activeTF(cbAplicar3,cbAplicar4,jtEnfermedad);
+	    activeTF(cbAplicar3,jtEnfermedad);
 		
 	    JLabel lbAlergia = new JLabel("Alergias");
 		adjustComponents(c, 0, 8, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
@@ -131,7 +131,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		jtAlergias.setEnabled(false);
 		adjustComponents(c, 2, 8, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtAlergias,c);
-	    activeTF(cbAplicar5,cbAplicar6,jtAlergias);
+	    activeTF(cbAplicar5,jtAlergias);
 	    
 	    JLabel lbCirugias = new JLabel("¿Cirugias recientes?");
 		adjustComponents(c, 0, 9, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
@@ -148,7 +148,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		jtCirugias.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 2, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtCirugias,c);
-	    activeTF(cbAplicar7,cbAplicar8,jtCirugias);
+	    activeTF(cbAplicar7,jtCirugias);
 	    
 	    JLabel lbFamiliar = new JLabel("Enfermedad de algún familiar:");
 		adjustComponents(c, 0, 10, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
@@ -165,7 +165,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		jtFamiliar.setEnabled(false);
 		adjustComponents(c, 2, 10, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtFamiliar,c);
-	    activeTF(cbAplicar9,cbAplicar10,jtFamiliar);
+	    activeTF(cbAplicar9,jtFamiliar);
 	    
 	    JButton btnGuardar = new JButton("Guardar");
 	    adjustButton(btnGuardar,c,con,0,11,1,1,1.0,1.0,GridBagConstraints.CENTER);

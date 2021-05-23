@@ -106,6 +106,7 @@ public class ConectionTest {
 //https://www.youtube.com/watch?v=Q4T7jg0Lv4E&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=3
 //https://www.youtube.com/watch?v=vwNmYVipzeA&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=4
 //https://www.youtube.com/watch?v=_KuFESrNgsQ&list=PLEAQNNR8IlB4R7NfqBY1frapYo97L6fOQ&index=5
+//https://www.youtube.com/watch?v=JWTpaxkNLW8 lave foranea
 
 
 

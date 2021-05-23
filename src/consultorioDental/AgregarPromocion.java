@@ -48,8 +48,7 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		});
 	}
 	protected AgregarPromocion() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setExtendedState(MAXIMIZED_BOTH);
+		setTitle("Consultorio Dental/Promociones/Agregar Promocion");
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		setContentPane(contentPane);
@@ -70,79 +69,82 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		JLabel lbIdPromocion = new JLabel("Id de la promoci\u00F3n*:");
 		lbIdPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbIdPromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbIdPromocion,1,2,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbIdPromocion,1,2,1,1,1.0,1.0,GridBagConstraints.EAST);
 		contentPane.add(lbIdPromocion, gbc_lbIdPromocion);
 		
 		jtIdPromocion = new JTextField();
 		GridBagConstraints gbc_jtIdPromocion = new GridBagConstraints();
-		adjustTextField(jtIdPromocion,gbc_jtIdPromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtIdPromocion,gbc_jtIdPromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbNombrePromocion = new JLabel("Nombre de la promoci\u00F3n*:");
 		lbNombrePromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbNombrePromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbNombrePromocion,1,3,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbNombrePromocion,1,3,1,1,1.0,1.0,GridBagConstraints.EAST);
 		contentPane.add(lbNombrePromocion, gbc_lbNombrePromocion);
 		
 		jtNombrePromocion = new JTextField();
 		GridBagConstraints gbc_jtNombrePromocion = new GridBagConstraints();
-		adjustTextField(jtNombrePromocion,gbc_jtNombrePromocion,contentPane,2,3,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtNombrePromocion,gbc_jtNombrePromocion,contentPane,2,3,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbCostoPromocion = new JLabel("Costo de la promoci\u00F3n*:");
 		lbCostoPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbCostoPromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbCostoPromocion,1,4,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbCostoPromocion,1,4,1,1,1.0,0.0,GridBagConstraints.EAST);
 		contentPane.add(lbCostoPromocion, gbc_lbCostoPromocion);
 		
 		jtCostoPromocion = new JTextField();
 		GridBagConstraints gbc_jtCostoPromocion = new GridBagConstraints();
-		adjustTextField(jtCostoPromocion,gbc_jtCostoPromocion,contentPane,2,4,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtCostoPromocion,gbc_jtCostoPromocion,contentPane,2,4,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbCostoSeparado = new JLabel("Costo de los servicios por separado*:");
 		lbCostoSeparado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbCostoSeparado = new GridBagConstraints();
-		adjustComponents(gbc_lbCostoSeparado,1,5,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbCostoSeparado,1,5,1,1,1.0,0.0,GridBagConstraints.EAST);
 		contentPane.add(lbCostoSeparado, gbc_lbCostoSeparado);
 		
 		jtCostoSeparado = new JTextField();
 		GridBagConstraints gbc_jtCostoSeparado = new GridBagConstraints();
-		adjustTextField(jtCostoSeparado,gbc_jtCostoSeparado,contentPane,2,5,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtCostoSeparado,gbc_jtCostoSeparado,contentPane,2,5,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbDineroAhorrado = new JLabel("Dinero que se ahorra*:");
 		lbDineroAhorrado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbDineroAhorrado = new GridBagConstraints();
-		adjustComponents(gbc_lbDineroAhorrado,1,6,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbDineroAhorrado,1,6,1,1,1.0,0.0,GridBagConstraints.EAST);
 		contentPane.add(lbDineroAhorrado, gbc_lbDineroAhorrado);
 		
 		jtDineroAhorrado = new JTextField();
 		GridBagConstraints gbc_jtDineroAhorrado = new GridBagConstraints();
-		adjustTextField(jtDineroAhorrado,gbc_jtDineroAhorrado,contentPane,2,6,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtDineroAhorrado,gbc_jtDineroAhorrado,contentPane,2,6,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbPorcentajeAhorrado = new JLabel("Porcentaje que se ahorra*:");
 		lbPorcentajeAhorrado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbPorcentajeAhorrado = new GridBagConstraints();
-		adjustComponents(gbc_lbPorcentajeAhorrado,1,7,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbPorcentajeAhorrado,1,7,1,1,1.0,0.0,GridBagConstraints.EAST);
 		contentPane.add(lbPorcentajeAhorrado, gbc_lbPorcentajeAhorrado);
 		
 		jtPorcentajeAhorrado = new JTextField();
 		GridBagConstraints gbc_jtPorcentajeAhorrado = new GridBagConstraints();
-		adjustTextField(jtPorcentajeAhorrado,gbc_jtPorcentajeAhorrado,contentPane,2,7,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtPorcentajeAhorrado,gbc_jtPorcentajeAhorrado,contentPane,2,7,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbTerminos = new JLabel("T\u00E9rminos y Condiciones*:");
 		lbTerminos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbTerminos = new GridBagConstraints();
-		adjustComponents(gbc_lbTerminos,1,8,1,1,1.0,0.0,GridBagConstraints.WEST);
+		adjustComponents(gbc_lbTerminos,1,8,1,1,1.0,0.0,GridBagConstraints.EAST);
 		contentPane.add(lbTerminos, gbc_lbTerminos);
 		
 		jtTerminos = new JTextField();
 		GridBagConstraints gbc_jtTerminos = new GridBagConstraints();
-		adjustTextField(jtTerminos,gbc_jtTerminos,contentPane,2,8,1,1,0.0,0.0,GridBagConstraints.WEST);
+		adjustTextField(jtTerminos,gbc_jtTerminos,contentPane,2,8,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JButton btnAgregar = new JButton("Agregar");
-		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,0,9,1,1,1.0,1.0,GridBagConstraints.CENTER);
+		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,2,9,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		
 		buttonRegresar(new Promociones(),this,new GridBagConstraints(),contentPane,3,9,1,1,0.0,1.0,GridBagConstraints.WEST);
 		buttonHome(this,true,new GridBagConstraints(),contentPane,3,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
+		pack();
+		setExtendedState(MAXIMIZED_BOTH);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void actionPerformed(ActionEvent e) {
 		

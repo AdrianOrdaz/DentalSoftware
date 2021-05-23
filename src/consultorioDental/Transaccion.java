@@ -1,37 +1,16 @@
 package consultorioDental;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Font;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import java.awt.Container;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-public class Transaccion extends MetodosDiseño //extends metodosDiseño
+public class Transaccion extends MetodosDiseño
 {
-
+	JFrame fCR;
 	private JTextField jtIdCompra;
 	private JTextField jtIdUsuario;
 	private JTextField jtldCita;
@@ -41,22 +20,21 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 
 	public static void main(String[] args) {
 		Transaccion fg = new Transaccion(); //nombre del archivo
-		fg.CrearTransaccionGUI();
+		fg.crearTransaccionGUI();
 
 	}
 
+<<<<<<< HEAD
 	void CrearTransaccionGUI(){
 		//Llama a la creacion del gui
 		JFrame fCR = new JFrame("Transaccion");
+=======
+	protected JFrame crearTransaccionGUI(){
+		fCR = new JFrame("Transaccion");
+>>>>>>> refs/heads/MetodosBD
 		Container con = this.getContentPane();
 		con = fCR.getContentPane();
 		con.setLayout(new GridBagLayout());
-		
-		fCR.pack();
-		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fCR.setVisible(true);
-		con.setBackground(Color.WHITE);
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{187, 168, 53, 203, 79, 85, 149, 372, 0};
@@ -172,18 +150,7 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 		tbProductos = new JTable();
 		tbProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		tbProductos.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
+			new Object[][] {null},
 			new String[] {
 				"Id medicamento", "Nombre medicamento", "Cantidad a comprar", "Cantidad en inventario", "Precio Unitario"
 			}
@@ -218,21 +185,18 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 		gbc_btnGenerar.gridy = 9;
 		con.add(btnGenerar, gbc_btnGenerar);
 		
-		//cuando es usuario es true
-		//cuando es admin es false
-		
-		JButton btnHome = new JButton(new ImageIcon("src/img/home.png"));
-		btnHome.setPreferredSize(new Dimension(35, 35));
-		btnHome.setBorder(new LineBorder(Color.white));
 		GridBagConstraints gbc_btnHome = new GridBagConstraints();
 		buttonHome(fCR, false, gbc_btnHome, con, 4, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
-		gbc_btnHome.insets = new Insets(0, 0, 0, 5);
-		gbc_btnHome.gridx = 4;
-		gbc_btnHome.gridy = 9;
-		con.add(btnHome, gbc_btnHome);
 		
+<<<<<<< HEAD
 		AdministrarCaja ad = new AdministrarCaja();
 		buttonRegresar(this,fCR,new GridBagConstraints(),con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
+=======
+		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();//--
+		gbc_btnRegresar.insets = new Insets(0, 0, 0, 5);
+		AdministrarCaja ac = new AdministrarCaja();
+		buttonRegresar(ac.CrearGui(),fCR,gbc_btnRegresar,con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
+>>>>>>> refs/heads/MetodosBD
 		
 		JLabel lbTotal = new JLabel("Total ");
 		lbTotal.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -251,19 +215,12 @@ public class Transaccion extends MetodosDiseño //extends metodosDiseño
 		gbc_jtTotal.gridy = 9;
 		con.add(jtTotal, gbc_jtTotal);
 		
-		
-		fCR.revalidate();
-		fCR.repaint();
+		fCR.pack();
+		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fCR.setVisible(true);
+		ac.fCR.setVisible(false);
+		con.setBackground(Color.WHITE);
+		return fCR;
 	}
-	
-	public void actionPerformed(ActionEvent e) 
-	{
-		switch(e.getActionCommand()) //el switch hace llamar a la funcion concatenar
-		{
-			case "src/img/regresar.png":
-				//System.out.println("hola");
-				break;
-		}
-	}
-
 }

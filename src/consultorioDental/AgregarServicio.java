@@ -1,23 +1,17 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
-import java.awt.Insets;
 import javax.swing.JTextField;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class AgregarServicio extends MetodosDiseño implements ActionListener {
@@ -39,6 +33,7 @@ public class AgregarServicio extends MetodosDiseño implements ActionListener {
 		});
 	}
 	protected AgregarServicio() {
+		setTitle("Consultorio Dental/Servicios/Agregar Servicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		contentPane = new JPanel();

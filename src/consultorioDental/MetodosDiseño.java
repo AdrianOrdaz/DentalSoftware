@@ -98,16 +98,13 @@ public class MetodosDiseño extends JFrame{
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
 	}
-	protected void activeTF(JCheckBox cb,JCheckBox cb1, JTextField jt) 
+	protected void activeTF(JCheckBox cb, JTextField jt) 
 	{
 		cb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(cb.isSelected()) {
 					jt.setEnabled(true);
 				}else {
-					jt.setEnabled(false);
-				}
-				if(cb1.isSelected()) {
 					jt.setEnabled(false);
 				}
 			}
