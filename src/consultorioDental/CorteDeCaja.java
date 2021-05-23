@@ -2,15 +2,6 @@ package consultorioDental;
 
 import java.awt.Color;
 import java.awt.Container;
-<<<<<<< HEAD
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-=======
->>>>>>> refs/heads/MetodosBD
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -37,13 +28,8 @@ public class CorteDeCaja extends MetodosDiseño {
 		fg.CrearGui();
 	}
 
-<<<<<<< HEAD
-	void CrearGui() {
-		JFrame fCR = new JFrame("Administrar Caja");
-=======
 	protected JFrame  CrearGui() {
 		JFrame fCR = new JFrame("Corte de caja");
->>>>>>> refs/heads/MetodosBD
 		Container con = this.getContentPane();
 		con = fCR.getContentPane();
 		con.setLayout(new GridBagLayout());
@@ -150,34 +136,8 @@ public class CorteDeCaja extends MetodosDiseño {
 		
 		JButton btnAñadirMovExtraordinario = new JButton("A\u00F1adir movimiento extraordinario");
 		GridBagConstraints gbc_btnAñadirMovExtraordinario = new GridBagConstraints();
-<<<<<<< HEAD
-		gbc_btnAñadirMovExtraordinario.anchor = GridBagConstraints.NORTH;
-		gbc_btnAñadirMovExtraordinario.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAñadirMovExtraordinario.gridx = 5;
-		gbc_btnAñadirMovExtraordinario.gridy = 14;
-		con.add(btnAñadirMovExtraordinario, gbc_btnAñadirMovExtraordinario);
-		btnAñadirMovExtraordinario.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				MovimientoExtraordinario movextra = new MovimientoExtraordinario();
-				movextra.CrearGui();
-				fCR.setVisible(false);
-			}
-		});
-		
-		JButton btnIniciarTurno = new JButton("Iniciar turno");
-		btnIniciarTurno.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_btnIniciarTurno = new GridBagConstraints();
-		gbc_btnIniciarTurno.anchor = GridBagConstraints.NORTH;
-		gbc_btnIniciarTurno.insets = new Insets(0, 0, 0, 5);
-		gbc_btnIniciarTurno.gridx = 1;
-		gbc_btnIniciarTurno.gridy = 16;
-		con.add(btnIniciarTurno, gbc_btnIniciarTurno);
-		
-		buttonHome(fCR,false,new GridBagConstraints(),con, 3,16,1,1,0.0,0.0,GridBagConstraints.NORTH);
-=======
 		gbc_btnAñadirMovExtraordinario.ipadx = 130;
 		adjustButton(btnAñadirMovExtraordinario,gbc_btnAñadirMovExtraordinario,con,3,8,1,1,0.0,0.0,GridBagConstraints.CENTER);
->>>>>>> refs/heads/MetodosBD
 		
 		JButton btnTerminarturno = new JButton("Terminar turno");
 		GridBagConstraints gbc_btnTerminarturno = new GridBagConstraints();

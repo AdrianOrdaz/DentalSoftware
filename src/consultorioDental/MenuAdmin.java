@@ -78,33 +78,6 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 				ad.CrearGui();
 				fMenuA.setVisible(false);
 			break;
-<<<<<<< HEAD
-			
-	//		case "Generar reporte":				Asi es con los que fueron hechos con
-	//			Reportes gr = new Reportes();	windows builder
-	//			gr.setVisible(true);
-	//			fMenuA.setVisible(false);
-	//		break;
-			
-			case "Generar reporte": //en proceso
-				Reportes gr = new Reportes();
-				gr.CrearGui();
-				fMenuA.setVisible(false);
-			break;
-			
-			case "Realizar compras": //en proceso
-				RealizarPedido rc = new RealizarPedido();
-				rc.setVisible(true);
-				fMenuA.setVisible(false);
-			break;
-		
-			case "Gestionar usuarios":
-				GestionarUsuario gu = new GestionarUsuario();
-				gu.setVisible(true);
-				fMenuA.setVisible(false);
-			break;
-			
-=======
 			case "Gestionar usuarios":
 				GestionarUsuario gr = new GestionarUsuario();
 				gr.setVisible(true);
@@ -115,21 +88,11 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 				rp.setVisible(true);
 				fMenuA.setVisible(false);
 			break;
->>>>>>> refs/heads/MetodosBD
 			case "Gestionar sueldos":
 				GestionSueldos vgs = new GestionSueldos();
 				vgs.crearGUI();
 				fMenuA.setVisible(false);
 			break;
-<<<<<<< HEAD
-			
-			case "Controlar inventario":
-				Inventario inv = new Inventario();
-				inv.crearInv();
-				fMenuA.setVisible(false);
-			break;
-			
-=======
 			case "Controlar inventario":
 				EntradaSalidaMedicamentos esm = new EntradaSalidaMedicamentos();
 				esm.CrearGui();
@@ -140,10 +103,10 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 				rep.CrearGui();
 				fMenuA.setVisible(false);
 			break;
->>>>>>> refs/heads/MetodosBD
 			case "Salir":
 				System.exit(0);
 			break;
 		}
 	}
+	 
 }

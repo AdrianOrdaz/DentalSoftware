@@ -24,14 +24,8 @@ public class Transaccion extends MetodosDiseño
 
 	}
 
-<<<<<<< HEAD
-	void CrearTransaccionGUI(){
-		//Llama a la creacion del gui
-		JFrame fCR = new JFrame("Transaccion");
-=======
 	protected JFrame crearTransaccionGUI(){
 		fCR = new JFrame("Transaccion");
->>>>>>> refs/heads/MetodosBD
 		Container con = this.getContentPane();
 		con = fCR.getContentPane();
 		con.setLayout(new GridBagLayout());
@@ -188,15 +182,10 @@ public class Transaccion extends MetodosDiseño
 		GridBagConstraints gbc_btnHome = new GridBagConstraints();
 		buttonHome(fCR, false, gbc_btnHome, con, 4, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		
-<<<<<<< HEAD
-		AdministrarCaja ad = new AdministrarCaja();
-		buttonRegresar(this,fCR,new GridBagConstraints(),con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
-=======
 		GridBagConstraints gbc_btnRegresar = new GridBagConstraints();//--
 		gbc_btnRegresar.insets = new Insets(0, 0, 0, 5);
 		AdministrarCaja ac = new AdministrarCaja();
 		buttonRegresar(ac.CrearGui(),fCR,gbc_btnRegresar,con,5,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
->>>>>>> refs/heads/MetodosBD
 		
 		JLabel lbTotal = new JLabel("Total ");
 		lbTotal.setFont(new Font("Tahoma", Font.PLAIN, 24));
