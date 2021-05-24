@@ -99,17 +99,17 @@ public class MetodosDiseño extends MetodosConexionBD{
 	    c.weightx = 0.0;
 	    c.anchor = GridBagConstraints.CENTER;
 	}
-	protected void activeTF(JCheckBox cb, JTextField jt) 
+	protected void activeTF1(JCheckBox cbx,JTextField jt) 
 	{
-		cb.addActionListener(new ActionListener() {
+		cbx.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(cb.isSelected()) {
+				if(cbx.isSelected()) {
 					jt.setEnabled(true);
 				}else {
 					jt.setEnabled(false);
 				}
-			}
-	    });
+				}
+		});
 	}
 	protected void activeBttn(JCheckBox cbx,JButton jB) 
 	{
@@ -167,5 +167,28 @@ public class MetodosDiseño extends MetodosConexionBD{
 	        }
 
 	        return null;
+	}
+	protected void activeTF(JRadioButton rb, JRadioButton rb2, JTextField jt) 
+	{
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(rb);
+		bg.add(rb2);
+		rb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JRadioButton jrb = getSelection(bg);
+				if(jrb.getText() == "Sí")
+				{
+					jt.setEnabled(true);
+				}
+			}
+		});
+		rb2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JRadioButton jrb = getSelection(bg);
+				if(jrb.getText() == "No") {
+					jt.setEnabled(false);
+				}
+			}
+		});
 	}
 }

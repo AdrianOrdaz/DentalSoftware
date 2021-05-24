@@ -86,7 +86,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 	    JCheckBox cbAplicar = new JCheckBox();
 		adjustComponents(c, 1, 4, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar,c);
-	    activeTF(cbAplicar,jtPromocion);
+	    activeTF1(cbAplicar,jtPromocion);
 	    
 	    String[] header = {"","ID Medicamento","Nombre","Cantidad","Precio","Subtotal"};
 	    DefaultTableModel dtm = new DefaultTableModel(null,header);

@@ -11,16 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 	JFrame fAR;
@@ -33,9 +28,8 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 	JTextField jtCirugias;
 	JTextField jtFamiliar;
 	ButtonGroup bg;
-	JRadioButton cbAplicar;
-	JRadioButton cbAplicar2;
 	JRadioButton jrb;
+	
 	public static void main(String[] args) {
 		AgregarPaciente vap = new AgregarPaciente();
 		vap.crearGUI();
@@ -82,11 +76,10 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		con.add(lbSexo,c);
 		
 		bg = new ButtonGroup();
-		cbAplicar = new JRadioButton("M");
-		cbAplicar2 = new JRadioButton("F");
+		JRadioButton cbAplicar = new JRadioButton("M");
+		JRadioButton cbAplicar2 = new JRadioButton("F");
 		bg.add(cbAplicar);
 		bg.add(cbAplicar2);
-		
 		adjustComponents(c, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		c.insets = new Insets(0,50,0,0);
 	    con.add(cbAplicar,c);
@@ -122,10 +115,10 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 7, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbEnfermedad,c);
 		
-		JCheckBox cbAplicar3 = new JCheckBox("Sí");
+		JRadioButton cbAplicar3 = new JRadioButton("Sí");
 		adjustComponents(c, 1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar3,c);
-	    JCheckBox cbAplicar4 = new JCheckBox("No");
+	    JRadioButton cbAplicar4 = new JRadioButton("No");
 		adjustComponents(c, 1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar4,c);
 	    jtEnfermedad = new JTextField();
@@ -133,16 +126,16 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		jtEnfermedad.setEnabled(false);
 		adjustComponents(c, 2, 7, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtEnfermedad,c);
-	    activeTF(cbAplicar3,jtEnfermedad);
+	    activeTF(cbAplicar3,cbAplicar4,jtEnfermedad);
 		
 	    JLabel lbAlergia = new JLabel("Alergias");
 		adjustComponents(c, 0, 8, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbAlergia,c);
 		
-		JCheckBox cbAplicar5 = new JCheckBox("Sí");
+		JRadioButton cbAplicar5 = new JRadioButton("Sí");
 		adjustComponents(c, 1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar5,c);
-	    JCheckBox cbAplicar6 = new JCheckBox("No");
+	    JRadioButton cbAplicar6 = new JRadioButton("No");
 		adjustComponents(c, 1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar6,c);
 	    jtAlergias = new JTextField();
@@ -150,16 +143,16 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		jtAlergias.setEnabled(false);
 		adjustComponents(c, 2, 8, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtAlergias,c);
-	    activeTF(cbAplicar5,jtAlergias);
+	    activeTF(cbAplicar5,cbAplicar6,jtAlergias);
 	    
 	    JLabel lbCirugias = new JLabel("¿Cirugias recientes?");
 		adjustComponents(c, 0, 9, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbCirugias,c);
 		
-		JCheckBox cbAplicar7 = new JCheckBox("Sí");
+		JRadioButton cbAplicar7 = new JRadioButton("Sí");
 		adjustComponents(c, 1, 9, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar7,c);
-	    JCheckBox cbAplicar8 = new JCheckBox("No");
+	    JRadioButton cbAplicar8 = new JRadioButton("No");
 		adjustComponents(c, 1, 9, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar8,c);
 	    jtCirugias = new JTextField();
@@ -167,16 +160,16 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		jtCirugias.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 2, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtCirugias,c);
-	    activeTF(cbAplicar7,jtCirugias);
+	    activeTF(cbAplicar7,cbAplicar8,jtCirugias);
 	    
 	    JLabel lbFamiliar = new JLabel("Enfermedad de algún familiar:");
 		adjustComponents(c, 0, 10, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbFamiliar,c);
 		
-		JCheckBox cbAplicar9 = new JCheckBox("Sí");
+		JRadioButton cbAplicar9 = new JRadioButton("Sí");
 		adjustComponents(c, 1, 10, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(cbAplicar9,c);
-	    JCheckBox cbAplicar10 = new JCheckBox("No");
+	    JRadioButton cbAplicar10 = new JRadioButton("No");
 		adjustComponents(c, 1, 10, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar10,c);
 	    jtFamiliar = new JTextField();
@@ -184,7 +177,7 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 		jtFamiliar.setEnabled(false);
 		adjustComponents(c, 2, 10, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    con.add(jtFamiliar,c);
-	    activeTF(cbAplicar9,jtFamiliar);
+	    activeTF(cbAplicar9,cbAplicar10,jtFamiliar);
 	    
 	    JButton btnGuardar = new JButton("Guardar");
 	    adjustButton(btnGuardar,c,con,0,11,1,1,1.0,1.0,GridBagConstraints.CENTER);
