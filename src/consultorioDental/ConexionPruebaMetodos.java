@@ -15,7 +15,9 @@ public class ConexionPruebaMetodos extends MetodosDiseño {
 //		subirFilaCol5("medicamentos", "id_med", "inv_med", "nom_med", "tipo_med", "pre_med",
 //				"1", "34", "omeprazol", "antidepresivo", "53.50"); //este tambien funciona
 		
-		borrarFila("medicamentos", "id_med", "123");
+//		borrarFila("medicamentos", "id_med", "123");
 		
+		String algo = "medicamentoalgo";
+		subirFilaCol5("medicamentos", "id_med", "inv_med", "nom_med", "tipo_med", "pre_med", "2", "50", algo, "antiinflamatorio", "20.99");
 	}
 }
