@@ -18,17 +18,16 @@ import javax.swing.JTextField;
 
 public class InicioSesion extends MetodosDiseño implements ActionListener
 {
-
+	JFrame fIS;
 	public static void main(String[]args) 
 	{
 		InicioSesion vIS = new InicioSesion();
 		vIS.crearIS();
 	}
 	
-	private void crearIS()
+	protected void crearIS()
 	{
-		
-		JFrame fIS = new JFrame("Consultorio Dental/Inicio de Sesion");
+		fIS = new JFrame("Consultorio Dental/Inicio de Sesion");
 		Container con = new Container();
 		con = fIS.getContentPane();
 		GridBagConstraints c = new GridBagConstraints();

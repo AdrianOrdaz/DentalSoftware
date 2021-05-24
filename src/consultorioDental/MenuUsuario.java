@@ -26,6 +26,7 @@ public class MenuUsuario extends MetodosDiseño implements ActionListener{
 		//El metodo adjustButton sirve para acomodar y ajustar un boton en el grid.
 		//Checar archivo metodosDiseño
 		adjustButton(btnCerrarSesion, c, con, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.ABOVE_BASELINE);
+		btnCerrarSesion.addActionListener(this);
 	    
 		JButton btnSalirPrograma = new JButton("Salir");
 		btnSalirPrograma.setBackground(new Color(135,206,235));
@@ -124,6 +125,11 @@ public class MenuUsuario extends MetodosDiseño implements ActionListener{
 			break;
 			case "Salir":
 				System.exit(0);
+			break;
+			case "Cerrar Sesion":
+				InicioSesion is = new InicioSesion();
+				is.crearIS();
+				fMenuU.setVisible(false);
 			break;
 		}
 	}
