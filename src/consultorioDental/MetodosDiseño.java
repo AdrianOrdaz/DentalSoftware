@@ -3,6 +3,7 @@ package consultorioDental;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Enumeration;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -153,5 +154,18 @@ public class MetodosDiseño extends MetodosConexionBD{
 		c.weighty = 0.0;
 		c.weightx = 0.0;
 		c.anchor = GridBagConstraints.CENTER;
+	}
+	protected static JRadioButton getSelection(ButtonGroup group)
+	{
+	        for (Enumeration e=group.getElements(); e.hasMoreElements(); )
+	        {
+	            JRadioButton b = (JRadioButton)e.nextElement();
+	            if (b.getModel() == group.getSelection())
+	            {
+	                return b;
+	            }
+	        }
+
+	        return null;
 	}
 }

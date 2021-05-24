@@ -10,17 +10,32 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class AgregarPaciente extends MetodosDiseño{
+public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 	JFrame fAR;
+	JTextField jtNombre_Pte;
+	JTextField jtEdad_Pte;
+	JTextField jtCel_Pte;
+	JTextField jtMail_Pte;
+	JTextField jtEnfermedad;
+	JTextField jtAlergias;
+	JTextField jtCirugias;
+	JTextField jtFamiliar;
+	ButtonGroup bg;
+	JRadioButton cbAplicar;
+	JRadioButton cbAplicar2;
+	JRadioButton jrb;
 	public static void main(String[] args) {
 		AgregarPaciente vap = new AgregarPaciente();
 		vap.crearGUI();
@@ -48,7 +63,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		adjustComponents(c, 0, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbNombre_Pte,c);
 		
-		JTextField jtNombre_Pte = new JTextField();
+		jtNombre_Pte = new JTextField();
 		jtNombre_Pte.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtNombre_Pte,c);
@@ -57,7 +72,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		adjustComponents(c, 0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbEdad_Pte,c);
 		
-		JTextField jtEdad_Pte = new JTextField();
+		jtEdad_Pte = new JTextField();
 		jtEdad_Pte.setPreferredSize(new Dimension(100,25));
 		adjustComponents(c, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtEdad_Pte,c);
@@ -66,11 +81,15 @@ public class AgregarPaciente extends MetodosDiseño{
 		adjustComponents(c, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		con.add(lbSexo,c);
 		
-		JCheckBox cbAplicar = new JCheckBox("M");
+		bg = new ButtonGroup();
+		cbAplicar = new JRadioButton("M");
+		cbAplicar2 = new JRadioButton("F");
+		bg.add(cbAplicar);
+		bg.add(cbAplicar2);
+		
 		adjustComponents(c, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		c.insets = new Insets(0,50,0,0);
 	    con.add(cbAplicar,c);
-	    JCheckBox cbAplicar2 = new JCheckBox("F");
 		adjustComponents(c, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 		c.insets = new Insets(0,100,0,0);
 	    con.add(cbAplicar2,c);
@@ -80,7 +99,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbCel_Pte,c);
 		
-	    JTextField jtCel_Pte = new JTextField();
+	    jtCel_Pte = new JTextField();
 		jtCel_Pte.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtCel_Pte,c);
@@ -89,7 +108,7 @@ public class AgregarPaciente extends MetodosDiseño{
 		adjustComponents(c, 0, 5, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbMail_Pte,c);
 		
-		JTextField jtMail_Pte = new JTextField();
+		jtMail_Pte = new JTextField();
 		jtMail_Pte.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtMail_Pte,c);
@@ -109,7 +128,7 @@ public class AgregarPaciente extends MetodosDiseño{
 	    JCheckBox cbAplicar4 = new JCheckBox("No");
 		adjustComponents(c, 1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar4,c);
-	    JTextField jtEnfermedad = new JTextField();
+	    jtEnfermedad = new JTextField();
 		jtEnfermedad.setPreferredSize(new Dimension(259,25));
 		jtEnfermedad.setEnabled(false);
 		adjustComponents(c, 2, 7, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -126,7 +145,7 @@ public class AgregarPaciente extends MetodosDiseño{
 	    JCheckBox cbAplicar6 = new JCheckBox("No");
 		adjustComponents(c, 1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar6,c);
-	    JTextField jtAlergias = new JTextField();
+	    jtAlergias = new JTextField();
 		jtAlergias.setPreferredSize(new Dimension(259,25));
 		jtAlergias.setEnabled(false);
 		adjustComponents(c, 2, 8, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -143,7 +162,7 @@ public class AgregarPaciente extends MetodosDiseño{
 	    JCheckBox cbAplicar8 = new JCheckBox("No");
 		adjustComponents(c, 1, 9, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar8,c);
-	    JTextField jtCirugias = new JTextField();
+	    jtCirugias = new JTextField();
 	    jtCirugias.setEnabled(false);
 		jtCirugias.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 2, 9, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -160,7 +179,7 @@ public class AgregarPaciente extends MetodosDiseño{
 	    JCheckBox cbAplicar10 = new JCheckBox("No");
 		adjustComponents(c, 1, 10, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 	    con.add(cbAplicar10,c);
-	    JTextField jtFamiliar = new JTextField();
+	    jtFamiliar = new JTextField();
 		jtFamiliar.setPreferredSize(new Dimension(259,25));
 		jtFamiliar.setEnabled(false);
 		adjustComponents(c, 2, 10, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
@@ -172,6 +191,7 @@ public class AgregarPaciente extends MetodosDiseño{
 	    Pacientes vp = new Pacientes();
 	    buttonRegresar(vp.crearGUI(),fAR,c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
 	    c.insets = new Insets(0,100,0,0);
+	    btnGuardar.addActionListener(this);
 	    buttonHome(fAR,true,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
 	    
 		fAR.pack();
@@ -181,6 +201,13 @@ public class AgregarPaciente extends MetodosDiseño{
 		vp.fPte.setVisible(false);
 		con.setBackground(Color.WHITE);
 		return fAR;
+	}
+	public void actionPerformed(ActionEvent e) {
+		jrb = getSelection(bg);
+		subirFilaCol9("pacientes ","nom_pte","edad_pte","tel_pte","mail_pte","sexo_pte","enfermedad_pte",
+				"alergias_pte","cirugias_pte","familiar_pte",jtNombre_Pte.getText(),jtEdad_Pte.getText()
+				,jtCel_Pte.getText(),jtMail_Pte.getText(),jrb.getText(),jtEnfermedad.getText(),jtAlergias.getText(),
+				jtCirugias.getText(),jtFamiliar.getText());
 	}
 
 }

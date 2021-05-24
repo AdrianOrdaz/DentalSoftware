@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 public class MetodosConexionBD extends JFrame
 {
 	
-	protected static void subirFilaCol10(String nomTabla, String col1, String col2, String col3, String col4, String col5, String col6, String col7, String col8, String col9, String col10,
-			String val1, String val2, String val3, String val4, String val5, String val6, String val7, String val8, String val9, String val10)
+	protected static void subirFilaCol9(String nomTabla, String col1, String col2, String col3, String col4, String col5, String col6, String col7, String col8, String col9,
+			String val1, String val2, String val3, String val4, String val5, String val6, String val7, String val8, String val9)
 	{
 		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
 		Connection cn = null;
@@ -29,8 +29,8 @@ public class MetodosConexionBD extends JFrame
 			
 			//Crear codigo sql
 			String upsql = "insert into "+nomTabla
-						+"("+col1+", "+col2+", "+col3+", "+col4+", "+col5+", "+col6+", "+col7+", "+col8+", "+col9+", "+col10+")"
-						+"values('"+val1+"','"+val2+"','"+val3+"','"+val4+"','"+val5+"','"+val6+"','"+val7+"','"+val8+"','"+val9+"','"+val10+"')";
+					+"("+col1+", "+col2+", "+col3+", "+col4+", "+col5+", "+col6+", "+col7+", "+col8+", "+col9+")"
+					+"values('"+val1+"','"+val2+"','"+val3+"','"+val4+"','"+val5+"','"+val6+"','"+val7+"','"+val8+"','"+val9+"')";
 			uploadStm.execute(upsql); //Esto ejecuta el codigo sql en la base de datos
 		} catch (SQLException e) {
 			e.printStackTrace();
