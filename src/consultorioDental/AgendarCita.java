@@ -15,6 +15,12 @@ import javax.swing.JTextField;
 
 public class AgendarCita extends MetodosDiseño implements ActionListener 
 {
+	JTextField jtPaciente;
+	JTextField jtFecha;
+	JTextField jtHora;
+	JTextField jtDentista;
+	JTextField jtID;
+
 	public static void main(String[]args)
 	{
 		AgendarCita ac = new AgendarCita();
@@ -54,16 +60,16 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbDentista,c);
 		
-		JTextField jtPaciente = new JTextField(15);
+		jtPaciente = new JTextField(15);
 		adjustTextField(jtPaciente, c, con, 1, 1, 3, 1, 1.0, 0.0,GridBagConstraints.CENTER);
 		
-		JTextField jtFecha = new JTextField(15);
+		jtFecha = new JTextField(15);
 		adjustTextField(jtFecha, c, con, 1, 2, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
-		JTextField jtHora = new JTextField(15);
+		jtHora = new JTextField(15);
 		adjustTextField(jtHora, c, con, 1, 3, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
-		JTextField jtDentista = new JTextField(15);
+		jtDentista = new JTextField(15);
 		adjustTextField(jtDentista, c, con, 1, 4, 3, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		JButton btnAgendarCita = new JButton("Agendar Cita");
@@ -73,6 +79,8 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 		GridBagConstraints gbc_btnHome = new GridBagConstraints();
 		buttonHome(fAC,true,gbc_btnHome,con,4,6,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		
+		btnAgendarCita.addActionListener(this);
+		
 		fAC.pack();
 		fAC.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fAC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,9 +88,8 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 		con.setBackground(Color.WHITE);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		subirFilaCol4("citas","pte_cita","den_cita","hr_cita","fecha_cita",
+				jtPaciente.getText(), jtDentista.getText(), jtHora.getText(), jtFecha.getText());
 	}
 }
