@@ -12,7 +12,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		ma.crearMenuAdmin();
 	}
 	
-	protected void crearMenuAdmin()
+	protected JFrame crearMenuAdmin()
 	{
 		fMenuA = new JFrame("Consultorio Dental");
 		Container con = new Container();
@@ -54,15 +54,11 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		btnRealizarCompra.addActionListener(this);
 		
 		JButton btnGestionarUsuarios = new JButton("Gestionar usuarios");
-		adjustButton(btnGestionarUsuarios, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
+		adjustButton(btnGestionarUsuarios, c, con, 1, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
 		btnGestionarUsuarios.addActionListener(this);
 		
-		JButton btnGestionarSueldos = new JButton("Gestionar sueldos");
-		adjustButton(btnGestionarSueldos, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.NORTH);
-		btnGestionarSueldos.addActionListener(this);
-		
 		JButton btnControl_Inventario = new JButton("Controlar inventario");
-		adjustButton(btnControl_Inventario, c, con, 2, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
+		adjustButton(btnControl_Inventario, c, con, 1, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
 		btnControl_Inventario.addActionListener(this);
 		
 		fMenuA.pack();
@@ -70,6 +66,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		fMenuA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fMenuA.setVisible(true);
 		con.setBackground(Color.WHITE);
+		return fMenuA;
 	}
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
@@ -87,11 +84,6 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 			case "Realizar compras":
 				RealizarPedido rp = new RealizarPedido();
 				rp.setVisible(true);
-				fMenuA.setVisible(false);
-			break;
-			case "Gestionar sueldos":
-				GestionSueldos vgs = new GestionSueldos();
-				vgs.crearGUI();
 				fMenuA.setVisible(false);
 			break;
 			case "Controlar inventario":

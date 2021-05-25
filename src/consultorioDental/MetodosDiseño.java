@@ -7,11 +7,13 @@ import java.util.Enumeration;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.TableCellRenderer;
 
 public class MetodosDiseño extends MetodosConexionBD{
 	
 	JButton btnHome;
 	JButton btnRegresar;
+	JRadioButton jrbt;
 	
 	protected void adjustButton(JButton btn, GridBagConstraints c, Container con, 
 			int gx, int gy, int gw, int gh, double wy, double wx, int gdb)
@@ -190,5 +192,20 @@ public class MetodosDiseño extends MetodosConexionBD{
 				}
 			}
 		});
+	}
+	class MyTableCellRenderer extends JRadioButton implements TableCellRenderer, ActionListener{
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	       this.setSelected(isSelected);
+	       //this.addActionListener(actionPerformed());
+	       return this;
+	    }
+		public void actionPerformed(ActionEvent e) {
+			if(this.isSelected()) {
+				Pacientes pte = new Pacientes();
+				pte.btnCrearReceta.setVisible(true);
+				System.out.print(e.getSource());
+			}
+		}
+
 	}
 }
