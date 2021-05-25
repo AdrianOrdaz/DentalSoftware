@@ -15,6 +15,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 	JTextField jtUsuario;
 	JTextField jtID_Venta;
 	JTextField jtPaciente;
+	JTextField jtPromocion;
 	public static void main(String[] args) {
 		Recibo vr = new Recibo();
 		vr.crearGUI();
@@ -79,7 +80,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbPromocion,c);
 		
-		JTextField jtPromocion = new JTextField();
+		jtPromocion = new JTextField();
 		jtPromocion.setPreferredSize(new Dimension(200,25));
 		c.insets = new Insets(0,55,0,0);
 		jtPromocion.setEnabled(false);
