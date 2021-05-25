@@ -73,7 +73,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 	    model.addRow(new Object[]{obtenerString("dentistas",1,1), obtenerString("dentistas",2,1), obtenerString("dentistas",3,1), obtenerString("dentistas",4,1), 
 	    		obtenerString("dentistas",5,1), obtenerString("dentistas",6,1), obtenerString("dentistas",7,1), obtenerString("dentistas",8,1)});
 	    
-		/*if(NumFil("dentistas")>2)
+		if(NumFil("dentistas")>2)
 		{
 		for(int i = 1; i<NumFil("dentistas"); i++)
 		{
@@ -82,7 +82,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		model.addRow(new Object[]{obtenerString("dentistas",1,a), obtenerString("dentistas",2,a), obtenerString("dentistas",3,a), obtenerString("dentistas",4,a), 
 	    		obtenerString("dentistas",5,a), obtenerString("dentistas",6,a), obtenerString("dentistas",7,a), obtenerString("dentistas",8,a)});
 		}
-		}*/
+		}
 		tbDentistas.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(tbDentistas);
 		

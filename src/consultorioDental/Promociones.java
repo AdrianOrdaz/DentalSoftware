@@ -77,7 +77,7 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		
 		tbPromociones.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		scrollPane.setViewportView(tbPromociones);
-		/*if(NumFil("promociones")>2)
+		if(NumFil("promociones")>2)
 		{
 		for(int i = 1; i<NumFil("promociones"); i++)
 		{
@@ -86,7 +86,7 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		model.addRow(new Object[]{obtenerString("promociones",1,a), obtenerString("promociones",2,a), obtenerString("promociones",3,a), obtenerString("promociones",4,a)
 				, obtenerString("promociones",5,a), obtenerString("promociones",6,a), obtenerString("promociones",7,a), obtenerString("promociones",8,a)});
 		}
-		}*/
+		}
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);

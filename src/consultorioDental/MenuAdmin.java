@@ -63,7 +63,7 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
 		{
-			case "Administrar caja":
+			case "Corte de caja":
 				CorteDeCaja cc = new CorteDeCaja();
 				cc.CrearGui();
 				fMenuA.setVisible(false);

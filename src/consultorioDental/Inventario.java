@@ -80,7 +80,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 	    model.addRow(new Object[]{obtenerString("medicamentos",1,1), obtenerString("medicamentos",2,1), 
 	    		obtenerString("medicamentos",3,1), obtenerString("medicamentos",4,1), obtenerString("medicamentos",5,1), obtenerString("medicamentos",6,1)});
 	    
-	   /* if(NumFil("medicamentos")>1)
+	    if(NumFil("medicamentos")>1)
 	    {
 	    for(int i = 1; i<NumFil("medicamentos"); i++)
 	    {
@@ -89,7 +89,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 	    model.addRow(new Object[]{obtenerString("medicamentos",1,a), obtenerString("medicamentos",2,a), 
 	    		obtenerString("medicamentos",3,a), obtenerString("medicamentos",4,a), obtenerString("medicamentos",5,a), obtenerString("medicamentos",6,a)});
 	    }
-	    }*/
+	    }
 
 		tbInventario.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(tbInventario);

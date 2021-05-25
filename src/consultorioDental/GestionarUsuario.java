@@ -74,7 +74,7 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		
 		tbGestionarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		scrollPane.setViewportView(tbGestionarUsuario);
-		/*if(NumFil("usuarios")>2)
+		if(NumFil("usuarios")>2)
 		{
 		for(int i = 1; i<NumFil("usuarios"); i++)
 		{
@@ -83,7 +83,7 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		model.addRow(new Object[]{obtenerString("usuarios",1,a), obtenerString("usuarios",2,a), obtenerString("usuarios",3,a), obtenerString("usuarios",4,a)
 				, obtenerString("usuarios",5,a), obtenerString("usuarios",6,a), obtenerString("usuarios",7,a), obtenerString("usuarios",8,a)});
 		}
-		}*/
+		}
 		scrollPane.setViewportView(tbGestionarUsuario);
 		adjustComponents(gbc_scrollPane,1,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(scrollPane, gbc_scrollPane);

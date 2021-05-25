@@ -76,7 +76,7 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		
 		tbServicios.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		scrollPane.setViewportView(tbServicios);
-		/*if(NumFil("servicios")>2)
+		if(NumFil("servicios")>2)
 		{
 		for(int i = 1; i<NumFil("servicios"); i++)
 		{
@@ -84,7 +84,7 @@ public class Servicios extends MetodosDiseño implements ActionListener {
 		DefaultTableModel model = (DefaultTableModel) tbServicios.getModel();
 		model.addRow(new Object[]{obtenerString("servicios",2,a), obtenerString("servicios",1,a), obtenerString("servicios",3,a)});
 		}
-		}*/
+		}
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);

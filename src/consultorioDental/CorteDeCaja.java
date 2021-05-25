@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 
 public class CorteDeCaja extends MetodosDiseño {
-
+	JFrame fCR;
 	private JTextField jtDineroApertura;
 	private JTextField jtDineroCierre;
 	private JTextField jtSumaTotal;
@@ -26,7 +26,7 @@ public class CorteDeCaja extends MetodosDiseño {
 	}
 	
 	protected JFrame  CrearGui() {
-		JFrame fCR = new JFrame("Corte de caja");
+		fCR = new JFrame("Corte de caja");
 		Container con = this.getContentPane();
 		con = fCR.getContentPane();
 		con.setLayout(new GridBagLayout());

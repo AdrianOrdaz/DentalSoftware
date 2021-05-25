@@ -334,6 +334,50 @@ public class MetodosConexionBD extends JFrame
 		}
 	}
 	
+	protected static void subirFilaCol2(String nomTabla, String col1, String col2,String val1, String val2)
+	{
+		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+		Connection cn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		
+		try {
+			cn = conexion.conectar();
+			stm = cn.createStatement();
+			rs = stm.executeQuery("SELECT * FROM "+nomTabla); //Esta linea me va a traer toda la tabla usuario
+			
+			//Crear Declaracion (statement)
+			Statement uploadStm = cn.createStatement();
+			
+			//Crear codigo sql
+			String upsql = "insert into "+nomTabla
+						+"("+col1+", "+col2+")"
+						+"values('"+val1+"','"+val2+"')";
+			uploadStm.execute(upsql); //Esto ejecuta el codigo sql en la base de datos
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+			try {
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				
+				if(stm!=null)
+				{
+					stm.close();
+				}
+				
+				if(cn!=null)
+				{
+					cn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 	
 	protected static void modificarBD(String nomTabla, String nomCol, String nomId, String id, String valor)
 	{
@@ -435,31 +479,78 @@ public class MetodosConexionBD extends JFrame
 		return returnear;
 	}
 
-	protected static String borrarFila(String nomTabla, String nomColumnaId, String numId)
+	protected static void borrarFila(String nomTabla, String nomColumnaId, String numId)
 	{
-		int integer=1;
+		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+		Connection cn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		
+		try {
+			cn = conexion.conectar();
+			stm = cn.createStatement();
+			String execute = "SELECT * FROM "+nomTabla;
+			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+			
+			//Eliminar alguna fila de la tabla de la base de datos.......
+			//Crear Declaracion (statement)
+			Statement delStm = cn.createStatement();
+			
+			//Crear codigo sql
+			String delstm = "delete from "+nomTabla+" where "+nomColumnaId+"="+numId;
+			delStm.executeUpdate(delstm);
+			
+//			delstm = "set @autoid :=0";
+//			delStm.executeUpdate(delstm);
+//			delstm = "update "+nomTabla+" set "+nomColumnaId+" = @autoid := (@autoid+1)";
+//			delStm.executeUpdate(delstm);
+//			delstm = "alter table "+nomTabla+" Auto_increment = 1";
+//			delStm.executeUpdate(delstm);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+			try {
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				
+				if(stm!=null)
+				{
+					stm.close();
+				}
+				
+				if(cn!=null)
+				{
+					cn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	protected static String UltVal(String nomTabla, int col)
+	{
 		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
 		Connection cn = null;
 		Statement stm = null;
 		ResultSet rs = null;
 		String returnear = null;
-		PreparedStatement ps = null;
+		
 		try {
 			cn = conexion.conectar();
-			String delstm = "delete from "+nomTabla+" where "+nomColumnaId+"="+numId;
-			//String execute = "SELECT * FROM "+nomTabla;
-			ps = cn.prepareStatement(delstm);
-			ps.setInt(1,integer);
-			ps.executeUpdate(); //Esta linea me va a traer toda la tabla usuario
-			
-			//Eliminar alguna fila de la tabla de la base de datos.......
-			//Crear Declaracion (statement)
-			//Statement delStm = cn.createStatement();
-			
-			//Crear codigo sql
+			stm = cn.createStatement();
+			String execute = "SELECT * FROM "+nomTabla;
+			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
 			
 			
-			//int filaAfectada = delStm.executeUpdate(delstm); //Esto ejecuta el codigo sql en la base de datos
+			while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+			{
+				returnear = rs.getString(col);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -485,6 +576,52 @@ public class MetodosConexionBD extends JFrame
 			}
 		}
 		return returnear;
+	}
+	
+	protected static int NumFil(String nomTabla)
+	{
+		int numFil=0;
+		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+		Connection cn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		
+		try {
+			cn = conexion.conectar();
+			stm = cn.createStatement();
+			String execute = "SELECT * FROM "+nomTabla;
+			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+			
+			
+			while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+			{
+				numFil = numFil+1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+			try {
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				
+				if(stm!=null)
+				{
+					stm.close();
+				}
+				
+				if(cn!=null)
+				{
+					cn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return numFil;
 	}
 	
 }

@@ -55,7 +55,7 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 	    model.addRow(new Object[]{obtenerString("agenda",1,1), obtenerString("agenda",2,1), 
 	    		obtenerString("agenda",3,1), obtenerString("agenda",4,1), obtenerString("agenda",5,1), obtenerString("agenda",6,1)});
 	    
-	   /* if(NumFil("agenda")>1)
+	    if(NumFil("agenda")>1)
 	    {
 	    for(int i = 1; i<NumFil("agenda"); i++)
 	    {
@@ -64,7 +64,7 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 	    model.addRow(new Object[]{obtenerString("agenda",1,a), obtenerString("agenda",2,a), 
 	    		obtenerString("agenda",3,a), obtenerString("agenda",4,a), obtenerString("agenda",5,a), obtenerString("agenda",6,a)});
 	    }
-	    }*/
+	    }
 	    
 	    tbAgenda.getTableHeader().setReorderingAllowed(false);
 	    scrollPane.setViewportView(tbAgenda);
