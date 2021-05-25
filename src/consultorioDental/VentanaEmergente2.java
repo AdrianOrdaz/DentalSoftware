@@ -18,7 +18,7 @@ public class VentanaEmergente2 extends MetodosDiseño implements ActionListener
 		vE2.crearVE2();
 	}
 	
-	private void crearVE2()
+	void crearVE2()
 	{
 		JFrame fVE2 = new JFrame("Consultorio Dental/Advertencia");
 		Container con = new Container();
@@ -27,7 +27,7 @@ public class VentanaEmergente2 extends MetodosDiseño implements ActionListener
 		con.setLayout(new GridBagLayout());
 		
 		JLabel lbAdvertencia = new JLabel("Haz alcanzado el limite de intentos, la ventana se cerrara.");
-		adjustComponents(c, 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 0, 0, 0, 0.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbAdvertencia,c);
 		
 		fVE2.setSize(400,200); 
@@ -35,6 +35,14 @@ public class VentanaEmergente2 extends MetodosDiseño implements ActionListener
 		fVE2.setResizable(false);
 		fVE2.setVisible(true);
 		fVE2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.exit(0);
 	}
 
 	@Override

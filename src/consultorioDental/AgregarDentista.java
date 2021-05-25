@@ -16,6 +16,15 @@ import javax.swing.JTextField;
 public class AgregarDentista extends MetodosDiseño implements ActionListener{
 	JFrame fAD;
 	JButton btnAgregar;
+	JTextField jtID;
+	JTextField jtNombre;
+	JTextField jtEstudios;
+	JTextField jtHorario;
+	JTextField jtNumTel;
+	JTextField jtSueldo;
+	JTextField jtEmail;
+	JTextField jtDireccion;
+	
 	public static void main(String[]args)
 	{
 		AgregarDentista vAD = new AgregarDentista();
@@ -36,24 +45,24 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 0, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbInformacionDentista,c);
 		//ID
-		JLabel lbID = new JLabel("ID: ");
-		lbID.setFont (lbID.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
-		con.add(lbID,c);
+		//JLabel lbID = new JLabel("ID: ");
+		//lbID.setFont (lbID.getFont ().deriveFont (21.0f));
+		//adjustComponents(c, 0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
+		//con.add(lbID,c);
 	
 		JLabel lbNombre = new JLabel("Nombre: ");
 		lbNombre.setFont (lbNombre.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
+		adjustComponents(c, 0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbNombre,c);
 		
 		JLabel lbEstudios = new JLabel("Estudios: ");
 		lbEstudios.setFont (lbEstudios.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
+		adjustComponents(c, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbEstudios,c);
 		
 		JLabel lbNumTel = new JLabel("Telefono: ");
 		lbNumTel.setFont (lbNumTel.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 4, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
+		adjustComponents(c, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbNumTel,c);
 		
 		JLabel lbHorario = new JLabel("Horario: ");
@@ -73,32 +82,32 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 		
 		JLabel lbDireccion = new JLabel("Direccion: ");
 		lbDireccion.setFont (lbDireccion.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 2, 4, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		adjustComponents(c, 0, 4, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbDireccion,c);
 		
-		JTextField jtID = new JTextField(15);
-		adjustTextField(jtID, c, con, 1, 1, 1, 1, 0.0, 1.0,GridBagConstraints.CENTER);
+		//jtID = new JTextField(15);
+		//adjustTextField(jtID, c, con, 1, 1, 1, 1, 0.0, 1.0,GridBagConstraints.CENTER);
 				
-		JTextField jtNombre = new JTextField(15);
-		adjustTextField(jtNombre, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		jtNombre = new JTextField(15);
+		adjustTextField(jtNombre, c, con, 1, 1, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
-		JTextField jtEstudios = new JTextField(15);
-		adjustTextField(jtEstudios, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		jtEstudios = new JTextField(15);
+		adjustTextField(jtEstudios, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 
-		JTextField jtNumTel = new JTextField(15);
-		adjustTextField(jtNumTel, c, con, 1, 4, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		jtNumTel = new JTextField(15);
+		adjustTextField(jtNumTel, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 
-		JTextField jtHorario = new JTextField(15);
+		jtHorario = new JTextField(15);
 		adjustTextField(jtHorario, c, con, 3, 1, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
-		JTextField jtSueldo = new JTextField(15);
+		jtSueldo = new JTextField(15);
 		adjustTextField(jtSueldo, c, con, 3, 2, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
-		JTextField jtEmail = new JTextField(15);
+		jtEmail = new JTextField(15);
 		adjustTextField(jtEmail, c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
 
-		JTextField jtDireccion = new JTextField(15);
-		adjustTextField(jtDireccion, c, con, 3, 4, 1, 1, 0.0, 1.0, GridBagConstraints.WEST);
+		jtDireccion = new JTextField(15);
+		adjustTextField(jtDireccion, c, con, 1, 4, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		//Botones
 		btnAgregar  = new JButton("Agregar");
@@ -121,9 +130,13 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 		return fAD;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) 
-	{
-		
+	{	
+		subirFilaCol7("dentistas","nom_den","est_den","hor_den","sldo_den","dir_den","tel_den","mail_den",
+					jtNombre.getText(),jtEstudios.getText(), jtHorario.getText(), jtSueldo.getText(), 
+					jtDireccion.getText(), jtNumTel.getText(),jtEmail.getText());
+   
 	}
+        
+		        
 }

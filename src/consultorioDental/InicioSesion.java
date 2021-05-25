@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class InicioSesion extends MetodosDiseño implements ActionListener
 {
@@ -33,6 +34,8 @@ public class InicioSesion extends MetodosDiseño implements ActionListener
     Connection cn = null;
 	Statement stm = null;
 	ResultSet rs = null;
+	int numIntentos=0;
+	
 	public static void main(String[]args) 
 	{
 		InicioSesion vIS = new InicioSesion();
@@ -95,36 +98,84 @@ public class InicioSesion extends MetodosDiseño implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			cn = conexion.conectar();
-	
-			stm = cn.createStatement();
-			String execute = "SELECT nom_admin, contr_admin FROM admin";
-			rs = stm.executeQuery(execute);
-			if (rs.next())
+		switch(e.getActionCommand())
+		{
+			case "Acceder":
 			{
-				if(jtUsuario.getText() ==  rs.getString("nom_admin") && jtPassword.getText() == rs.getString("contr_admin")) {
-					System.out.print("Hola");
-					MenuAdmin ma = new MenuAdmin();
-					ma.crearMenuAdmin();
-					fIS.setVisible(false);
-				}  
-			}
-			
-		}catch (SQLException e1) {
-			e1.printStackTrace();
-		} finally {
-			try {
-				if(rs!=null && stm!=null && cn!=null)
+				numIntentos = numIntentos+1;
+				if(numIntentos==5)
 				{
-					rs.close();
-					stm.close();
-					cn.close();
+					VentanaEmergente2 vgs = new VentanaEmergente2();
+					vgs.crearVE2();
 				}
-			}catch (Exception e2) {
-				e2.printStackTrace();
-			} 
+				ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+				Connection cn = null;
+				Statement stm = null;
+				ResultSet rs = null;
+				boolean accesoExitoso=false;
+				
+				try {
+					cn = conexion.conectar();
+					stm = cn.createStatement();
+					String execute = "SELECT * FROM admin";
+					rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+					
+					
+					while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+					{
+						if(rs.getString(2).equals(jtUsuario.getText()))
+						{
+							
+							if(rs.getString(3).equals(jtPassword.getText()))
+							{
+								if(rs.getString(11).equals("1"))
+								{
+									accesoExitoso=true;
+									MenuAdmin vgs = new MenuAdmin();
+									vgs.crearMenuAdmin();
+									fIS.setVisible(false);
+								}
+								else
+								{
+									accesoExitoso=true;
+									MenuUsuario vgs = new MenuUsuario();
+									vgs.crearMenuUsuario();
+									fIS.setVisible(false);
+								}
+							}
+						}
+					}
+					if(accesoExitoso==false)
+					{
+						VentanaEmergente1 vgs = new VentanaEmergente1();
+						vgs.crearVE1();
+					}
+					
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					// TODO: handle exception
+				} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+					try {
+						if(rs!=null)
+						{
+							rs.close();
+						}
+						
+						if(stm!=null)
+						{
+							stm.close();
+						}
+						
+						if(cn!=null)
+						{
+							cn.close();
+						}
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+			}
 		}
-		
 	}
 }

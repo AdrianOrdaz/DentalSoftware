@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class AgregarUsuario extends MetodosDiseño {
+public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField jtIdUsuario;
@@ -63,24 +65,6 @@ public class AgregarUsuario extends MetodosDiseño {
 		gbc_lbCompleteCampos.gridy = 1;
 		gbc_lbCompleteCampos.weighty = 1.0;
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
-		
-		JLabel lbIdUsuario = new JLabel("Id del usuario*:");
-		lbIdUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lbIdUsuario = new GridBagConstraints();
-		gbc_lbIdUsuario.weighty = 1.0;
-		gbc_lbIdUsuario.anchor = GridBagConstraints.EAST;
-		gbc_lbIdUsuario.gridx = 1;
-		gbc_lbIdUsuario.gridy = 2;
-		contentPane.add(lbIdUsuario, gbc_lbIdUsuario);
-		
-		jtIdUsuario = new JTextField();
-		jtIdUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_jtIdUsuario = new GridBagConstraints();
-		gbc_jtIdUsuario.fill = GridBagConstraints.HORIZONTAL;
-		gbc_jtIdUsuario.gridx = 2;
-		gbc_jtIdUsuario.gridy = 2;
-		contentPane.add(jtIdUsuario, gbc_jtIdUsuario);
-		jtIdUsuario.setColumns(5);
 		
 		JLabel lbNombre = new JLabel("Nombre*:");
 		lbNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -213,6 +197,7 @@ public class AgregarUsuario extends MetodosDiseño {
 		GridBagConstraints gbc_btnAgregar = new GridBagConstraints();
 		gbc_btnAgregar.insets = new Insets(0, 0, 5, 5);
 		adjustButton(btnAgregar,gbc_btnAgregar,contentPane,2,10,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		btnAgregar.addActionListener(this);
 		
 		buttonHome(this,false,new GridBagConstraints(),contentPane,2,11,1,1,1.0,0.0,GridBagConstraints.EAST);
 		buttonRegresar(new GestionarUsuario(),this,new GridBagConstraints(),contentPane,1,11,1,1,0.0,0.0,GridBagConstraints.EAST);
@@ -221,11 +206,9 @@ public class AgregarUsuario extends MetodosDiseño {
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
 	
-	
-	
-	private void obtencionDeDatos()
-	{
-		//String nombre
+	public void actionPerformed(ActionEvent e) {
+		subirFilaCol7("usuarios","nom_usu","contr_usu","hor_usu","mail_usu","sldo_usu","dir_usu","tel_usu",jtNombre.getText(),jtContraseña.getText(),jtHorario.getText(),jtCorreo.getText(),jtSueldoquincenal.getText(),jtDireccion.getText(),jtTelefono.getText());
+		
 	}
 
 }

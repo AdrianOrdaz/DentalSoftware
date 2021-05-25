@@ -1,20 +1,13 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.Font;
-import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Promociones extends MetodosDiseño implements ActionListener{
-
+	String valor;
 	private JPanel contentPane;
 	private JTable tbPromociones;
 	public static void main(String[] args) {
@@ -65,29 +58,64 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		tbPromociones = new JTable();
 		tbPromociones.setModel(new DefaultTableModel(
 			new Object[][] {
+				{obtenerString ("promociones", 1, 1),obtenerString ("promociones", 2, 1), obtenerString ("promociones", 3, 1), obtenerString("promociones", 4, 1)
+				,obtenerString("promociones", 5, 1), obtenerString("promociones", 6, 1), obtenerString("promociones", 7, 1), obtenerString("promociones", 8, 1)	},
 			},
 			new String[] {
-				"", "No.", "Descripci\u00F3n ", "Costo", "D\u00EDa en que aplica", "Procentaje ahorrado", "Dinero ahorrado", "T\u00E9rminos y condiciones"
+				"No.", "Servicio con promocion", "Dias en que aplica","Terminos y condiciones","Costo de productos por separado",
+				"Costo de la promocion","Porcenaje ahorrado","Dinero ahorrado"
 			}
-		) {
+		) 
+		{
 			Class[] columnTypes = new Class[] {
-				Boolean.class, Short.class, String.class, Float.class, String.class, String.class, String.class, String.class
+				Short.class, String.class, String.class,String.class, Short.class , Short.class, Short.class, Short.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 		});
+		
+		tbPromociones.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		scrollPane.setViewportView(tbPromociones);
-	
+		/*if(NumFil("promociones")>2)
+		{
+		for(int i = 1; i<NumFil("promociones"); i++)
+		{
+		int a=i+1;
+		DefaultTableModel model = (DefaultTableModel) tbPromociones.getModel();
+		model.addRow(new Object[]{obtenerString("promociones",1,a), obtenerString("promociones",2,a), obtenerString("promociones",3,a), obtenerString("promociones",4,a)
+				, obtenerString("promociones",5,a), obtenerString("promociones",6,a), obtenerString("promociones",7,a), obtenerString("promociones",8,a)});
+		}
+		}*/
+		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);
 		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
 		adjustButton(btnEliminar,gbc_btnEliminar,contentPane,3,3,1,1,1.0,1.0,GridBagConstraints.CENTER);
+		tbPromociones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			btnEliminar.setEnabled(isEnabled());
+			valor = (String) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 1);
+			
+			
+			
+			}
+			});
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setEnabled(false);
 		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
 		adjustButton(btnEditar,gbc_btnEditar,contentPane,2,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		tbPromociones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			btnEditar.setEnabled(isEnabled());
+			valor = (String) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 1);
+			
+			
+			}
+			});
 		
 		JButton btnAgregar = new JButton("Agregar");
 		GridBagConstraints gbc_btnAgregar = new GridBagConstraints();
@@ -105,6 +133,12 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 				ap.setVisible(true);
 				this.setVisible(false);
 			break;
+			
+			case "Editar":
+				
+			
+			break;
+				
 		}
 		
 	}

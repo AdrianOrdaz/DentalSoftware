@@ -15,6 +15,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,6 +27,9 @@ import javax.swing.JScrollBar;
 
 public class Inventario extends MetodosDiseño implements ActionListener{
 	JFrame fInv;
+	JButton btnEliminar;
+	JButton btnEditar;
+	JTable tbInventario;
 	public static void main(String[] args) 
 	{
 		Inventario vInv = new Inventario();
@@ -50,25 +57,6 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbInventario,c);
 		
-		JLabel lbId_producto = new JLabel("ID Producto: ");
-		lbId_producto.setFont (lbId_producto.getFont ().deriveFont (21.0f));
-		adjustComponents(c, 0, 1, 2, 1, 0.0, 1.0, GridBagConstraints.EAST);
-		con.add(lbId_producto,c);
-		
-		JButton btnBuscarId = new JButton(new ImageIcon("src/img/lupa.png"));
-		btnBuscarId.setPreferredSize(new Dimension(35,35));
-		adjustComponents(c,3,1,1,1,0.0,1.0,GridBagConstraints.WEST);
-		con.add(btnBuscarId,c);
-		btnBuscarId.addActionListener(this);
-		
-		JTextField textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		textField.setPreferredSize(new Dimension(120,35));
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		adjustComponents(gbc_textField,2,1,1,1,0.0,1.0,GridBagConstraints.WEST);
-		fInv.getContentPane().add(textField, gbc_textField);
-		textField.setColumns(10);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 5;
@@ -78,28 +66,60 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		gbc_scrollPane.gridy = 2;
 		fInv.getContentPane().add(scrollPane, gbc_scrollPane);
 		
-		JTable table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"","ID", "Nombre", "Descripcion", "Cant.", "Compra", "Venta"
+		String [] nomColumnas = {"ID", "Nombre", "Descripcion", "Cant.", "Compra","Venta"};
+		DefaultTableModel dtm = new DefaultTableModel(null,nomColumnas)
+		{
+			public boolean isCellEditable(int row, int column) 
+			{
+				return false;
 			}
-		));
-		scrollPane.setViewportView(table);
+		}; 
+		tbInventario = new JTable(dtm);
+	    
+	    DefaultTableModel model = (DefaultTableModel) tbInventario.getModel();
+	    model.addRow(new Object[]{obtenerString("medicamentos",1,1), obtenerString("medicamentos",2,1), 
+	    		obtenerString("medicamentos",3,1), obtenerString("medicamentos",4,1), obtenerString("medicamentos",5,1), obtenerString("medicamentos",6,1)});
+	    
+	   /* if(NumFil("medicamentos")>1)
+	    {
+	    for(int i = 1; i<NumFil("medicamentos"); i++)
+	    {
+	    int a=i+1;
+	    
+	    model.addRow(new Object[]{obtenerString("medicamentos",1,a), obtenerString("medicamentos",2,a), 
+	    		obtenerString("medicamentos",3,a), obtenerString("medicamentos",4,a), obtenerString("medicamentos",5,a), obtenerString("medicamentos",6,a)});
+	    }
+	    }*/
+
+		tbInventario.getTableHeader().setReorderingAllowed(false);
+		scrollPane.setViewportView(tbInventario);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane.setRowHeaderView(scrollBar);
 		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setEnabled(false);
+		btnEliminar = new JButton("Eliminar");
 		adjustButton(btnEliminar, c, con, 0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
 		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setEnabled(false);
+		btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(true);
 		adjustButton(btnEditar, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		buttonHome(fInv,true,new GridBagConstraints(),con,3,4,1,1,1.0,1.0,GridBagConstraints.EAST);
+		
+		btnEliminar.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					if (tbInventario.getSelectedRow() != -1) {
+			            int SelectedRow = tbInventario.getSelectedRow();
+			            dtm.removeRow(SelectedRow);
+			            SelectedRow ++;
+			            String remove = "" + SelectedRow;
+			            System.out.println(remove);
+			            borrarFila("medicamentos", "id_med", remove);
+			        }
+				}
+		});
 		
 		fInv.pack();
 		fInv.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -109,9 +129,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		return fInv;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

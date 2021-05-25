@@ -30,6 +30,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 	JButton btnEliminar;
 	JButton btnEditar;
 	JButton btnGuardar;
+	JButton btnVer;
 	public static void main(String[] args) 
 	{
 		Dentistas den = new Dentistas();
@@ -55,15 +56,35 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		fD.getContentPane().add(scrollPane, c);
 		c.fill = 0;
 		
-		JTable table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {"",
-				"ID", "Nombre", "Info. Adicional"
+		btnVer = new JButton();
+		adjustButton(btnVer, c, con, 0, 0, 0, 0, 0.0, 0.0, GridBagConstraints.CENTER);
+		
+		Object [] nomColumnas = {"ID", "Nombre", "Estudios","NumTel","Horario","Sueldo","Email","Direccion"};
+		DefaultTableModel dtm = new DefaultTableModel(null,nomColumnas)
+		{
+			public boolean isCellEditable(int row, int column) 
+			{
+				return false;
 			}
-		));
-		scrollPane.setViewportView(table);
+		}; 
+		JTable tbDentistas = new JTable(dtm);
+	    
+	    DefaultTableModel model = (DefaultTableModel) tbDentistas.getModel();
+	    model.addRow(new Object[]{obtenerString("dentistas",1,1), obtenerString("dentistas",2,1), obtenerString("dentistas",3,1), obtenerString("dentistas",4,1), 
+	    		obtenerString("dentistas",5,1), obtenerString("dentistas",6,1), obtenerString("dentistas",7,1), obtenerString("dentistas",8,1)});
+	    
+		/*if(NumFil("dentistas")>2)
+		{
+		for(int i = 1; i<NumFil("dentistas"); i++)
+		{
+		int a=i+1;
+		
+		model.addRow(new Object[]{obtenerString("dentistas",1,a), obtenerString("dentistas",2,a), obtenerString("dentistas",3,a), obtenerString("dentistas",4,a), 
+	    		obtenerString("dentistas",5,a), obtenerString("dentistas",6,a), obtenerString("dentistas",7,a), obtenerString("dentistas",8,a)});
+		}
+		}*/
+		tbDentistas.getTableHeader().setReorderingAllowed(false);
+		scrollPane.setViewportView(tbDentistas);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane.setRowHeaderView(scrollBar);
@@ -73,7 +94,6 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.WEST);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 0, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		btnEditar = new JButton("Editar");
@@ -84,10 +104,24 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		buttonHome(fD,true,c,con,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		btnAgregar.addActionListener(this);
-		btnEliminar.addActionListener(this);
 		btnEditar.addActionListener(this);
 		btnHome.addActionListener(this);
-
+		
+		btnEliminar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if (tbDentistas.getSelectedRow() != -1) {
+		            int SelectedRow = tbDentistas.getSelectedRow();
+		            dtm.removeRow(SelectedRow);
+		            SelectedRow ++;
+		            String remove = "" + SelectedRow;
+		            System.out.println(remove);
+		            borrarFila("dentistas", "id_den", remove);
+		        }
+			}
+		});
+		
 		fD.pack();
 		fD.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

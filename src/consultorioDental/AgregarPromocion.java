@@ -1,29 +1,18 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
-import java.awt.Insets;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 
@@ -35,6 +24,7 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 	private JTextField jtDineroAhorrado;
 	private JTextField jtPorcentajeAhorrado;
 	private JTextField jtTerminos;
+	private JTextField jtDiasPromocion;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,26 +55,26 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		GridBagConstraints gbc_lbCompleteCampos = new GridBagConstraints();
 		adjustComponents(gbc_lbCompleteCampos,0,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
-		
-		JLabel lbIdPromocion = new JLabel("Id de la promoci\u00F3n*:");
-		lbIdPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lbIdPromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbIdPromocion,1,2,1,1,1.0,1.0,GridBagConstraints.EAST);
-		contentPane.add(lbIdPromocion, gbc_lbIdPromocion);
-		
-		jtIdPromocion = new JTextField();
-		GridBagConstraints gbc_jtIdPromocion = new GridBagConstraints();
-		adjustTextField(jtIdPromocion,gbc_jtIdPromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.CENTER);
-		
+	
 		JLabel lbNombrePromocion = new JLabel("Nombre de la promoci\u00F3n*:");
 		lbNombrePromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbNombrePromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbNombrePromocion,1,3,1,1,1.0,1.0,GridBagConstraints.EAST);
+		adjustComponents(gbc_lbNombrePromocion,1,2,1,1,1.0,1.0,GridBagConstraints.EAST);
 		contentPane.add(lbNombrePromocion, gbc_lbNombrePromocion);
 		
 		jtNombrePromocion = new JTextField();
 		GridBagConstraints gbc_jtNombrePromocion = new GridBagConstraints();
-		adjustTextField(jtNombrePromocion,gbc_jtNombrePromocion,contentPane,2,3,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		adjustTextField(jtNombrePromocion,gbc_jtNombrePromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		
+		JLabel lbDiasPromocion= new JLabel("Dia/s en que aplica la promoci\u00F3n*:");
+		lbDiasPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_lbDiasPromocion= new GridBagConstraints();
+		adjustComponents(gbc_lbDiasPromocion,1,3,1,1,1.0,1.0,GridBagConstraints.EAST);
+		contentPane.add(lbDiasPromocion, gbc_lbDiasPromocion);
+		
+		jtDiasPromocion = new JTextField();
+		GridBagConstraints gbc_jtDiasPromocion = new GridBagConstraints();
+		adjustTextField(jtDiasPromocion,gbc_jtDiasPromocion,contentPane,2,3,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbCostoPromocion = new JLabel("Costo de la promoci\u00F3n*:");
 		lbCostoPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -138,6 +128,7 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		
 		JButton btnAgregar = new JButton("Agregar");
 		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,2,9,1,1,1.0,1.0,GridBagConstraints.CENTER);
+		btnAgregar.addActionListener(this);
 		
 		buttonRegresar(new Promociones(),this,new GridBagConstraints(),contentPane,3,9,1,1,0.0,1.0,GridBagConstraints.WEST);
 		buttonHome(this,true,new GridBagConstraints(),contentPane,3,9,1,1,0.0,1.0,GridBagConstraints.CENTER);
@@ -147,6 +138,6 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void actionPerformed(ActionEvent e) {
-		
+		subirFilaCol7("promociones","serv_prom","das_prom","term_prom","indiv_prom","junt_prom","porc_prom","ahorr_prom",jtNombrePromocion.getText(),jtDiasPromocion.getText(),jtTerminos.getText(),jtCostoSeparado.getText(),jtCostoPromocion.getText(),jtPorcentajeAhorrado.getText(),jtDineroAhorrado.getText());
 	}
 }

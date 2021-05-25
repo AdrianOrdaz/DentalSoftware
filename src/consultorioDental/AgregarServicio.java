@@ -53,15 +53,6 @@ public class AgregarServicio extends MetodosDiseño implements ActionListener {
 		adjustComponents(gbc_lbCompleteCampos,0,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
 		
-		JLabel lbIdServicio = new JLabel("Id del servicio*:");
-		lbIdServicio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lbIdServicio = new GridBagConstraints();
-		adjustComponents(gbc_lbIdServicio,0,2,4,1,1.0,1.0,GridBagConstraints.NORTH);
-		contentPane.add(lbIdServicio, gbc_lbIdServicio);
-		
-		jtIdServicio = new JTextField();
-		adjustTextField(jtIdServicio,new GridBagConstraints(),contentPane,0,2,4,1,0.0,1.0,GridBagConstraints.CENTER);
-		
 		JLabel lbNombreServicio = new JLabel("Nombre del servicio*:");
 		lbNombreServicio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbNombreServicio = new GridBagConstraints();
@@ -84,6 +75,8 @@ public class AgregarServicio extends MetodosDiseño implements ActionListener {
 		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,0,5,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		buttonRegresar(new Servicios(),this,new GridBagConstraints(),contentPane,1,6,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		buttonHome(this,true,new GridBagConstraints(),contentPane,2,6,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		btnAgregar.addActionListener(this);
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand())
@@ -93,7 +86,12 @@ public class AgregarServicio extends MetodosDiseño implements ActionListener {
 				ser.setVisible(true);
 				this.setVisible(false);
 			break;
-		}
+			case "Agregar":
+				subirFilaCol2("servicios","nom_serv","cos_serv",jtNombreServicio.getText(),jtCostoServicio.getText());
+			break;
+			}
 		
-	}
+		   }
+	
+	
 }
