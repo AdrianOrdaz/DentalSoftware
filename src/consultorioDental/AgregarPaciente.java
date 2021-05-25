@@ -183,15 +183,16 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 	    adjustButton(btnGuardar,c,con,0,11,1,1,1.0,1.0,GridBagConstraints.CENTER);
 	    Pacientes vp = new Pacientes();
 	    buttonRegresar(vp.crearGUI(),fAR,c,con,2,11,1,1,0.0,0.0,GridBagConstraints.CENTER);
+	    vp.fPte.setVisible(false);
 	    c.insets = new Insets(0,100,0,0);
 	    btnGuardar.addActionListener(this);
 	    buttonHome(fAR,true,c,con,2,11,1,1,0.0,1.0,GridBagConstraints.CENTER);
+	    
 	    
 		fAR.pack();
 		fAR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fAR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fAR.setVisible(true);
-		vp.fPte.setVisible(false);
 		con.setBackground(Color.WHITE);
 		return fAR;
 	}
@@ -201,6 +202,7 @@ public class AgregarPaciente extends MetodosDiseño implements ActionListener{
 				"alergias_pte","cirugias_pte","familiar_pte",jtNombre_Pte.getText(),jtEdad_Pte.getText()
 				,jtCel_Pte.getText(),jtMail_Pte.getText(),jrb.getText(),jtEnfermedad.getText(),jtAlergias.getText(),
 				jtCirugias.getText(),jtFamiliar.getText());
+		emptyJT(jtNombre_Pte,jtEdad_Pte,jtCel_Pte,jtMail_Pte,jtEnfermedad,jtAlergias,jtCirugias,jtFamiliar);
 	}
 
 }

@@ -193,19 +193,21 @@ public class MetodosDiseño extends MetodosConexionBD{
 			}
 		});
 	}
-	class MyTableCellRenderer extends JRadioButton implements TableCellRenderer, ActionListener{
+	class MyTableCellRenderer extends JRadioButton implements TableCellRenderer{
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 	       this.setSelected(isSelected);
-	       //this.addActionListener(actionPerformed());
 	       return this;
 	    }
-		public void actionPerformed(ActionEvent e) {
-			if(this.isSelected()) {
-				Pacientes pte = new Pacientes();
-				pte.btnCrearReceta.setVisible(true);
-				System.out.print(e.getSource());
-			}
-		}
-
+	}
+	protected void emptyJT(JTextField jt,JTextField jt1, JTextField jt2, JTextField jt3, JTextField jt4
+			, JTextField jt5, JTextField jt6, JTextField jt7) {
+		jt.setText("");
+		jt1.setText("");
+		jt2.setText("");
+		jt3.setText("");
+		jt4.setText("");
+		jt5.setText("");
+		jt6.setText("");
+		jt7.setText("");
 	}
 }

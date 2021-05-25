@@ -1,6 +1,7 @@
 package consultorioDental;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -442,21 +443,23 @@ public class MetodosConexionBD extends JFrame
 		Statement stm = null;
 		ResultSet rs = null;
 		String returnear = null;
-		
+		PreparedStatement ps = null;
 		try {
 			cn = conexion.conectar();
-			stm = cn.createStatement();
-			String execute = "SELECT * FROM "+nomTabla;
-			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+			String delstm = "delete from "+nomTabla+" where "+nomColumnaId+"="+numId;
+			//String execute = "SELECT * FROM "+nomTabla;
+			ps = cn.prepareStatement(delstm);
+			ps.setInt(1,integer);
+			ps.executeUpdate(); //Esta linea me va a traer toda la tabla usuario
 			
 			//Eliminar alguna fila de la tabla de la base de datos.......
 			//Crear Declaracion (statement)
-			Statement delStm = cn.createStatement();
+			//Statement delStm = cn.createStatement();
 			
 			//Crear codigo sql
-			String delstm = "delete from "+nomTabla+" where "+nomColumnaId+"="+numId;
 			
-			int filaAfectada = delStm.executeUpdate(delstm); //Esto ejecuta el codigo sql en la base de datos
+			
+			//int filaAfectada = delStm.executeUpdate(delstm); //Esto ejecuta el codigo sql en la base de datos
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

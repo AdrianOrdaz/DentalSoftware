@@ -143,15 +143,12 @@ public class CorteDeCaja extends MetodosDiseño {
 		GridBagConstraints gbc_btnTerminarturno = new GridBagConstraints();
 		adjustButton(btnTerminarturno,gbc_btnTerminarturno,con,1,9,1,1,1.0,0.0,GridBagConstraints.NORTH);
 		
-		AdministrarCaja ac = new AdministrarCaja();
-		buttonRegresar(ac.CrearGui(),fCR,new GridBagConstraints(),con,3,9,1,1,0.0,0.0,GridBagConstraints.EAST);
 		buttonHome(fCR,false,new GridBagConstraints(),con,4,9,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		fCR.pack();
 		fCR.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fCR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fCR.setVisible(true);
-		ac.fCR.setVisible(false);
 		con.setBackground(Color.WHITE);
 		return fCR;
 	}

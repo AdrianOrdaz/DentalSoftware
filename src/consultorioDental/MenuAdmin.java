@@ -40,26 +40,18 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		adjustComponents(c,1,1,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		con.add(imgLogo,c);
 		
-		JButton btnAdminCaja = new JButton("Administrar caja");
+		JButton btnCorteCaja = new JButton("Corte de caja");
 		c.ipadx = 30;
-		adjustButton(btnAdminCaja, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
-		btnAdminCaja.addActionListener(this);
+		adjustButton(btnCorteCaja, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
+		btnCorteCaja.addActionListener(this);
 		
 		JButton btnGenerarReporte = new JButton("Generar reporte");
 		adjustButton(btnGenerarReporte, c, con, 1, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		btnGenerarReporte.addActionListener(this);
 		
-		JButton btnRealizarCompra = new JButton("Realizar compras");
-		adjustButton(btnRealizarCompra, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
-		btnRealizarCompra.addActionListener(this);
-		
 		JButton btnGestionarUsuarios = new JButton("Gestionar usuarios");
-		adjustButton(btnGestionarUsuarios, c, con, 1, 3, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHEAST);
+		adjustButton(btnGestionarUsuarios, c, con, 2, 2, 1, 1, 0.0, 1.0, GridBagConstraints.ABOVE_BASELINE_LEADING);
 		btnGestionarUsuarios.addActionListener(this);
-		
-		JButton btnControl_Inventario = new JButton("Controlar inventario");
-		adjustButton(btnControl_Inventario, c, con, 1, 3, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST);
-		btnControl_Inventario.addActionListener(this);
 		
 		fMenuA.pack();
 		fMenuA.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -72,23 +64,13 @@ public class MenuAdmin extends MetodosDiseño implements ActionListener{
 		switch(e.getActionCommand())
 		{
 			case "Administrar caja":
-				AdministrarCaja ad = new AdministrarCaja();
-				ad.CrearGui();
+				CorteDeCaja cc = new CorteDeCaja();
+				cc.CrearGui();
 				fMenuA.setVisible(false);
 			break;
 			case "Gestionar usuarios":
 				GestionarUsuario gr = new GestionarUsuario();
 				gr.setVisible(true);
-				fMenuA.setVisible(false);
-			break;
-			case "Realizar compras":
-				RealizarPedido rp = new RealizarPedido();
-				rp.setVisible(true);
-				fMenuA.setVisible(false);
-			break;
-			case "Controlar inventario":
-				EntradaSalidaMedicamentos esm = new EntradaSalidaMedicamentos();
-				esm.CrearGui();
 				fMenuA.setVisible(false);
 			break;
 			case "Generar reporte":

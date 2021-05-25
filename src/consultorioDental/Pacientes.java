@@ -7,6 +7,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigInteger;
 import java.sql.*;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class Pacientes extends MetodosDiseño implements ActionListener{
 	JFrame fPte;
 	JButton btnCrearReceta;
 	JButton btnEditar;
+	MouseAdapter msa;
 	String valor = null;
 	private Connection conexion = null;
     private Statement comando = null;
@@ -57,7 +59,7 @@ public class Pacientes extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 0, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbTitulo,c);
 	    
-	    String[] header = {"ID","Nombre","Historial","Info adicional"};
+	    String[] header = {"ID","Nombre","Edad","Sexo","Telefono","Mail","Enfermedades","Alergias","Cirugias","Hereditarias"};
 	    DefaultTableModel dtm = new DefaultTableModel(null,header);
 	    JTable tbPacientes = new JTable(dtm);
 	    MyTableCellRenderer mtcr = new MyTableCellRenderer();
@@ -65,53 +67,45 @@ public class Pacientes extends MetodosDiseño implements ActionListener{
 	    TableColumn col = new TableColumn(0,8,mtcr,null);
 	    tcm.addColumn(col);
 	    tcm.moveColumn(tcm.getColumnCount() - 1, 0);
-	    TableColumn col1 = tbPacientes.getColumn("ID");
-	    TableColumn col2 = tbPacientes.getColumn("Nombre");
-	    TableColumn col3 = tbPacientes.getColumn("Historial");
-	    TableColumn col4 = tbPacientes.getColumn("Info adicional");
-	    col1.setPreferredWidth(5);
-	    col2.setPreferredWidth(250);
-	    col3.setPreferredWidth(52);
-	    col4.setPreferredWidth(55);
 	    
 	    tbPacientes.setFillsViewportHeight(true);
 	    JScrollPane jsp = new JScrollPane(tbPacientes);
 	    jsp.setVisible(true);
 		adjustComponents(c, 0, 2, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
+		c.fill = GridBagConstraints.BOTH;
 	    con.add(jsp,c);
-	    int id;
-        String nombre;
+	    c.fill = GridBagConstraints.NONE;
+	    int id,edad;
+        String nombre,cel,mail,sexo,enfermedad,alergias,cirugias,familiar;
 	    try {
             this.leerDatos();
             while(resultados.next() == true) {
                 id = resultados.getInt("id_pte");
                 nombre = resultados.getString("nom_pte");
-                dtm.addRow( new Object[] {id, nombre,"Ver","Ver"} );                
+                edad = resultados.getInt("edad_pte");
+                cel = resultados.getString("tel_pte");
+                mail = resultados.getString("mail_pte");
+                sexo = resultados.getString("sexo_pte");
+                enfermedad = resultados.getString("enfermedad_pte");
+                alergias = resultados.getString("alergias_pte");
+                cirugias = resultados.getString("cirugias_pte");
+                familiar = resultados.getString("familiar_pte");
+                dtm.addRow( new Object[] {id, nombre,edad,sexo,cel,mail,enfermedad,alergias,cirugias,familiar} );                
             }
             this.cerrar();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
-	    tbPacientes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnCrearReceta.setEnabled(isEnabled());
-				btnEditar.setEnabled(isEnabled());
-				valor = (String) tbPacientes.getModel().getValueAt(tbPacientes.getSelectedRow(), 1);
-			}
-		});
 	    JButton btnAgregar = new JButton("Agregar");
 	    adjustButton(btnAgregar, c, con, 0, 3, 1, 1, 1.0, 1.0, GridBagConstraints.ABOVE_BASELINE_TRAILING);
 	    btnAgregar.addActionListener(this);
 	    
-	    btnCrearReceta = new JButton("Crear Receta"); 
-	    btnCrearReceta.setEnabled(false);
+	    btnCrearReceta = new JButton("Crear Receta");
 	    adjustButton(btnCrearReceta, c, con, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    btnCrearReceta.addActionListener(this);
 	    
 	    btnEditar = new JButton("Editar");
-	    btnEditar.setEnabled(false);
 	    adjustButton(btnEditar, c, con, 2, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 	    
 	    buttonHome(fPte,true, c, con, 3, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);

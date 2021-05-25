@@ -11,6 +11,10 @@ import javax.swing.table.DefaultTableModel;
 public class Recibo extends MetodosDiseño implements ActionListener{
 
 	JFrame fR;
+	JTextField jtTotal;
+	JTextField jtUsuario;
+	JTextField jtID_Venta;
+	JTextField jtPaciente;
 	public static void main(String[] args) {
 		Recibo vr = new Recibo();
 		vr.crearGUI();
@@ -33,7 +37,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbID_Venta,c);
 		
-		JTextField jtID_Venta = new JTextField();
+		jtID_Venta = new JTextField();
 		jtID_Venta.setEnabled(false);
 		jtID_Venta.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
@@ -56,7 +60,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 2, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbPaciente,c);
 		
-		JTextField jtPaciente = new JTextField();
+		jtPaciente = new JTextField();
 		jtPaciente.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
 	    con.add(jtPaciente,c);
@@ -129,7 +133,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 8, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbUsuario,c);
 		
-		JTextField jtUsuario = new JTextField();
+		jtUsuario = new JTextField();
 		jtUsuario.setEnabled(false);
 		jtUsuario.setPreferredSize(new Dimension(259,25));
 		adjustComponents(c, 1, 8, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
@@ -139,7 +143,7 @@ public class Recibo extends MetodosDiseño implements ActionListener{
 		adjustComponents(c,4, 8, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
 		con.add(lbTotal,c);
 		
-		JTextField jtTotal = new JTextField();
+		jtTotal = new JTextField();
 		jtTotal.setEnabled(false);
 		jtTotal.setPreferredSize(new Dimension(100,25));
 		adjustComponents(c, 5, 8, 2, 1, 0.0, 0.0, GridBagConstraints.WEST);
