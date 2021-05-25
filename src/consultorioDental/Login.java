@@ -1,71 +1,212 @@
 package consultorioDental;
 
-import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class Login extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-	private JPanel contentPane;
+public class Login extends MetodosDiseño implements ActionListener
+{
+	JFrame fIS;
+	JTextField jtUsuario;
+	JTextField jtPassword;
+	String usuario = "root";
+    String password = "";
+    ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+    String instruccion = "SELECT nom_admin, contr_admin FROM admin WHERE 1";
+    Connection cn = null;
+	Statement stm = null;
+	ResultSet rs = null;
+	int numIntentos=0;
+	
+	public static void main(String[]args) 
+	{
+		Login vIS = new Login();
+		vIS.crearIS();
+	}
+	protected void crearIS()
+	{
+		fIS = new JFrame("Inicio de Sesion");
+		Container con = new Container();
+		con = fIS.getContentPane();
+		GridBagConstraints c = new GridBagConstraints();
+		con.setLayout(new GridBagLayout());
+		
+		JLabel lbLogo = new JLabel();
+		ImageIcon logo = new ImageIcon("src/img/logo.png");
+		lbLogo.setIcon(logo);
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		c.gridheight = 5;
+		c.weightx = 1.0;
+		con.add(lbLogo,c);
+		c.weightx = 0.0;
+		
+		//(X,Y,ancho,alto,anchoy,achox)
+		JLabel lbUsuario = new JLabel("         Usuario: ");
+		lbUsuario.setPreferredSize(new Dimension(120,35));
+		adjustComponents(c, 1, 0, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
+		con.add(lbUsuario,c);
+		
+		jtUsuario = new JTextField(15);
+		adjustTextField(jtUsuario, c, con, 1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		jtUsuario.setPreferredSize(new Dimension(120,35));
+		
+		JLabel lbPassword = new JLabel("      Contraseña: ");
+		lbPassword.setPreferredSize(new Dimension(120,35));
+		adjustComponents(c, 1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		con.add(lbPassword,c);
+		
+		jtPassword = new JPasswordField(15);
+		jtPassword.setPreferredSize(new Dimension(168,35));
+		adjustComponents(c, 1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		con.add(jtPassword,c);
+			
+		JButton btnAcceder = new JButton("Acceder");
+		adjustButton(btnAcceder, c, con, 1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER);
+		btnAcceder.addActionListener(this);
+		
+		fIS.setSize(700,400);
+		fIS.setTitle("Consultorio Dental: Inicio de Sesion");
+		fIS.setResizable(false);
+		fIS.setVisible(true);
+		fIS.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		fIS.setLocationRelativeTo(null);
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+	     int height = pantalla.height;
+	     int width = pantalla.width;
+	     setSize(width/2, height/2);
+	}
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch(e.getActionCommand())
+		{
+			case "Acceder":
+			{
+				numIntentos = numIntentos+1;
+				if(numIntentos==5)
+				{
+					VentanaEmergente2 vgs = new VentanaEmergente2();
+					vgs.crearVE2();
+				}
+				ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+				Connection cn = null;
+				Statement stm = null;
+				ResultSet rs = null;
+				boolean accesoExitoso=false;
+				
 				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+					cn = conexion.conectar();
+					stm = cn.createStatement();
+					String execute = "SELECT * FROM admin";
+					rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+					
+					
+					while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+					{
+						if(rs.getString(2).equals(jtUsuario.getText()))
+						{
+							
+							if(rs.getString(3).equals(jtPassword.getText()))
+							{
+								if(rs.getString(11).equals("1"))
+								{
+									accesoExitoso=true;
+									MenuAdmin vgs = new MenuAdmin();
+									vgs.crearMenuAdmin();
+									fIS.setVisible(false);
+								}
+								else
+								{
+									accesoExitoso=true;
+									MenuUsuario vgs = new MenuUsuario();
+									vgs.crearMenuUsuario();
+									fIS.setVisible(false);
+								}
+							}
+						}
+					}
+					if(accesoExitoso==false)
+					{
+						VentanaEmergente1 vgs = new VentanaEmergente1();
+						vgs.crearVE1();
+					}
+					
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					// TODO: handle exception
+				} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+					try {
+						if(rs!=null)
+						{
+							rs.close();
+						}
+						
+						if(stm!=null)
+						{
+							stm.close();
+						}
+						
+						if(cn!=null)
+						{
+							cn.close();
+						}
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
 				}
 			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Login() {
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0,screen.width,screen.height - 30);
-		setExtendedState(MAXIMIZED_BOTH);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{220, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{142, 0, 123, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		}
+//		try {
+//			cn = conexion.conectar();
+//	
+//			stm = cn.createStatement();
+//			String execute = "SELECT nom_admin, contr_admin FROM admin";
+//			rs = stm.executeQuery(execute);
+//			if (rs.next())
+//			{
+//				if(jtUsuario.getText() ==  rs.getString("nom_admin") && jtPassword.getText() == rs.getString("contr_admin")) {
+//					System.out.print("Hola");
+//					MenuAdmin ma = new MenuAdmin();
+//					ma.crearMenuAdmin();
+//					fIS.setVisible(false);
+//				}  
+//			}
+//			
+//		}catch (SQLException e1) {
+//			e1.printStackTrace();
+//		} finally {
+//			try {
+//				if(rs!=null && stm!=null && cn!=null)
+//				{
+//					rs.close();
+//					stm.close();
+//					cn.close();
+//				}
+//			}catch (Exception e2) {
+//				e2.printStackTrace();
+//			} 
+//		}
 		
-		JLabel lbIniciarSesion = new JLabel("Iniciar Sesion");
-		lbIniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 49));
-		GridBagConstraints gbc_lbIniciarSesion = new GridBagConstraints();
-		gbc_lbIniciarSesion.insets = new Insets(0, 0, 5, 5);
-		gbc_lbIniciarSesion.gridx = 1;
-		gbc_lbIniciarSesion.gridy = 1;
-		contentPane.add(lbIniciarSesion, gbc_lbIniciarSesion);
-		
-		JLabel lbUsuario = new JLabel("Usuario");
-		lbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		GridBagConstraints gbc_lbUsuario = new GridBagConstraints();
-		gbc_lbUsuario.gridx = 2;
-		gbc_lbUsuario.gridy = 3;
-		contentPane.add(lbUsuario, gbc_lbUsuario);
 	}
-
 }

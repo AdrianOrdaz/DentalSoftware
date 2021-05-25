@@ -32,6 +32,7 @@ public class MetodosConexionBD extends JFrame
 						+"("+col1+", "+col2+", "+col3+", "+col4+", "+col5+", "+col6+", "+col7+", "+col8+", "+col9+", "+col10+")"
 						+"values('"+val1+"','"+val2+"','"+val3+"','"+val4+"','"+val5+"','"+val6+"','"+val7+"','"+val8+"','"+val9+"','"+val10+"')";
 			uploadStm.execute(upsql); //Esto ejecuta el codigo sql en la base de datos
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// TODO: handle exception
@@ -434,14 +435,12 @@ public class MetodosConexionBD extends JFrame
 		return returnear;
 	}
 
-	protected static String borrarFila(String nomTabla, String nomColumnaId, String numId)
+	protected static void borrarFila(String nomTabla, String nomColumnaId, String numId)
 	{
-		int integer=1;
 		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
 		Connection cn = null;
 		Statement stm = null;
 		ResultSet rs = null;
-		String returnear = null;
 		
 		try {
 			cn = conexion.conectar();
@@ -455,8 +454,59 @@ public class MetodosConexionBD extends JFrame
 			
 			//Crear codigo sql
 			String delstm = "delete from "+nomTabla+" where "+nomColumnaId+"="+numId;
+			delStm.executeUpdate(delstm);
 			
-			int filaAfectada = delStm.executeUpdate(delstm); //Esto ejecuta el codigo sql en la base de datos
+//			delstm = "set @autoid :=0";
+//			delStm.executeUpdate(delstm);
+//			delstm = "update "+nomTabla+" set "+nomColumnaId+" = @autoid := (@autoid+1)";
+//			delStm.executeUpdate(delstm);
+//			delstm = "alter table "+nomTabla+" Auto_increment = 1";
+//			delStm.executeUpdate(delstm);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+			try {
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				
+				if(stm!=null)
+				{
+					stm.close();
+				}
+				
+				if(cn!=null)
+				{
+					cn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	protected static String UltVal(String nomTabla, int col)
+	{
+		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+		Connection cn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		String returnear = null;
+		
+		try {
+			cn = conexion.conectar();
+			stm = cn.createStatement();
+			String execute = "SELECT * FROM "+nomTabla;
+			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+			
+			
+			while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+			{
+				returnear = rs.getString(col);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -484,4 +534,49 @@ public class MetodosConexionBD extends JFrame
 		return returnear;
 	}
 	
+	protected static int NumFil(String nomTabla)
+	{
+		int numFil=0;
+		ConexionBaseDatos_phpMyAdmin conexion = new ConexionBaseDatos_phpMyAdmin();
+		Connection cn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+		
+		try {
+			cn = conexion.conectar();
+			stm = cn.createStatement();
+			String execute = "SELECT * FROM "+nomTabla;
+			rs = stm.executeQuery(execute); //Esta linea me va a traer toda la tabla usuario
+			
+			
+			while(rs.next()) //siempre que haya una fila por mostrar, re.next() va a retornar true y sigue el ciclo
+			{
+				numFil = numFil+1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally { //finally se usa para cerrar la conexion y por ende, liberar recursos
+			try {
+				if(rs!=null)
+				{
+					rs.close();
+				}
+				
+				if(stm!=null)
+				{
+					stm.close();
+				}
+				
+				if(cn!=null)
+				{
+					cn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return numFil;
+	}
 }
