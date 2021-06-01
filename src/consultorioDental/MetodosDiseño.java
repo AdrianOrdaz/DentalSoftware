@@ -211,14 +211,28 @@ public class MetodosDiseño extends MetodosConexionBD{
 		jt6.setText("");
 		jt7.setText("");
 	}
+	
+	class MyTableCell extends JCheckBox implements TableCellRenderer{
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	       this.setSelected(isSelected);
+	       return this;
+	    }
+	}
+	
 	class MiModelo extends DefaultTableModel
 	{
-	   public Class getColumnClass(int columna)
-	   {
-	      if (columna == 6) {
-	    	  return Boolean.class;
-	      }
-		return Object.class;
-	   }
+		Class[] columnTypes = new Class[] {
+                Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Boolean.class
+            };
+            @SuppressWarnings({ "unchecked", "rawtypes" })
+            public Class getColumnClass(int columnIndex) {
+                return columnTypes[columnIndex];
+            }
+            boolean[] columnEditables = new boolean[] {
+                false, false, false, false, false, false, false, true
+            };
+            public boolean isCellEditable(int row, int column) {
+                return columnEditables[column];
+            }
 	}
 }

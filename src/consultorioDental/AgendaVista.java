@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
@@ -96,14 +97,15 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
                 den = resultados.getString("den_cita");
                 date = resultados.getString("fecha_cita");
                 hr = resultados.getString("hr_cita");
-                int jcb =  2;
-                mod.addRow( new Object[] {id,pte,den,date,hr,jcb} );
+                DefaultTableModel model = (DefaultTableModel) tbAgenda.getModel();
+                model.addRow( new Object[] {id,pte,den,date,hr} );
             }
             this.cerrar();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
+	    tbAgenda.getColumnModel().getColumn( 6 ).setCellRenderer(new MyTableCell());
 		adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
 		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);
 		
