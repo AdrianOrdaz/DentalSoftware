@@ -7,6 +7,7 @@ import java.util.Enumeration;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class MetodosDiseño extends MetodosConexionBD{
@@ -209,5 +210,15 @@ public class MetodosDiseño extends MetodosConexionBD{
 		jt5.setText("");
 		jt6.setText("");
 		jt7.setText("");
+	}
+	class MiModelo extends DefaultTableModel
+	{
+	   public Class getColumnClass(int columna)
+	   {
+	      if (columna == 6) {
+	    	  return Boolean.class;
+	      }
+		return Object.class;
+	   }
 	}
 }
