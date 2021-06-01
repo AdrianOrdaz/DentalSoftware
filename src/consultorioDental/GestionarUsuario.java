@@ -8,20 +8,36 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.Point;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
+import consultorioDental.MetodosDiseño.MyTableCellRenderer;
+
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.Color;
 
 public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 	String valor;
-	private JPanel contentPane;
-	private JTable tbGestionarUsuario;
+	JPanel contentPane;
+	JTable tbGestionarUsuario;
+	DefaultTableModel dtm;
+	private Connection conexion = null;
+    private Statement comando = null;
+    private ResultSet resultados = null;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,7 +50,20 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 			}
 		});
 	}
+	private void leerDatos() throws ClassNotFoundException, SQLException {
+        String usuario = "root";
+        String password = "";
+        String instruccion = "SELECT * FROM admin";
 
+        Class.forName("com.mysql.jdbc.Driver");
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
+        comando = conexion.createStatement();
+        resultados = comando.executeQuery(instruccion);
+    }
+	private void cerrar() throws SQLException {
+		conexion.close();
+    } 
+	
 	protected GestionarUsuario() {
 		setTitle("Gestionar usuario");
 		contentPane = new JPanel();
@@ -48,43 +77,40 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		adjustComponents(gbc_lbGestionarUsuario,0,0,5,1,1.0,1.0,GridBagConstraints.NORTH);
 		contentPane.add(lbGestionarUsuario, gbc_lbGestionarUsuario);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		String[] header = {"ID","Nombre","Contraseña","Horario","Mail","Sueldo","Direccion","Telefono"};
+	    dtm = new DefaultTableModel(null,header);
+		tbGestionarUsuario= new JTable(dtm);
+	    TableColumnModel tcm = tbGestionarUsuario.getColumnModel();
+	    TableColumn col = new TableColumn(0,8,new MyTableCellRenderer(),null);
+	    tcm.addColumn(col);
+	    tcm.moveColumn(tcm.getColumnCount() - 1, 0);
+	    tbGestionarUsuario.setFillsViewportHeight(true);
+	    JScrollPane scrollPane = new JScrollPane(tbGestionarUsuario);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0,2,0,0);
-		tbGestionarUsuario= new JTable();
-		tbGestionarUsuario.setModel(new DefaultTableModel(
-			new Object[][] {
-				{obtenerString ("usuarios", 1, 1),obtenerString ("usuarios", 2, 1), obtenerString ("usuarios", 3, 1), obtenerString("usuarios", 4, 1)
-				,obtenerString("usuarios", 5, 1), obtenerString("usuarios", 6, 1), obtenerString("usuarios", 7, 1), obtenerString("usuarios", 8, 1)	},
-			},
-			new String[] {
-				"No.", "Nombre del usuario", "Contraseña","Horario","Correo electronico",
-				"Sueldo quincenal","Direccion","Telefono"
-			}
-		) 
-		{
-			Class[] columnTypes = new Class[] {
-				Short.class, String.class, String.class,String.class, String.class , Short.class, String.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
 		
-		tbGestionarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		scrollPane.setViewportView(tbGestionarUsuario);
-		if(NumFil("usuarios")>2)
-		{
-		for(int i = 1; i<NumFil("usuarios"); i++)
-		{
-		int a=i+1;
-		DefaultTableModel model = (DefaultTableModel) tbGestionarUsuario.getModel();
-		model.addRow(new Object[]{obtenerString("usuarios",1,a), obtenerString("usuarios",2,a), obtenerString("usuarios",3,a), obtenerString("usuarios",4,a)
-				, obtenerString("usuarios",5,a), obtenerString("usuarios",6,a), obtenerString("usuarios",7,a), obtenerString("usuarios",8,a)});
-		}
-		}
-		scrollPane.setViewportView(tbGestionarUsuario);
+		int id;
+		float sueldo;
+        String nombre,con,cel,horario,mail,dir;
+	    try {
+            this.leerDatos();
+            while(resultados.next() == true) {
+                id = resultados.getInt("id_usu");
+                nombre = resultados.getString("nom_usu");
+                cel = resultados.getString("tel_usu");
+                mail = resultados.getString("mail_usu");
+                sueldo = resultados.getFloat("sldo_usu");
+                con = resultados.getString("contr_usu");
+                horario = resultados.getString("hor_usu");
+                dir = resultados.getString("dir_usu");
+                dtm.addRow( new Object[] {id, nombre,con,horario,mail,sueldo,dir,cel} );                
+            }
+            this.cerrar();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error de lectura de BD\n\n");
+            e.printStackTrace();
+        }
 		adjustComponents(gbc_scrollPane,1,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
@@ -93,30 +119,24 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
-		tbGestionarUsuario.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			btnEliminar.setEnabled(isEnabled());
-			valor = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 1);
-			}
-			});
+		btnEliminar.addActionListener(this);
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setEnabled(false);
 		adjustButton(btnEditar,new GridBagConstraints(),contentPane,2,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
-		tbGestionarUsuario.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			btnEditar.setEnabled(isEnabled());
-			valor = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 1);
-			}
-			});
-		
 		JButton btnAgregar = new JButton("Agregar");
 		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,1,2,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		btnAgregar.addActionListener(this);
 		
+		tbGestionarUsuario.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				btnEliminar.setEnabled(isEnabled());
+				btnEditar.setEnabled(isEnabled());
+				JTable table =(JTable) e.getSource();
+				valor = "" + table.getValueAt(table.getSelectedRow(), 1);
+			}
+		});
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
@@ -128,6 +148,12 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 				AgregarUsuario au = new AgregarUsuario();
 				au.setVisible(true);
 				this.setVisible(false);
+			break;
+			case "Eliminar":
+				dtm = (DefaultTableModel) tbGestionarUsuario.getModel();
+				dtm.removeRow(tbGestionarUsuario.getSelectedRow());
+				System.out.println(valor);
+				//borrarFila("admin", "id_usu", valor);
 			break;
 		}
 		

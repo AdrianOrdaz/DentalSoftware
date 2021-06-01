@@ -128,7 +128,7 @@ public class InicioSesion extends MetodosDiseño implements ActionListener
 							
 							if(rs.getString(3).equals(jtPassword.getText()))
 							{
-								if(rs.getString(11).equals("1"))
+								if(rs.getString(9).equals("1"))
 								{
 									accesoExitoso=true;
 									MenuAdmin vgs = new MenuAdmin();

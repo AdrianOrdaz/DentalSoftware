@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -16,19 +17,22 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
 public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 
-	private JPanel contentPane;
-	private JTextField jtIdUsuario;
-	private JTextField jtNombre;
-	private JTextField jtHorario;
-	private JTextField jtCorreo;
-	private JTextField jtContraseña;
-	private JTextField jtSueldoquincenal;
-	private JTextField jtDireccion;
-	private JTextField jtTelefono;
+	JPanel contentPane;
+	JTextField jtIdUsuario;
+	JTextField jtNombre;
+	JTextField jtHorario;
+	JTextField jtCorreo;
+	JTextField jtContraseña;
+	JTextField jtSueldoquincenal;
+	JTextField jtDireccion;
+	JTextField jtTelefono;
+	ButtonGroup bg;
+	JRadioButton jrb;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,6 +69,17 @@ public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 		gbc_lbCompleteCampos.gridy = 1;
 		gbc_lbCompleteCampos.weighty = 1.0;
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
+		
+		bg = new ButtonGroup();
+		GridBagConstraints c= new GridBagConstraints();
+		JRadioButton cbAplicar = new JRadioButton("Administrador");
+		JRadioButton cbAplicar2 = new JRadioButton("Usuario");
+		bg.add(cbAplicar);
+		bg.add(cbAplicar2);
+		adjustComponents(c, 2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST);
+	    contentPane.add(cbAplicar,c);
+		adjustComponents(c, 2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
+	    contentPane.add(cbAplicar2,c);
 		
 		JLabel lbNombre = new JLabel("Nombre*:");
 		lbNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -207,8 +222,18 @@ public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		subirFilaCol7("usuarios","nom_usu","contr_usu","hor_usu","mail_usu","sldo_usu","dir_usu","tel_usu",jtNombre.getText(),jtContraseña.getText(),jtHorario.getText(),jtCorreo.getText(),jtSueldoquincenal.getText(),jtDireccion.getText(),jtTelefono.getText());
-		
+		jrb = getSelection(bg);
+		String s;
+		if(jrb.getText() == "Administrador") {
+			s = "1";
+		}
+		else {
+			s = "0";
+		}
+		subirFilaCol8("admin","nom_usu","contr_usu","hor_usu","mail_usu","sldo_usu","dir_usu","tel_usu","admin_usu",
+				jtNombre.getText(),jtContraseña.getText(),jtHorario.getText(),jtCorreo.getText(),
+				jtSueldoquincenal.getText(),jtDireccion.getText(),jtTelefono.getText(),s);
+		emptyJT(jtNombre,jtContraseña,jtHorario,jtCorreo,jtSueldoquincenal,jtDireccion,jtTelefono,new JTextField());
 	}
 
 }
