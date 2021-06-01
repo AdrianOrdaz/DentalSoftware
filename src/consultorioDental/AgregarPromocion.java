@@ -17,8 +17,7 @@ import java.awt.event.ActionListener;
 public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField jtIdPromocion;
-	private JTextField jtNombrePromocion;
+	private JTextField jtServicioPromocion;
 	private JTextField jtCostoPromocion;
 	private JTextField jtCostoSeparado;
 	private JTextField jtDineroAhorrado;
@@ -56,15 +55,15 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		adjustComponents(gbc_lbCompleteCampos,0,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
 		contentPane.add(lbCompleteCampos, gbc_lbCompleteCampos);
 	
-		JLabel lbNombrePromocion = new JLabel("Nombre de la promoci\u00F3n*:");
-		lbNombrePromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lbNombrePromocion = new GridBagConstraints();
-		adjustComponents(gbc_lbNombrePromocion,1,2,1,1,1.0,1.0,GridBagConstraints.EAST);
-		contentPane.add(lbNombrePromocion, gbc_lbNombrePromocion);
+		JLabel lbServicioPromocion = new JLabel("Servicio de la promoci\u00F3n*:");
+		lbServicioPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_lbServicioPromocion = new GridBagConstraints();
+		adjustComponents(gbc_lbServicioPromocion,1,2,1,1,1.0,1.0,GridBagConstraints.EAST);
+		contentPane.add(lbServicioPromocion, gbc_lbServicioPromocion);
 		
-		jtNombrePromocion = new JTextField();
-		GridBagConstraints gbc_jtNombrePromocion = new GridBagConstraints();
-		adjustTextField(jtNombrePromocion,gbc_jtNombrePromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.CENTER);
+		jtServicioPromocion = new JTextField();
+		GridBagConstraints gbc_jtServicioPromocion = new GridBagConstraints();
+		adjustTextField(jtServicioPromocion,gbc_jtServicioPromocion,contentPane,2,2,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
 		JLabel lbDiasPromocion= new JLabel("Dia/s en que aplica la promoci\u00F3n*:");
 		lbDiasPromocion.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -86,7 +85,7 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		GridBagConstraints gbc_jtCostoPromocion = new GridBagConstraints();
 		adjustTextField(jtCostoPromocion,gbc_jtCostoPromocion,contentPane,2,4,1,1,0.0,0.0,GridBagConstraints.CENTER);
 		
-		JLabel lbCostoSeparado = new JLabel("Costo de los servicios por separado*:");
+		JLabel lbCostoSeparado = new JLabel("Costo del servicio por separado*:");
 		lbCostoSeparado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lbCostoSeparado = new GridBagConstraints();
 		adjustComponents(gbc_lbCostoSeparado,1,5,1,1,1.0,0.0,GridBagConstraints.EAST);
@@ -138,6 +137,8 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void actionPerformed(ActionEvent e) {
-		subirFilaCol7("promociones","serv_prom","das_prom","term_prom","indiv_prom","junt_prom","porc_prom","ahorr_prom",jtNombrePromocion.getText(),jtDiasPromocion.getText(),jtTerminos.getText(),jtCostoSeparado.getText(),jtCostoPromocion.getText(),jtPorcentajeAhorrado.getText(),jtDineroAhorrado.getText());
+		subirFilaCol7("promociones","serv_prom","das_prom","term_prom","indiv_prom","junt_prom","porc_prom","ahorr_prom",
+				jtServicioPromocion.getText(),jtDiasPromocion.getText(),jtTerminos.getText(),jtCostoSeparado.getText(),jtCostoPromocion.getText(),jtPorcentajeAhorrado.getText(),jtDineroAhorrado.getText());
+		emptyJT(jtServicioPromocion,jtDiasPromocion,jtTerminos,jtCostoSeparado,jtCostoPromocion,jtPorcentajeAhorrado,jtDineroAhorrado,new JTextField());
 	}
 }

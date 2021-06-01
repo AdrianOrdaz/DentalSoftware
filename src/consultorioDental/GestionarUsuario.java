@@ -8,15 +8,11 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
-import java.awt.Point;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-
-import consultorioDental.MetodosDiseño.MyTableCellRenderer;
 
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
@@ -152,8 +148,7 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 			case "Eliminar":
 				dtm = (DefaultTableModel) tbGestionarUsuario.getModel();
 				dtm.removeRow(tbGestionarUsuario.getSelectedRow());
-				System.out.println(valor);
-				//borrarFila("admin", "id_usu", valor);
+				borrarFila("admin", "id_usu", valor);
 			break;
 		}
 		
