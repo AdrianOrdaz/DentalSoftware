@@ -37,7 +37,7 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 	}
 
 
-	JFrame crearInv() 
+	protected JFrame crearInv() 
 	{
 		fInv = new JFrame("Consultorio Dental/Inventario");
 		Container con = new Container();
@@ -65,35 +65,10 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 2;
 		fInv.getContentPane().add(scrollPane, gbc_scrollPane);
-		
 		String [] nomColumnas = {"ID", "Nombre", "Descripcion", "Cant.", "Compra","Venta"};
-		DefaultTableModel dtm = new DefaultTableModel(null,nomColumnas)
-		{
-			public boolean isCellEditable(int row, int column) 
-			{
-				return false;
-			}
-		}; 
-		tbInventario = new JTable(dtm);
-	    
-	    DefaultTableModel model = (DefaultTableModel) tbInventario.getModel();
-	    model.addRow(new Object[]{obtenerString("medicamentos",1,1), obtenerString("medicamentos",2,1), 
-	    		obtenerString("medicamentos",3,1), obtenerString("medicamentos",4,1), obtenerString("medicamentos",5,1), obtenerString("medicamentos",6,1)});
-	    
-	    if(NumFil("medicamentos")>1)
-	    {
-	    for(int i = 1; i<NumFil("medicamentos"); i++)
-	    {
-	    int a=i+1;
-	    
-	    model.addRow(new Object[]{obtenerString("medicamentos",1,a), obtenerString("medicamentos",2,a), 
-	    		obtenerString("medicamentos",3,a), obtenerString("medicamentos",4,a), obtenerString("medicamentos",5,a), obtenerString("medicamentos",6,a)});
-	    }
-	    }
-
+		tbInventario = new JTable();
 		tbInventario.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(tbInventario);
-		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane.setRowHeaderView(scrollBar);
 		
@@ -105,21 +80,6 @@ public class Inventario extends MetodosDiseño implements ActionListener{
 		adjustButton(btnEditar, c, con, 1, 4, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER);
 		
 		buttonHome(fInv,true,new GridBagConstraints(),con,3,4,1,1,1.0,1.0,GridBagConstraints.EAST);
-		
-		btnEliminar.addActionListener(new ActionListener() {
-				
-				public void actionPerformed(ActionEvent arg0) 
-				{
-					if (tbInventario.getSelectedRow() != -1) {
-			            int SelectedRow = tbInventario.getSelectedRow();
-			            dtm.removeRow(SelectedRow);
-			            SelectedRow ++;
-			            String remove = "" + SelectedRow;
-			            System.out.println(remove);
-			            borrarFila("medicamentos", "id_med", remove);
-			        }
-				}
-		});
 		
 		fInv.pack();
 		fInv.setExtendedState(JFrame.MAXIMIZED_BOTH);

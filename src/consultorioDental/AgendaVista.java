@@ -43,6 +43,9 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 	private Connection conexion = null;
     private Statement comando = null;
     private ResultSet resultados = null;
+    private Connection conexion2 = null;
+    private Statement comando2 = null;
+    private ResultSet resultados2 = null;
 	public static void main(String[] args) 
 	{
 		AgendaVista av = new AgendaVista();
@@ -53,14 +56,19 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
         String usuario = "root";
         String password = "";
         String instruccion = "SELECT * FROM agenda";
+        String instruccion2 = "SELECT pte_agda,den_agda FROM agenda UNION ALL SELECT id_pte,nom_pte FROM pacientes UNION ALL SELECT id_den,nom_den FROM dentistas";
 
         Class.forName("com.mysql.jdbc.Driver");
         conexion = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
         comando = conexion.createStatement();
         resultados = comando.executeQuery(instruccion);
+        conexion2 = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
+        comando2 = conexion2.createStatement();
+        resultados2 = comando2.executeQuery(instruccion2);
     }
 	private void cerrar() throws SQLException {
 		conexion.close();
+		conexion2.close();
     } 
 	
 	protected void crearfA() 
@@ -90,24 +98,41 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		gbc_scrollPane.insets = new Insets(0, 2, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		
-		int id;
-        String pte,den,hr,date,asta;
+		int id,pte,den;
+        String hr,date,asta;
 	    try {
             this.leerDatos();
             while(resultados.next() == true) {
                 id = resultados.getInt("cita_agda");
-                pte = resultados.getString("pte_agda");
-                den = resultados.getString("den_agda");
+                pte = resultados.getInt("pte_agda");
+                den = resultados.getInt("den_agda");
                 date = resultados.getString("fecha_agda");
                 hr = resultados.getString("hora_agda");
                 asta = resultados.getString("asis_agda");
                 dtm.addRow( new Object[] {id,pte,den,date,hr,asta} );
             }
             this.cerrar();
-        } catch (SQLException | ClassNotFoundException e) {
+        }catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
+	    
+	    /*String
+	    try {
+            this.leerDatos();
+            while(resultados2.next() == true) {
+                pte = resultados2.getInt("pte_agda");
+                den = resultados2.getInt("den_agda");
+                if(pte == ) {
+                	System.out.println(pte);
+                }
+            }
+            this.cerrar();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error de lectura de BD\n\n");
+            e.printStackTrace();
+        }*/
+		
 		adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
 		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);
 		
@@ -155,7 +180,10 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 				borrarFila("agenda", "cita_agda", valor);
 			break;
 			case "Confirmar asistencia":
-				modificarBD("agenda","asis_agda","Si","cita_agda",valor);
+				for(int i = 0;i<dtm.getColumnCount();i++) {
+				    tbAgenda.setValueAt("Si", tbAgenda.getSelectedRow(), 6);
+				}
+				modificarBD("agenda","asis_agda","cita_agda",valor,"Si");
 			break;
 		}
 		
