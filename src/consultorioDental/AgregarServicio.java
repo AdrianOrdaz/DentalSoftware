@@ -17,7 +17,6 @@ import javax.swing.JButton;
 public class AgregarServicio extends MetodosDiseño implements ActionListener {
 
 	private JPanel contentPane;
-	private JTextField jtIdServicio;
 	private JTextField jtNombreServicio;
 	private JTextField jtCostoServicio;
 	public static void main(String[] args) {
@@ -79,19 +78,8 @@ public class AgregarServicio extends MetodosDiseño implements ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e) {
-		switch(e.getActionCommand())
-		{
-			case "Cancelar":
-				Servicios ser = new Servicios();
-				ser.setVisible(true);
-				this.setVisible(false);
-			break;
-			case "Agregar":
-				subirFilaCol2("servicios","nom_serv","cos_serv",jtNombreServicio.getText(),jtCostoServicio.getText());
-			break;
-			}
-		
-		   }
-	
-	
+		subirFilaCol2("servicios","nom_serv","cos_serv",jtNombreServicio.getText(),jtCostoServicio.getText());
+		jtNombreServicio.setText("");
+		jtCostoServicio.setText("");
+	}
 }

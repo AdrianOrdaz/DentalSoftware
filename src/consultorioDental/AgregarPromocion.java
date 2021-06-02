@@ -13,6 +13,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 
@@ -136,9 +138,10 @@ public class AgregarPromocion extends MetodosDiseño implements ActionListener{
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		subirFilaCol7("promociones","serv_prom","das_prom","term_prom","indiv_prom","junt_prom","porc_prom","ahorr_prom",
-				jtServicioPromocion.getText(),jtDiasPromocion.getText(),jtTerminos.getText(),jtCostoSeparado.getText(),jtCostoPromocion.getText(),jtPorcentajeAhorrado.getText(),jtDineroAhorrado.getText());
+			jtServicioPromocion.getText(),jtDiasPromocion.getText(),jtTerminos.getText(),jtCostoSeparado.getText(),jtCostoPromocion.getText(),jtPorcentajeAhorrado.getText(),jtDineroAhorrado.getText());
 		emptyJT(jtServicioPromocion,jtDiasPromocion,jtTerminos,jtCostoSeparado,jtCostoPromocion,jtPorcentajeAhorrado,jtDineroAhorrado,new JTextField());
 	}
 }

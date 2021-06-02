@@ -112,14 +112,14 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		
 		buttonHome(this,false,new GridBagConstraints(),contentPane,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.setEnabled(false);
+		adjustButton(btnActualizar,new GridBagConstraints(),contentPane,2,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		btnActualizar.addActionListener(this);
+		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);
-		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
-		btnEliminar.addActionListener(this);
-		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setEnabled(false);
-		adjustButton(btnEditar,new GridBagConstraints(),contentPane,2,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,2,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnAgregar = new JButton("Agregar");
 		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,1,2,1,1,1.0,1.0,GridBagConstraints.CENTER);
@@ -127,8 +127,8 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		
 		tbGestionarUsuario.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				btnActualizar.setEnabled(isEnabled());
 				btnEliminar.setEnabled(isEnabled());
-				btnEditar.setEnabled(isEnabled());
 				JTable table =(JTable) e.getSource();
 				valor = "" + table.getValueAt(table.getSelectedRow(), 1);
 			}
@@ -149,6 +149,24 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 				dtm = (DefaultTableModel) tbGestionarUsuario.getModel();
 				dtm.removeRow(tbGestionarUsuario.getSelectedRow());
 				borrarFila("admin", "id_usu", valor);
+			break;
+			case "Actualizar":
+				int id = (int) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 0);
+				String idS = ""+id;
+				String nombre = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 1);
+				String contr = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 2);
+				String hor = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 3);
+				String mail = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 4);
+				Object sldo = tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 5);
+				String dir = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 6);
+				String tel = (String) tbGestionarUsuario.getModel().getValueAt(tbGestionarUsuario.getSelectedRow(), 7);
+				modificarBD("admin", "nom_usu", "id_usu", idS, nombre);
+				modificarBD("admin", "contr_usu", "id_usu", idS, contr);
+				modificarBD("admin", "hor_usu", "id_usu", idS, hor);
+				modificarBD("admin", "mail_usu", "id_usu", idS, mail);
+				modificarBD("admin", "sldo_usu", "id_usu", idS, sldo+"");
+				modificarBD("admin", "dir_usu", "id_usu", idS, dir);
+				modificarBD("admin", "tel_usu", "id_usu", idS, tel);
 			break;
 		}
 		

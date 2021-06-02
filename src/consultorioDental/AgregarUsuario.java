@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -221,7 +223,36 @@ public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
 	
+	boolean soloLetras(String str)
+	{
+		Pattern p = Pattern.compile("^[ A-Za-z]+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean soloNumeros(String str)
+	{
+		Pattern p = Pattern.compile("[0-9]+");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean numYLetras(String str)
+	{
+		Pattern p = Pattern.compile("^[a-zA-Z0-9]+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean sueldo(String str)
+	{
+		Pattern p = Pattern.compile("^(\\d*\\.)?\\d+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
 	public void actionPerformed(ActionEvent e) {
+		String ok = null;
 		jrb = getSelection(bg);
 		String s;
 		if(jrb.getText() == "Administrador") {
@@ -230,10 +261,59 @@ public class AgregarUsuario extends MetodosDiseño implements ActionListener {
 		else {
 			s = "0";
 		}
-		subirFilaCol8("admin","nom_usu","contr_usu","hor_usu","mail_usu","sldo_usu","dir_usu","tel_usu","admin_usu",
-				jtNombre.getText(),jtContraseña.getText(),jtHorario.getText(),jtCorreo.getText(),
-				jtSueldoquincenal.getText(),jtDireccion.getText(),jtTelefono.getText(),s);
-		emptyJT(jtNombre,jtContraseña,jtHorario,jtCorreo,jtSueldoquincenal,jtDireccion,jtTelefono,new JTextField());
+		String nombre = jtNombre.getText();
+		String contr= jtContraseña.getText();
+		String hor=jtHorario.getText();
+		String mail=jtCorreo.getText();
+		String sldo =jtSueldoquincenal.getText();
+		String dir =jtDireccion.getText();
+		String tel =jtTelefono.getText();
+		if(soloLetras(nombre)==false || nombre.length()>35 || nombre == null)
+		{
+			ok="nombre";
+		}
+		
+		if(numYLetras(contr)==false || contr.length()>25 || contr ==null)
+		{
+			ok="contrasena";
+		}
+		
+		if(hor.length()>30 || hor==null)
+		{
+			ok="horario";
+		}
+		
+		if(mail.length()>4405 || mail ==null)
+		{
+			ok="mail";
+		}
+		
+		if(sueldo(sldo)==false || sldo.length()>8|| sldo == null)
+		{
+			ok="sueldo";
+		}
+		
+		if(dir.length()>70 || dir==null)
+		{
+			ok="direccion";
+		}
+		
+		if(soloNumeros(tel)==false || tel.length()>10 || tel == null)
+		{
+			ok="telefono";
+		}
+		
+		if(ok==null)
+		{
+			subirFilaCol8("admin","nom_usu","contr_usu","hor_usu","mail_usu","sldo_usu","dir_usu","tel_usu","admin_usu",
+					nombre,contr,hor,mail,sldo,dir,tel,s);
+			emptyJT(jtNombre,jtContraseña,jtHorario,jtCorreo,jtSueldoquincenal,jtDireccion,jtTelefono,new JTextField());
+		}
+		else
+		{
+			ErrorDeValidacion edv = new ErrorDeValidacion();
+			edv.crearVE1(ok);
+		}
 	}
 
 }

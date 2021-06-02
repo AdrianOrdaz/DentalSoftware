@@ -15,10 +15,22 @@ import javax.swing.JScrollPane;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
+import consultorioDental.MetodosDiseño.MyTableCellRenderer;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -28,15 +40,33 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 	JFrame fD;
 	JButton btnAgregar;
 	JButton btnEliminar;
-	JButton btnEditar;
-	JButton btnGuardar;
-	JButton btnVer;
+	JButton btnActualizar;
+	JTable tbDentistas;
+	String valor;
+	DefaultTableModel dtm;
+	private Connection conexion = null;
+    private Statement comando = null;
+    private ResultSet resultados = null;
 	public static void main(String[] args) 
 	{
 		Dentistas den = new Dentistas();
 		den.crearfD();
 	}
 
+	private void leerDatos() throws ClassNotFoundException, SQLException {
+        String usuario = "root";
+        String password = "";
+        String instruccion = "SELECT * FROM dentistas";
+
+        Class.forName("com.mysql.jdbc.Driver");
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
+        comando = conexion.createStatement();
+        resultados = comando.executeQuery(instruccion);
+    }
+	private void cerrar() throws SQLException {
+		conexion.close();
+    } 
+	
 	protected JFrame crearfD() 
 	{
 		fD = new JFrame("Consultorio Dental/Dentistas");
@@ -50,44 +80,43 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbDentistas,c);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		c.fill = GridBagConstraints.BOTH;
-		adjustComponents(c,0,1,5,1,1.0,1.0,GridBagConstraints.CENTER);
-		fD.getContentPane().add(scrollPane, c);
-		c.fill = 0;
+		Object [] nomColumnas = {"ID", "Nombre", "Estudios","Telefono","Horario","Sueldo","Email","Direccion"};
+		dtm = new DefaultTableModel(null,nomColumnas);
+		tbDentistas= new JTable(dtm);
+	    TableColumnModel tcm = tbDentistas.getColumnModel();
+	    TableColumn col = new TableColumn(0,8,new MyTableCellRenderer(),null);
+	    tcm.addColumn(col);
+	    tcm.moveColumn(tcm.getColumnCount() - 1, 0);
+	    tbDentistas.setFillsViewportHeight(true);
+	    JScrollPane scrollPane = new JScrollPane(tbDentistas);
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.insets = new Insets(0,2,0,0);
 		
-		btnVer = new JButton();
-		adjustButton(btnVer, c, con, 0, 0, 0, 0, 0.0, 0.0, GridBagConstraints.CENTER);
+		int id;
+		float sueldo;
+        String nombre,cel,horario,mail,dir,est;
+	    try {
+            this.leerDatos();
+            while(resultados.next() == true) {
+                id = resultados.getInt("id_den");
+                nombre = resultados.getString("nom_den");
+                cel = resultados.getString("tel_den");
+                mail = resultados.getString("mail_den");
+                sueldo = resultados.getFloat("sldo_den");
+                horario = resultados.getString("hor_den");
+                dir = resultados.getString("dir_den");
+                est = resultados.getString("est_den");
+                dtm.addRow( new Object[] {id, nombre,est,cel,horario,sueldo,mail,dir} );                
+            }
+            this.cerrar();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error de lectura de BD\n\n");
+            e.printStackTrace();
+        }
+		adjustComponents(gbc_scrollPane,1,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
+		con.add(scrollPane, gbc_scrollPane);
 		
-		Object [] nomColumnas = {"ID", "Nombre", "Estudios","NumTel","Horario","Sueldo","Email","Direccion"};
-		DefaultTableModel dtm = new DefaultTableModel(null,nomColumnas)
-		{
-			public boolean isCellEditable(int row, int column) 
-			{
-				return false;
-			}
-		}; 
-		JTable tbDentistas = new JTable(dtm);
-	    
-	    DefaultTableModel model = (DefaultTableModel) tbDentistas.getModel();
-	    model.addRow(new Object[]{obtenerString("dentistas",1,1), obtenerString("dentistas",2,1), obtenerString("dentistas",3,1), obtenerString("dentistas",4,1), 
-	    		obtenerString("dentistas",5,1), obtenerString("dentistas",6,1), obtenerString("dentistas",7,1), obtenerString("dentistas",8,1)});
-	    
-		if(NumFil("dentistas")>2)
-		{
-		for(int i = 1; i<NumFil("dentistas"); i++)
-		{
-		int a=i+1;
-		
-		model.addRow(new Object[]{obtenerString("dentistas",1,a), obtenerString("dentistas",2,a), obtenerString("dentistas",3,a), obtenerString("dentistas",4,a), 
-	    		obtenerString("dentistas",5,a), obtenerString("dentistas",6,a), obtenerString("dentistas",7,a), obtenerString("dentistas",8,a)});
-		}
-		}
-		tbDentistas.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(tbDentistas);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollPane.setRowHeaderView(scrollBar);
 		
 		btnAgregar = new JButton("Agregar");
 		c.insets = new Insets(0,100,0,0);
@@ -96,29 +125,22 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		btnEliminar = new JButton("Eliminar");
 		adjustButton(btnEliminar, c, con, 0, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
-		btnEditar = new JButton("Editar");
-		btnEditar.setEnabled(false);
-		adjustButton(btnEditar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setEnabled(false);
+		adjustButton(btnActualizar, c, con, 0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.EAST);
 		
 		c.insets = new Insets(0,0,0,0);
 		buttonHome(fD,true,c,con,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		btnAgregar.addActionListener(this);
-		btnEditar.addActionListener(this);
-		btnHome.addActionListener(this);
+		btnActualizar.addActionListener(this);
 		
-		btnEliminar.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				if (tbDentistas.getSelectedRow() != -1) {
-		            int SelectedRow = tbDentistas.getSelectedRow();
-		            dtm.removeRow(SelectedRow);
-		            SelectedRow ++;
-		            String remove = "" + SelectedRow;
-		            System.out.println(remove);
-		            borrarFila("dentistas", "id_den", remove);
-		        }
+		tbDentistas.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				btnActualizar.setEnabled(isEnabled());
+				btnEliminar.setEnabled(isEnabled());
+				JTable table =(JTable) e.getSource();
+				valor = "" + table.getValueAt(table.getSelectedRow(), 1);
 			}
 		});
 		
@@ -128,17 +150,23 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		fD.setVisible(true);
 		con.setBackground(Color.WHITE);
 		return fD;
-		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		if (e.getSource()==btnAgregar) 
+		switch(e.getActionCommand()) 
 		{
-			AgregarDentista vAD = new AgregarDentista();
-			vAD.crearfAD();
-			fD.setVisible(false);
+			case "Agregar":
+				AgregarDentista vAD = new AgregarDentista();
+				vAD.crearfAD();
+				fD.setVisible(false);
+			break;
+			case "Eliminar":
+				dtm = (DefaultTableModel) tbDentistas.getModel();
+				dtm.removeRow(tbDentistas.getSelectedRow());
+				borrarFila("admin", "id_usu", valor);
+			break;
         }
 		
 	}

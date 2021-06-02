@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -84,9 +86,6 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 		lbDireccion.setFont (lbDireccion.getFont ().deriveFont (21.0f));
 		adjustComponents(c, 0, 4, 1, 1, 1.0, 1.0, GridBagConstraints.EAST);
 		con.add(lbDireccion,c);
-		
-		//jtID = new JTextField(15);
-		//adjustTextField(jtID, c, con, 1, 1, 1, 1, 0.0, 1.0,GridBagConstraints.CENTER);
 				
 		jtNombre = new JTextField(15);
 		adjustTextField(jtNombre, c, con, 1, 1, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
@@ -129,14 +128,88 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 		con.setBackground(Color.WHITE);
 		return fAD;
 	}
+	
+	boolean soloLetras(String str)
+	{
+		Pattern p = Pattern.compile("^[ A-Za-z]+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean soloNumeros(String str)
+	{
+		Pattern p = Pattern.compile("[0-9]+");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean numYLetras(String str)
+	{
+		Pattern p = Pattern.compile("^[a-zA-Z0-9]+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
+	
+	boolean sueldo(String str)
+	{
+		Pattern p = Pattern.compile("^(\\d*\\.)?\\d+$");
+		Matcher m = p.matcher(str);
+		return m.matches();
+	}
 
 	public void actionPerformed(ActionEvent e) 
 	{	
-		subirFilaCol7("dentistas","nom_den","est_den","hor_den","sldo_den","dir_den","tel_den","mail_den",
+		String ok = null;
+		String nombre = jtNombre.getText();
+		String hor=jtHorario.getText();
+		String mail=jtEmail.getText();
+		String sldo =jtSueldo.getText();
+		String dir =jtDireccion.getText();
+		String tel =jtNumTel.getText();
+		String est = jtEstudios.getText();
+		if(soloLetras(nombre)==false || nombre.length()>35 || nombre == null)
+		{
+			ok="nombre";
+		}
+		
+		if(hor.length()>30 || hor==null)
+		{
+			ok="horario";
+		}
+		
+		if(mail.length()>4405 || mail ==null)
+		{
+			ok="mail";
+		}
+		
+		if(sueldo(sldo)==false || sldo.length()>8|| sldo == null)
+		{
+			ok="sueldo";
+		}
+		
+		if(dir.length()>70 || dir==null)
+		{
+			ok="direccion";
+		}
+		
+		if(est.length()>70 || est==null)
+		{
+			ok="direccion";
+		}
+		
+		if(soloNumeros(tel)==false || tel.length()>10 || tel == null)
+		{
+			ok="telefono";
+		}
+		if(ok==null)
+		{
+			subirFilaCol7("dentistas","nom_den","est_den","hor_den","sldo_den","dir_den","tel_den","mail_den",
 					jtNombre.getText(),jtEstudios.getText(), jtHorario.getText(), jtSueldo.getText(), 
 					jtDireccion.getText(), jtNumTel.getText(),jtEmail.getText());
-   
-	}
-        
-		        
+		}else
+		{
+			ErrorDeValidacion edv = new ErrorDeValidacion();
+			edv.crearVE1(ok);
+		}
+	}       
 }
