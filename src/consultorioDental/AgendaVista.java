@@ -2,6 +2,7 @@ package consultorioDental;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -16,6 +17,8 @@ import javax.swing.JCheckBox;
 import java.awt.Insets;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,7 +36,7 @@ import javax.swing.table.TableColumnModel;
 import consultorioDental.MetodosDiseño.MyTableCellRenderer;
 
 public class AgendaVista extends MetodosDiseño implements ActionListener {
-	
+	String valor;
 	JButton btnEliminar;
 	JTable tbAgenda;
 	DefaultTableModel dtm;
@@ -49,7 +52,7 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 	private void leerDatos() throws ClassNotFoundException, SQLException {
         String usuario = "root";
         String password = "";
-        String instruccion = "SELECT * FROM citas";
+        String instruccion = "SELECT * FROM agenda";
 
         Class.forName("com.mysql.jdbc.Driver");
         conexion = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
@@ -73,7 +76,7 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		adjustComponents(c, 0, 0, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbAgenda,c);
 		
-		/*String [] nomColumnas = {"ID Cita", "Paciente", "Dentista", "Fecha", "Hora","Asistio"};
+		String [] nomColumnas = {"ID Cita", "Paciente", "Dentista", "Fecha", "Hora","Asistio"};
 		dtm = new DefaultTableModel(null,nomColumnas);
 		dtm.setColumnIdentifiers(nomColumnas);
 		tbAgenda = new JTable(dtm);
@@ -88,16 +91,17 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		
 		int id;
-        String pte,den,hr,date;
+        String pte,den,hr,date,asta;
 	    try {
             this.leerDatos();
             while(resultados.next() == true) {
-                id = resultados.getInt("id_cita");
-                pte = resultados.getString("pte_cita");
-                den = resultados.getString("den_cita");
-                date = resultados.getString("fecha_cita");
-                hr = resultados.getString("hr_cita");
-                dtm.addRow( new Object[] {id,pte,den,date,hr} );
+                id = resultados.getInt("cita_agda");
+                pte = resultados.getString("pte_agda");
+                den = resultados.getString("den_agda");
+                date = resultados.getString("fecha_agda");
+                hr = resultados.getString("hora_agda");
+                asta = resultados.getString("asis_agda");
+                dtm.addRow( new Object[] {id,pte,den,date,hr,asta} );
             }
             this.cerrar();
         } catch (SQLException | ClassNotFoundException e) {
@@ -105,20 +109,14 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
             e.printStackTrace();
         }
 		adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
-		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);*/
-		
-		JTable table = new JTable(new JTableModel()); 
-        JScrollPane scrollPane = new JScrollPane(table);
-        table.setFillsViewportHeight(true); 
-
-        TableCellRenderer buttonRenderer = new JTableButtonRenderer();
-        table.getColumn("Button1").setCellRenderer(buttonRenderer);
-        table.getColumn("Button2").setCellRenderer(buttonRenderer);
-        GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 2, 5, 0);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-        adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
 		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);
+		
+		JButton btnConfirmar = new JButton("Confirmar asistencia");
+		btnConfirmar.setEnabled(false);
+		btnConfirmar.setPreferredSize(new Dimension(170,35));
+		adjustComponents(c,0,3,1,1,0.0,0.0,GridBagConstraints.EAST);
+		con.add(btnConfirmar, c);
+		btnConfirmar.addActionListener(this);
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setEnabled(false);
@@ -128,6 +126,16 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 1, 3, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		btnEliminar.addActionListener(this);
+		
+		tbAgenda.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				btnConfirmar.setEnabled(isEnabled());
+				btnEliminar.setEnabled(isEnabled());
+				btnEditar.setEnabled(isEnabled());
+				JTable table =(JTable) e.getSource();
+				valor = "" + table.getValueAt(table.getSelectedRow(), 1);
+			}
+		});
 		
 		buttonHome(fAgenda,true,c,con,3,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
@@ -140,7 +148,16 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		switch(e.getActionCommand()) {
+			case "Eliminar":
+				dtm = (DefaultTableModel) tbAgenda.getModel();
+				dtm.removeRow(tbAgenda.getSelectedRow());
+				borrarFila("agenda", "cita_agda", valor);
+			break;
+			case "Confirmar asistencia":
+				modificarBD("agenda","asis_agda","Si","cita_agda",valor);
+			break;
+		}
 		
 	}
 
