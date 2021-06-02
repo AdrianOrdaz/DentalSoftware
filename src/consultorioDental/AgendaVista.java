@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -72,11 +73,10 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
 		adjustComponents(c, 0, 0, 4, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbAgenda,c);
 		
-		String [] nomColumnas = {"ID Cita", "Paciente", "Dentista", "Fecha", "Hora","Asistio"};
-		//dtm = new DefaultTableModel(null,nomColumnas);
-		MiModelo mod = new MiModelo();
-		mod.setColumnIdentifiers(nomColumnas);
-		tbAgenda = new JTable(mod);
+		/*String [] nomColumnas = {"ID Cita", "Paciente", "Dentista", "Fecha", "Hora","Asistio"};
+		dtm = new DefaultTableModel(null,nomColumnas);
+		dtm.setColumnIdentifiers(nomColumnas);
+		tbAgenda = new JTable(dtm);
 		TableColumnModel tcm = tbAgenda.getColumnModel();
 	    TableColumn col = new TableColumn(0,8,new MyTableCellRenderer(),null);
 	    tcm.addColumn(col);
@@ -97,16 +97,27 @@ public class AgendaVista extends MetodosDiseño implements ActionListener {
                 den = resultados.getString("den_cita");
                 date = resultados.getString("fecha_cita");
                 hr = resultados.getString("hr_cita");
-                DefaultTableModel model = (DefaultTableModel) tbAgenda.getModel();
-                model.addRow( new Object[] {id,pte,den,date,hr} );
+                dtm.addRow( new Object[] {id,pte,den,date,hr} );
             }
             this.cerrar();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
-	    tbAgenda.getColumnModel().getColumn( 6 ).setCellRenderer(new MyTableCell());
 		adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
+		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);*/
+		
+		JTable table = new JTable(new JTableModel()); 
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true); 
+
+        TableCellRenderer buttonRenderer = new JTableButtonRenderer();
+        table.getColumn("Button1").setCellRenderer(buttonRenderer);
+        table.getColumn("Button2").setCellRenderer(buttonRenderer);
+        GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 2, 5, 0);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+        adjustComponents(gbc_scrollPane,0,2,4,1,0.0,0.0,GridBagConstraints.CENTER);
 		fAgenda.getContentPane().add(scrollPane, gbc_scrollPane);
 		
 		JButton btnEditar = new JButton("Editar");

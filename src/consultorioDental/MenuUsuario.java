@@ -85,7 +85,12 @@ public class MenuUsuario extends MetodosDiseño implements ActionListener{
 		{
 			case "Agendar Cita":
 				AgendarCita vac = new AgendarCita();
+			try {
 				vac.crearAC();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 				fMenuU.setVisible(false);
 			break;
 			case "Agenda":

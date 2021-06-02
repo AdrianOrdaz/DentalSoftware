@@ -7,6 +7,7 @@ import java.util.Enumeration;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
@@ -211,28 +212,50 @@ public class MetodosDiseño extends MetodosConexionBD{
 		jt6.setText("");
 		jt7.setText("");
 	}
-	
-	class MyTableCell extends JCheckBox implements TableCellRenderer{
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-	       this.setSelected(isSelected);
-	       return this;
-	    }
-	}
-	
-	class MiModelo extends DefaultTableModel
-	{
-		Class[] columnTypes = new Class[] {
-                Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Boolean.class
-            };
-            @SuppressWarnings({ "unchecked", "rawtypes" })
-            public Class getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
+	public static class JTableModel extends AbstractTableModel {
+        private static final long serialVersionUID = 1L;
+        private static final String[] COLUMN_NAMES = new String[] {"Id", "Stuff", "Button1", "Button2"};
+        private static final Class<?>[] COLUMN_TYPES = new Class<?>[] {Integer.class, String.class, JButton.class,  JButton.class};
+
+        @Override public int getColumnCount() {
+            return COLUMN_NAMES.length;
+        }
+
+        @Override public int getRowCount() {
+            return 4;
+        }
+
+        @Override public String getColumnName(int columnIndex) {
+            return COLUMN_NAMES[columnIndex];
+        }
+
+        @Override public Class<?> getColumnClass(int columnIndex) {
+            return COLUMN_TYPES[columnIndex];
+        }
+
+        @Override public Object getValueAt(final int rowIndex, final int columnIndex) {
+                /*Adding components*/
+            switch (columnIndex) {
+                case 0: return rowIndex;
+                case 1: return "Text for "+rowIndex;
+                case 2: // fall through
+               /*Adding button and creating click listener*/
+                case 3: final JButton button = new JButton(COLUMN_NAMES[columnIndex]);
+                        button.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent arg0) {
+                                JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button), 
+                                        "Button clicked for row "+rowIndex);
+                            }
+                        });
+                        return button;
+                default: return "Error";
             }
-            boolean[] columnEditables = new boolean[] {
-                false, false, false, false, false, false, false, true
-            };
-            public boolean isCellEditable(int row, int column) {
-                return columnEditables[column];
-            }
-	}
+        }   
+    }
+	static class JTableButtonRenderer implements TableCellRenderer {        
+        @Override public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            JButton button = (JButton)value;
+            return button;  
+        }
+    }
 }

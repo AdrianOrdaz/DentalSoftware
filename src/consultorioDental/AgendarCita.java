@@ -25,16 +25,24 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 	JComboBox<String> jcbDentista;
 	JTextField jtFecha;
 	JTextField jtHora;
+	//int i;
 	private Connection conexion = null;
 	private Connection conexion2 = null;
+	private Connection conexion3 = null;
     private Statement comando = null;
     private Statement comando2 = null;
+    private Statement comando3 = null;
     private ResultSet resultados = null;
     private ResultSet resultados2 = null;
+    private ResultSet resultados3 = null;
 	public static void main(String[]args)
 	{
 		AgendarCita ac = new AgendarCita();
-		ac.crearAC();
+		try {
+			ac.crearAC();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void leerDatos() throws ClassNotFoundException, SQLException {
@@ -42,21 +50,26 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
         String password = "";
         String instruccion = "SELECT * FROM pacientes";
         String instruccion2 = "SELECT * FROM dentistas";
+        String instruccion3 = "SELECT * FROM citas ORDER BY id_cita DESC";
 
         Class.forName("com.mysql.jdbc.Driver");
         conexion = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
         conexion2 = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
+        conexion3 = DriverManager.getConnection("jdbc:mysql://localhost/consultorio" + "?" + "user=" + usuario + "&" + "password=" + password + "");
         comando = conexion.createStatement();
         comando2 = conexion2.createStatement();
+        comando3 = conexion3.createStatement();
         resultados = comando.executeQuery(instruccion);
         resultados2 = comando2.executeQuery(instruccion2);
+        resultados3 = comando3.executeQuery(instruccion3);
     }
 	private void cerrar() throws SQLException {
 		conexion.close();
 		conexion2.close();
+		conexion3.close();
     } 
 	
-	protected void crearAC()
+	protected void crearAC() throws ClassNotFoundException
 	{
 		JFrame fAC = new JFrame("Consultorio Dental/Agendar Cita");
 		Container con = new Container();
@@ -142,17 +155,29 @@ public class AgendarCita extends MetodosDiseño implements ActionListener
 		con.setBackground(Color.WHITE);
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent a) {
 		String idpte = (String) jcbPaciente.getSelectedItem();
 		String idden = (String) jcbDentista.getSelectedItem();
 		String[] idp = idpte.split("-");
 		String[] idd = idden.split("-");
 		String id_pte = idp[0];
 		String id_den = idd[0];
-		subirFilaCol4("citas","pte_cita","den_cita","hr_cita","fecha_cita",
+		try {
+			this.leerDatos();
+			subirFilaCol4("citas","pte_cita","den_cita","hr_cita","fecha_cita",
 				id_pte,id_den, jtHora.getText(), jtFecha.getText());
-		emptyJT(jtHora,jtFecha,new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField());
-		jcbPaciente.setSelectedIndex(0);
-		jcbDentista.setSelectedIndex(0);
+			if(resultados3.next()) {
+				String id = (resultados3.getInt("id_cita") + 1) + "";
+				subirFilaCol6("agenda","cita_agda","pte_agda","den_agda","hora_agda","fecha_agda","asis_agda",
+					id,id_pte,id_den, jtHora.getText(), jtFecha.getText(),"");
+			}
+			emptyJT(jtHora,jtFecha,new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField(),new JTextField());
+			jcbPaciente.setSelectedIndex(0);
+			jcbDentista.setSelectedIndex(0);
+			this.cerrar();
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
