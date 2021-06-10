@@ -119,7 +119,7 @@ public class GestionarUsuario extends MetodosDiseño implements ActionListener {
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setEnabled(false);
-		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,2,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		adjustButton(btnEliminar,new GridBagConstraints(),contentPane,3,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		JButton btnAgregar = new JButton("Agregar");
 		adjustButton(btnAgregar,new GridBagConstraints(),contentPane,1,2,1,1,1.0,1.0,GridBagConstraints.CENTER);

@@ -125,10 +125,11 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 		adjustButton(btnEliminar,gbc_btnEliminar,contentPane,3,3,1,1,1.0,1.0,GridBagConstraints.CENTER);
 		btnEliminar.addActionListener(this);
 		
-		JButton btnEditar = new JButton("Editar");
+		JButton btnEditar = new JButton("Actualizar");
 		btnEditar.setEnabled(false);
 		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
 		adjustButton(btnEditar,gbc_btnEditar,contentPane,2,3,1,1,0.0,1.0,GridBagConstraints.CENTER);
+		btnEditar.addActionListener(this);
 		
 		tbPromociones.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -159,6 +160,24 @@ public class Promociones extends MetodosDiseño implements ActionListener{
 				dtm = (DefaultTableModel) tbPromociones.getModel();
 				dtm.removeRow(tbPromociones.getSelectedRow());
 				borrarFila("promociones", "id_prom", valor);
+			break;
+			case "Actualizar":
+				int id = (int) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 0);
+				String idS = ""+id;
+				String nombre = (String) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 1);
+				String dias = (String) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 2);
+				String term = (String) tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 3);
+				Object indiv = tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 4);
+				Object junt = tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 5);
+				Object por = tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 6);
+				Object ahorro = tbPromociones.getModel().getValueAt(tbPromociones.getSelectedRow(), 7);
+				modificarBD("promociones", "serv_prom", "id_prom", idS, nombre);
+				modificarBD("promociones", "das_prom", "id_prom", idS, dias);
+				modificarBD("promociones", "term_prom", "id_prom", idS, term);
+				modificarBD("promociones", "indiv_prom", "id_prom", idS, indiv+"");
+				modificarBD("promociones", "junt_prom", "id_prom", idS, junt+"");
+				modificarBD("promociones", "porc_prom", "id_prom", idS, por+"");
+				modificarBD("promociones", "ahorr_prom", "id_prom", idS, ahorro+"");
 			break;
 				
 		}

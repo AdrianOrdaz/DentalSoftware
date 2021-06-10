@@ -76,7 +76,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		con.setLayout(new GridBagLayout());
 
 		JLabel lbDentistas = new JLabel("Dentistas");
-		lbDentistas.setFont (new Font("Open Sans",Font.CENTER_BASELINE,40));
+		lbDentistas.setFont (new Font("Open Sans",Font.PLAIN,40));
 		adjustComponents(c, 0, 0, 5, 1, 1.0, 1.0, GridBagConstraints.NORTH);
 		con.add(lbDentistas,c);
 		
@@ -114,7 +114,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
             System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
-		adjustComponents(gbc_scrollPane,1,1,4,1,1.0,1.0,GridBagConstraints.CENTER);
+		adjustComponents(gbc_scrollPane,0,1,5,1,1.0,1.0,GridBagConstraints.CENTER);
 		con.add(scrollPane, gbc_scrollPane);
 		
 		
@@ -123,6 +123,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		adjustButton(btnAgregar, c, con, 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.WEST);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setEnabled(false);
 		adjustButton(btnEliminar, c, con, 0, 2, 1, 1, 0.0, 1.0, GridBagConstraints.CENTER);
 		
 		btnActualizar = new JButton("Actualizar");
@@ -133,6 +134,7 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 		buttonHome(fD,true,c,con,4,2,1,1,0.0,1.0,GridBagConstraints.CENTER);
 		
 		btnAgregar.addActionListener(this);
+		btnEliminar.addActionListener(this);
 		btnActualizar.addActionListener(this);
 		
 		tbDentistas.addMouseListener(new MouseAdapter() {
@@ -165,7 +167,26 @@ public class Dentistas extends MetodosDiseño implements ActionListener{
 			case "Eliminar":
 				dtm = (DefaultTableModel) tbDentistas.getModel();
 				dtm.removeRow(tbDentistas.getSelectedRow());
-				borrarFila("admin", "id_usu", valor);
+				borrarFila("dentistas", "id_den", valor);
+			break;
+			case "Actualizar":
+				int id = (int) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 0);
+				String idS = ""+id;
+				String nombre = (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 1);
+				String est = (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 2);
+				String tel =  (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 3);
+				String mail = (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 6);
+				String hor = (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 4);
+				Object sldo = tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 5);
+				String dir = (String) tbDentistas.getModel().getValueAt(tbDentistas.getSelectedRow(), 7);
+				
+				modificarBD("dentistas", "nom_den", "id_den", idS, nombre);
+				modificarBD("dentistas", "est_den", "id_den", idS, est);
+				modificarBD("dentistas", "tel_den", "id_den", idS, tel);
+				modificarBD("dentistas", "hor_den", "id_den", idS, hor);
+				modificarBD("dentistas", "mail_den", "id_den", idS, mail);
+				modificarBD("dentistas", "sldo_den", "id_den", idS, sldo+"");
+				modificarBD("dentistas", "dir_den", "id_den", idS, dir);
 			break;
         }
 		

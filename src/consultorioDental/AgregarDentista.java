@@ -206,6 +206,7 @@ public class AgregarDentista extends MetodosDiseño implements ActionListener{
 			subirFilaCol7("dentistas","nom_den","est_den","hor_den","sldo_den","dir_den","tel_den","mail_den",
 					jtNombre.getText(),jtEstudios.getText(), jtHorario.getText(), jtSueldo.getText(), 
 					jtDireccion.getText(), jtNumTel.getText(),jtEmail.getText());
+			emptyJT(jtNombre,jtEstudios,jtHorario,jtSueldo,jtDireccion,jtNumTel,jtEmail,new JTextField());
 		}else
 		{
 			ErrorDeValidacion edv = new ErrorDeValidacion();
